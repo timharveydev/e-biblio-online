@@ -19,7 +19,7 @@
   background-color: transparent;
   color: $black;
   border-radius: $border-radius-default;
-  border: 1px solid $black;
+  border: 2px solid $black;
   cursor: pointer;
   @include transition;
 }
@@ -27,12 +27,13 @@
 
 .button--primary {
   @include button;
+  color: $white;
   background-color: $color-primary;
   border-color: $color-primary;
 
   &:hover,
   &:focus {
-    opacity: 0.7;
+    opacity: 0.9;
     outline: 0;
   }
 }
