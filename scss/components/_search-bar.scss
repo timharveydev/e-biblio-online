@@ -1,0 +1,56 @@
+
+/* SEARCH BAR
+--------------------------------------------*/
+
+// Requires button component in order to display properly
+
+.search-bar {
+  width: 100%;
+  max-width: 60rem;
+  margin: 6rem 0 2rem 0;
+  @include display-flex;
+
+  &__input {
+    flex: 1;
+    height: 3.8rem;
+    padding: 0 1.5rem;
+    line-height: 3.8rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    background-color: $white;
+    color: $dark-grey;
+    border-top-left-radius: $border-radius-default;
+    border-bottom-left-radius: $border-radius-default;
+    border: none;
+  }
+
+  &__button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &__button--mobile {
+    display: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0 1.5rem;
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+
+// Phones
+@media only screen and (max-width: 450px) {
+  .search-bar {
+    margin-top: 4rem;
+  
+    &__button { display: none; }
+  
+    &__button--mobile { display: block; }
+  }
+}

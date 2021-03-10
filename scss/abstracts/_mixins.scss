@@ -1,0 +1,29 @@
+
+/* MIXINS
+--------------------------------------------*/
+
+/**
+ * These are global-only mixins, intended to be used as tools throughout the website.
+ * Component-specific mixins are located within each component's specific .scss file.
+*/
+
+// Display Flex
+// Accepts flex-direction, justify-content and align-items values
+@mixin display-flex ($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Box Shadow
+// Accepts h-offset and v-offset values
+@mixin box-shadow ($h-offset: 0, $v-offset: 5px) {
+  box-shadow: $h-offset $v-offset 8px rgba(0, 0, 0, 0.2);
+}
+
+// Transition
+// Accepts delay value only - timing is pre-set for consistency across the site
+@mixin transition ($delay: 0s) {
+  transition: all 100ms ease-in-out $delay;
+}

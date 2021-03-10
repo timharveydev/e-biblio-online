@@ -1,0 +1,48 @@
+
+/* ADMIN NEW FILM
+--------------------------------------------*/
+
+.admin-new-film {
+  min-height: 100%;
+  width: 100%;
+
+  &__container {
+    width: 30%;
+    max-width: 1200px;
+    padding: 12rem 0;
+  }
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  &__success {
+    @include display-flex;
+    color: $color-primary;
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+
+@media only screen and (max-width: 1650px) {
+  .admin-new-film {
+    
+    &__container { width: 45%; }
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .admin-new-film {
+    
+    &__container { width: 55%; }
+  }
+}

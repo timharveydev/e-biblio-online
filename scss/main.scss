@@ -1,0 +1,47 @@
+@charset 'utf-8';
+
+/* MAIN.SCSS
+--------------------------------------------*/
+
+/**
+ * SASS folder structure is based on the 7-1 pattern by Hugo Giraudel.
+ * More info at https://sass-guidelin.es/#architecture
+ *
+ * This project makes use of BEM CSS naming conventions.
+*/
+
+
+// Includes SASS-specific files such as variables, global mixins, functions etc.
+// This section does not output any compilable CSS code.
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Includes resets, global element styles and general global classes.
+@import 'base/reset';
+@import 'base/base';
+@import 'base/typography';
+
+// Includes layout tools and styles for core page elements.
+@import 'layout/wrappers';
+@import 'layout/navigation';
+@import 'layout/footer';
+
+// Includes all component styles, including component-specific mixins and functions.
+// Components are intended to be reusable.
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/search-bar';
+@import 'components/data-table';
+
+// Includes page-specific styling.
+@import 'pages/homepage'; // index.php
+@import 'pages/loginRegister';
+@import 'pages/about';
+@import 'pages/contact';
+@import 'pages/adminHome';
+@import 'pages/adminNewUser';
+@import 'pages/adminNewAdmin';
+@import 'pages/adminNewTitle';
+@import 'pages/adminChangeUsers';
+@import 'pages/adminChangeAdmins';
+@import 'pages/adminChangeTitles';

@@ -1,0 +1,91 @@
+
+/* DATA TABLE
+--------------------------------------------*/
+
+/**
+ * This component provides a table of data taken from a database. It is made up of many forms allowing for easy updating of content by user.
+ *
+ * It will fill all available horizontal space.
+ * Place within a container and set preferred width on the container.
+*/
+
+.data-table {
+  width: 100%;
+  margin: 6rem 0;
+  text-align: center;
+
+  &__form {
+    margin-bottom: 0.5rem;
+    @include display-flex($justify: space-between);
+  }
+
+  &__heading {
+    flex: 1;
+    text-align: center;
+    height: 3.8rem; // Same as line height
+    margin-right: 1px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 3.8rem; // Same as height
+    background-color: transparent;
+    color: $white;
+    border: none;
+    outline: none;
+    cursor: default;
+  }
+
+  &__input {
+    flex: 1;
+    text-align: center;
+    height: 5rem; // Same as line height
+    padding: 0 1.5rem;
+    margin-right: 1px;
+    font-size: 1.6rem;
+    line-height: 5rem; // Same as height
+    background-color: transparent;
+    color: $white;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active { outline: 1px solid $light-grey; }
+  }
+
+  &__textarea {
+    flex: 1;
+    min-width: 26rem;
+    height: 14rem;
+    padding: 1rem;
+    margin: 0.8rem 1px 0.8rem 0;
+    line-height: 2rem;
+    background-color: transparent;
+    color: $white;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active { outline: 1px solid $light-grey; }
+  }
+
+  &__button--hidden { visibility: hidden; }
+
+  & hr { margin-bottom: 2rem; }
+
+  // To be given as a class to form inputs
+  & .left-align { text-align: left; }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+
+// Laptops / tablets
+@media only screen and (max-width: 1400px) {
+  .data-table {
+    overflow-x: scroll;
+    outline: 2px solid $medium-grey;
+  }
+}

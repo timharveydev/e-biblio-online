@@ -1,0 +1,35 @@
+
+/* ADMIN CHANGE USERS
+--------------------------------------------*/
+
+.admin-change-users {
+  min-height: 100%;
+  width: 100%;
+
+  &__container {
+    max-width: 1200px;
+    padding: 12rem 0;
+  }
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  &__search-bar {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__instruction {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  &__success {
+    @include display-flex;
+    color: $color-primary;
+    margin-top: 3rem;
+    font-size: 1.8rem;
+  }
+}
