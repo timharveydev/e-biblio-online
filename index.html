@@ -41,26 +41,38 @@
   <nav class="nav">
     <div class="nav__container">
 
-      <div class="nav__burger" onclick="toggleMenu()"><span class="fas fa-bars"></span></div>
+      
+      <!-- MAIN NAV -->
+      <div class="nav__logo">
+        <a href="#"><img src="/img/logo-dark.png" alt="E-Biblio Logo"></a>
+      </div>
 
-      <!-- Nav links and logo -->
       <ul class="nav__list">
-        <div class="nav__logo">
-          <a href="#"><img src="/img/logo-dark.png" alt="E-Biblio Logo"></a>
-        </div>
-
         <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
         <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
         <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
         <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
       </ul>
 
-      <!-- Login, cart and account -->
-      <ul class="nav__list">
-        <li class="nav__item"><a href="#" class="nav__link" style="font-weight: 400; margin-right: 6rem;">Login / Register</a></li>
-        <li class="nav__item"><a href="#" class="nav__icon"><i class="fas fa-shopping-basket"></i></a></li>
-        <li class="nav__item"><a href="#" class="nav__icon"><i class="fas fa-user-circle"></i></a></li>
+      <!-- Icons & Dropdown -->
+      <ul class="nav__icons">
+        <li class="nav__item"><a href="#" class="nav__icon cartIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="#" class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
+        <!-- Account Dropdown -->
+        <ul class="nav__dropdown">
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link username"><strong>username</strong></a></li>
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link">Create an Account</a></li>
+          <hr>
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <hr>
+          <li class="nav__dropdown-item"><a href="#" class="nav__dropdown-link warning">Logout</a></li>
+        </ul>
       </ul>
+
+      <!-- Burger Menu (mobile only) -->
+      <div class="nav__burger" onclick="toggleBurgerMenu()"><span class="fas fa-bars"></span></div>
 
     </div>
   </nav>
@@ -72,7 +84,8 @@
 
   <!-- JAVASCRIPT
   --------------------------------------------------------->
-  <script type='text/javascript' src="/js/toggleMenu.min.js" defer></script>
+  <script type='text/javascript' src="/js/burgerMenu.js"></script>
+  <script type='text/javascript' src="/js/dropdownMenu.js"></script>
 
 
   <!-- END DOCUMENT

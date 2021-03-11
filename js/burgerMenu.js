@@ -1,21 +1,21 @@
-// Toggles the burger menu for mobile devices
+// Toggles the burger menu on mobile devices
 
 // Variables
 const navList = document.querySelector('.nav__list');
 const burger = document.querySelector('.nav__burger');
-let toggleState = false;
+let burgerToggleState = false;
 
 
 // Toggles menu with slide and fade effect
-function toggleMenu() {
-  if (toggleState == false) {
+function toggleBurgerMenu() {
+  if (burgerToggleState == false) {
 
     navList.style.height = '35rem';
     navList.style.opacity = '1';
 
     burger.classList.toggle('active');
 
-    toggleState = true;
+    burgerToggleState = true;
 
   }
   else {
@@ -25,7 +25,7 @@ function toggleMenu() {
 
     burger.classList.toggle('active');
     
-    toggleState = false;
+    burgerToggleState = false;
 
   }
 }
@@ -34,9 +34,9 @@ function toggleMenu() {
 // Reset nav menu attributes when resizing screen
 window.addEventListener('resize', () => {
 
-  if (window.innerWidth > 1024) {
+  if (window.innerWidth > 1023) {
 
-    navList.style.height = '3.8rem';
+    navList.style.height = '8rem';
     navList.style.opacity = '1';
 
   }
@@ -49,6 +49,6 @@ window.addEventListener('resize', () => {
 
   burger.classList.remove('active');
 
-  toggleState = false;
+  burgerToggleState = false;
 
 })

@@ -19,7 +19,7 @@
 // Box Shadow
 // Accepts h-offset and v-offset values
 @mixin box-shadow ($h-offset: 0, $v-offset: 5px) {
-  box-shadow: $h-offset $v-offset 8px rgba(0, 0, 0, 0.2);
+  box-shadow: $h-offset $v-offset 8px rgba(0, 0, 0, 0.1);
 }
 
 // Transition
