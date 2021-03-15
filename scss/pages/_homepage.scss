@@ -2,7 +2,43 @@
 /* HOMEPAGE
 --------------------------------------------*/
 
+// HERO SCREEN
 .hero {
-  height: 100%;
+  height: 85%; // same as bg-overlay height
   width: 100%;
+  background-image: url("../img/hero_img.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__container { @include display-flex($justify: flex-start); }
+
+  &__bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85%; // same as .hero height
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &__titles { z-index: 100; }
+
+  &__h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+
+    &--color-primary {
+      color: $color-primary;
+    }
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 }
+

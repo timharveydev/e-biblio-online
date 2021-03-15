@@ -25,5 +25,5 @@
 // Transition
 // Accepts delay value only - timing is pre-set for consistency across the site
 @mixin transition ($delay: 0s) {
-  transition: all 100ms ease-in-out $delay;
+  transition: all 150ms ease-in-out $delay;
 }
