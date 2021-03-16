@@ -720,7 +720,7 @@ h6 {
   text-transform: uppercase;
 }
 
-/* MEDIA QUERIES
+/* MEDIA QUERIES (HERO SCREEN)
 --------------------------------------------*/
 @media only screen and (max-width: 1024px) {
   .hero__h1 {
