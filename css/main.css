@@ -728,6 +728,25 @@ h6 {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .hero__h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .hero {
+    background-position: 10% 0%;
+  }
+}
+
+@media only screen and (max-height: 1000px) {
+  .hero,
+  .hero__bg-overlay {
+    height: 100%;
+  }
+}
+
 /* LOGIN & REGISTER
 --------------------------------------------*/
 .login-register {
