@@ -146,6 +146,7 @@ h6 {
   height: 8rem;
   background-color: transparent;
   z-index: 1000;
+  transition: all 150ms ease-in-out 0s;
 }
 
 .nav__container {
@@ -239,7 +240,7 @@ h6 {
 
 .nav__burger:active, .nav__burger.active {
   color: #008B8B;
-  background-color: #FFF;
+  background-color: rgba(221, 221, 221, 0.5);
 }
 
 .nav__dropdown {
@@ -305,7 +306,10 @@ h6 {
   }
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1024px) {
+  .nav {
+    background-color: rgba(238, 238, 238, 0.9);
+  }
   .nav__burger {
     display: block;
   }
@@ -319,7 +323,7 @@ h6 {
     width: 100vw;
     max-width: 100vw;
     padding: 2rem 0;
-    background-color: #EEE;
+    background-color: rgba(238, 238, 238, 0.9);
     transition: 500ms ease;
     display: flex;
     flex-direction: column;
@@ -338,7 +342,7 @@ h6 {
     color: #008B8B;
   }
   .nav__link:active {
-    background-color: #DDD;
+    background-color: rgba(221, 221, 221, 0.5);
     color: #008B8B;
   }
   .nav__icons {
@@ -671,7 +675,7 @@ h6 {
 /* HOMEPAGE
 --------------------------------------------*/
 .hero {
-  height: 85%;
+  height: 185%;
   width: 100%;
   background-image: url("../img/hero_img.jpg");
   background-position: top;
@@ -691,7 +695,7 @@ h6 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 85%;
+  height: 185%;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -714,6 +718,14 @@ h6 {
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .hero__h1 {
+    font-size: 5rem;
+  }
 }
 
 /* LOGIN & REGISTER

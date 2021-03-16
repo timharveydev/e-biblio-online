@@ -34,7 +34,7 @@ function toggleBurgerMenu() {
 // Reset nav menu attributes when resizing screen
 window.addEventListener('resize', () => {
 
-  if (window.innerWidth > 1023) {
+  if (window.innerWidth > 1024) {
 
     navList.style.height = '8rem';
     navList.style.opacity = '1';

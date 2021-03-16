@@ -2,6 +2,9 @@
 /* NAVIGATION
 --------------------------------------------*/
 
+// Requires burgerMenu.js, navDropdown.js and navScrollBackground.js to work
+
+
 // MAIN NAV
 .nav {
   position: fixed;
@@ -11,6 +14,7 @@
   height: 8rem;
   background-color: transparent;
   z-index: 1000;
+  @include transition;
 
 
   &__container {
@@ -100,7 +104,7 @@
     &:active,
     &.active {
       color: $color-primary;
-      background-color: $white;
+      background-color: rgba($color: $medium-grey, $alpha: 0.5); // same as nav__link in 1024px media query below
     }
   }
 
@@ -170,8 +174,9 @@
   .nav__list { left: 22rem; }
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1024px) {
   .nav {
+    background-color: rgba($color: $light-grey, $alpha: 0.9);
   
   
     &__burger { display: block; }
@@ -187,7 +192,7 @@
       width: 100vw;
       max-width: 100vw;
       padding: 2rem 0;
-      background-color: $light-grey;
+      background-color: rgba($color: $light-grey, $alpha: 0.9);
       transition: 500ms ease;
       @include display-flex($direction: column, $justify: space-around);
     }
@@ -208,7 +213,7 @@
       }
 
       &:active {
-        background-color: $medium-grey;
+        background-color: rgba($color: $medium-grey, $alpha: 0.5); // same as nav__burger.active in MOBILE ONLY above
         color: $color-primary;
       }
     }
