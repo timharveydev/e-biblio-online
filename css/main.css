@@ -61,20 +61,20 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
-  line-height: 1.8rem;
+  line-height: 2.4rem;
   letter-spacing: 0.06rem;
 }
 
 h1 {
   font-size: 3.8rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 4.8rem;
   letter-spacing: 0.2rem;
 }
 
 h2 {
   font-size: 3.2rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 3.2rem;
   letter-spacing: 0.2rem;
 }
@@ -105,6 +105,10 @@ h6 {
   font-weight: 600;
   line-height: 1.2rem;
   letter-spacing: 0.2rem;
+}
+
+.text--color-primary {
+  color: #008B8B;
 }
 
 /* WRAPPERS
@@ -710,14 +714,31 @@ h6 {
   margin-bottom: 3rem;
 }
 
-.hero__h1--color-primary {
-  color: #008B8B;
-}
-
 .hero__link {
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.featured {
+  width: 100%;
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.featured__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured__titles {
+  max-width: 65rem;
+}
+
+.featured__heading {
+  margin-bottom: 2rem;
 }
 
 /* MEDIA QUERIES (HERO SCREEN)
@@ -747,6 +768,8 @@ h6 {
   }
 }
 
+/* MEDIA QUERIES (FEATURED TITLES)
+--------------------------------------------*/
 /* LOGIN & REGISTER
 --------------------------------------------*/
 .login-register {

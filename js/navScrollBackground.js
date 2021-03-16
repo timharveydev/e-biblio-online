@@ -5,16 +5,18 @@ const nav = document.querySelector('.nav');
 const navTop = nav.offsetTop;
 
 
-// Toggle bg on page scroll
+// Toggle bg on page scroll (only non-mobile devices)
 window.onscroll = () => {
   
-  if (window.pageYOffset >= navTop + 150) {
-
-    nav.style.backgroundColor = 'rgba(238, 238, 238, 0.9)'; // 238,238,238 = $light-grey
-
-  } else {
-
-    nav.style.backgroundColor = 'transparent';
+  if (window.innerWidth > 1024) {
+    if (window.pageYOffset >= navTop + 150) {
+  
+      nav.style.backgroundColor = 'rgba(238, 238, 238, 0.9)'; // 238,238,238 = $light-grey
+  
+    } else {
+  
+      nav.style.backgroundColor = 'transparent';
+    }
   }
 
 }

@@ -29,10 +29,6 @@
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 3rem;
-
-    &--color-primary {
-      color: $color-primary;
-    }
   }
 
   &__link {
@@ -40,6 +36,21 @@
     font-weight: 600;
     text-transform: uppercase;
   }
+}
+
+
+
+// FEATURED TITLES
+.featured {
+  width: 100%;
+  padding: 8rem 0;
+  text-align: center;
+
+  &__container { @include display-flex($direction: column); }
+
+  &__titles { max-width: 65rem; }
+
+  &__heading { margin-bottom: 2rem; }
 }
 
 
@@ -66,3 +77,8 @@
     height: 100%;
   }
 }
+
+
+
+/* MEDIA QUERIES (FEATURED TITLES)
+--------------------------------------------*/
