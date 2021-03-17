@@ -29,6 +29,7 @@
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 3rem;
+    & span { color: $color-primary; }
   }
 
   &__link {
@@ -50,7 +51,16 @@
 
   &__titles { max-width: 65rem; }
 
-  &__heading { margin-bottom: 2rem; }
+  &__heading {
+    margin-bottom: 2rem;
+    & span { color: $color-primary; }
+  }
+
+  // This ensures featured titles only take up one row as screensize decreases
+  &__book-grid {
+    max-height: 58rem;
+    overflow-y: hidden;
+  }
 }
 
 
@@ -82,3 +92,12 @@
 
 /* MEDIA QUERIES (FEATURED TITLES)
 --------------------------------------------*/
+@media only screen and (max-width: 768px) {
+  // Reduces number of featured titles displayed on smaller screens
+  .featured__book-grid { max-height: 116rem; }
+}
+
+@media only screen and (max-width: 450px) {
+  // Reduces number of featured titles displayed on smaller screens
+  .featured__book-grid { max-height: 174rem; }
+}

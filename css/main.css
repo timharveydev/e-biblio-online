@@ -46,6 +46,10 @@ a {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 img {
   max-width: 100%;
   max-height: 100%;
@@ -68,7 +72,7 @@ body {
 h1 {
   font-size: 3.8rem;
   font-weight: 700;
-  line-height: 4.8rem;
+  line-height: 3.8rem;
   letter-spacing: 0.2rem;
 }
 
@@ -87,28 +91,24 @@ h3 {
 }
 
 h4 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: 1.8rem;
+  line-height: 2.4rem;
   letter-spacing: 0.2rem;
 }
 
 h5 {
   font-size: 1.4rem;
   font-weight: 600;
-  line-height: 1.4rem;
+  line-height: 2.4rem;
   letter-spacing: 0.2rem;
 }
 
 h6 {
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 1.2rem;
+  line-height: 2.4rem;
   letter-spacing: 0.2rem;
-}
-
-.text--color-primary {
-  color: #008B8B;
 }
 
 /* WRAPPERS
@@ -676,6 +676,56 @@ h6 {
   }
 }
 
+/* BOOK GRID
+--------------------------------------------*/
+/**
+ * This component provides a grid of book titles/image tiles
+ *
+ * It will fill all available horizontal space.
+ * Place within a container and set preferred width on the container.
+ *
+ * NOTE - add one of the below classes to each .book-grid__item element to set the number of items per row
+ *      - .thirds
+ *      - .fourths
+ *      - .fifths
+*/
+.book-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.book-grid__item {
+  max-width: 24rem;
+  margin: 0 1.2rem;
+}
+
+.book-grid__link {
+  text-decoration: none;
+}
+
+.book-grid__img {
+  height: 38rem;
+  margin: 6rem 0 1.2rem 0;
+}
+
+.book-grid__title {
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
+}
+
+.book-grid__author {
+  margin-bottom: 1.2rem;
+  opacity: 0.6;
+}
+
+.book-grid__price {
+  color: #008B8B;
+}
+
 /* HOMEPAGE
 --------------------------------------------*/
 .hero {
@@ -714,6 +764,10 @@ h6 {
   margin-bottom: 3rem;
 }
 
+.hero__h1 span {
+  color: #008B8B;
+}
+
 .hero__link {
   font-size: 1.4rem;
   font-weight: 600;
@@ -739,6 +793,15 @@ h6 {
 
 .featured__heading {
   margin-bottom: 2rem;
+}
+
+.featured__heading span {
+  color: #008B8B;
+}
+
+.featured__book-grid {
+  max-height: 58rem;
+  overflow-y: hidden;
 }
 
 /* MEDIA QUERIES (HERO SCREEN)
@@ -770,6 +833,18 @@ h6 {
 
 /* MEDIA QUERIES (FEATURED TITLES)
 --------------------------------------------*/
+@media only screen and (max-width: 768px) {
+  .featured__book-grid {
+    max-height: 116rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .featured__book-grid {
+    max-height: 174rem;
+  }
+}
+
 /* LOGIN & REGISTER
 --------------------------------------------*/
 .login-register {

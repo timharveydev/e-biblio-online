@@ -1,0 +1,42 @@
+
+/* BOOK GRID
+--------------------------------------------*/
+
+/**
+ * This component provides a grid of book titles/image tiles
+ *
+ * It will fill all available horizontal space.
+ * Place within a container and set preferred width on the container.
+ *
+ * NOTE - add one of the below classes to each .book-grid__item element to set the number of items per row
+ *      - .thirds
+ *      - .fourths
+ *      - .fifths
+*/
+
+.book-grid {
+  @include display-flex($justify: space-around, $align: flex-start);
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__item { max-width: 24rem; margin: 0 1.2rem;}
+
+  &__link { text-decoration: none; }
+
+  &__img {
+    height: 38rem;
+    margin: 6rem 0 1.2rem 0;
+  }
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
+  }
+  
+  &__author {
+    margin-bottom: 1.2rem;
+    opacity: 0.6;
+  }
+
+  &__price { color: $color-primary; }
+}
