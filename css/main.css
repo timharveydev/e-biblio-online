@@ -372,12 +372,10 @@ h6 {
 --------------------------------------------*/
 .button--primary {
   display: inline-block;
-  height: 3.8rem;
-  padding: 0 3rem;
+  padding: 0.6rem 3rem 0.5rem 3rem;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 3.8rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -400,12 +398,10 @@ h6 {
 
 .button--positive {
   display: inline-block;
-  height: 3.8rem;
-  padding: 0 3rem;
+  padding: 0.6rem 3rem 0.5rem 3rem;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 3.8rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -426,12 +422,10 @@ h6 {
 
 .button--negative {
   display: inline-block;
-  height: 3.8rem;
-  padding: 0 3rem;
+  padding: 0.6rem 3rem 0.5rem 3rem;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 3.8rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -452,9 +446,7 @@ h6 {
 
 .button--large {
   font-size: 1.4rem;
-  height: 5rem;
-  line-height: 5rem;
-  padding: 0 4rem;
+  padding: 1.2rem 4.4rem 1.1rem 4.4rem;
 }
 
 /* FORMS
@@ -731,7 +723,7 @@ h6 {
 .hero {
   height: 85%;
   width: 100%;
-  background-image: url("../img/hero_img.jpg");
+  background-image: url("../img/hero.jpg");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -804,6 +796,35 @@ h6 {
   overflow-y: hidden;
 }
 
+.reg-prompt {
+  width: 100%;
+  height: 52rem;
+  text-align: center;
+  background-image: url("../img/reg_prompt.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reg-prompt__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.reg-prompt__content {
+  max-width: 65rem;
+}
+
+.reg-prompt__heading {
+  margin-bottom: 2rem;
+}
+
+.reg-prompt__description {
+  margin-bottom: 6rem;
+}
+
 /* MEDIA QUERIES (HERO SCREEN)
 --------------------------------------------*/
 @media only screen and (max-width: 1024px) {
@@ -842,6 +863,23 @@ h6 {
 @media only screen and (max-width: 450px) {
   .featured__book-grid {
     max-height: 174rem;
+  }
+}
+
+/* MEDIA QUERIES (REGISTRATION PROMPT)
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .reg-prompt {
+    background-position: right bottom;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .reg-prompt {
+    background-image: url("../img/reg_prompt_mobile.jpg");
+  }
+  .reg-prompt__container {
+    justify-content: center;
   }
 }
 
