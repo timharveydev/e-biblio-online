@@ -51,10 +51,7 @@
 
   &__titles { max-width: 65rem; }
 
-  &__heading {
-    margin-bottom: 2rem;
-    & span { color: $color-primary; }
-  }
+  &__heading { margin-bottom: 2rem; }
 
   // This ensures featured titles only take up one row as screensize decreases
   &__book-grid {
