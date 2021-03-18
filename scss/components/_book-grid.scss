@@ -21,7 +21,10 @@
 
   &__item { max-width: 24rem; margin: 0 1.2rem;}
 
-  &__link { text-decoration: none; }
+  &__link {
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
 
   &__img {
     height: 38rem;
