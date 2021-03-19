@@ -38,8 +38,9 @@
 
   &__list {
     @include display-flex($justify: space-between);
+    flex-wrap: wrap;
     list-style: none;
-    width: 52rem; //32rem;
+    width: 52rem;
   }
 
 
@@ -75,3 +76,25 @@
 
 
 
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .footer {
+    &__list {
+      justify-content: center;
+      width: initial;
+    }
+
+
+    &__link { padding: 0 2rem; }
+  
+  
+    &__bottom-wrapper {
+      justify-content: center;
+      flex-direction: column;
+    }
+  
+  
+    &__payment-info { padding-top: 2rem; }
+  }
+}

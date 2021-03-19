@@ -408,6 +408,7 @@ h6 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   list-style: none;
   width: 52rem;
 }
@@ -442,6 +443,25 @@ h6 {
   align-items: center;
   font-size: 3.2rem;
   width: 16rem;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .footer__list {
+    justify-content: center;
+    width: initial;
+  }
+  .footer__link {
+    padding: 0 2rem;
+  }
+  .footer__bottom-wrapper {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .footer__payment-info {
+    padding-top: 2rem;
+  }
 }
 
 /* BUTTONS
