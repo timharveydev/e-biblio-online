@@ -7,7 +7,6 @@
 .search-bar {
   width: 100%;
   max-width: 60rem;
-  margin: 6rem 0 2rem 0;
   @include display-flex;
 
   &__input {
@@ -21,12 +20,15 @@
     color: $black;
     border-top-left-radius: $border-radius-default;
     border-bottom-left-radius: $border-radius-default;
-    border: none;
+    border: 1px solid $black;
+    border-right: none;
+    outline: none;
   }
 
   &__button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    height: 3.8rem;
   }
 
   &__button--mobile {

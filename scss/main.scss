@@ -36,10 +36,17 @@
 @import 'components/book-grid';
 
 // Includes page-specific styling.
+@import 'pages/about';
+@import 'pages/basket';
+@import 'pages/bookDetails';
+@import 'pages/books';
+@import 'pages/checkout';
+@import 'pages/contact';
 @import 'pages/homepage'; // index.php
 @import 'pages/loginRegister';
-@import 'pages/about';
-@import 'pages/contact';
+@import 'pages/paymentConfirmation';
+@import 'pages/purchaseHistory';
+@import 'pages/wishlist';
 @import 'pages/adminHome';
 @import 'pages/adminNewUser';
 @import 'pages/adminNewAdmin';

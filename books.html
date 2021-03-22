@@ -93,12 +93,48 @@
   
   
   
-
+  <!-- Page Content -->
   <section class="books">
+
+    <div class="books__container container">
+      <!-- Categories Heading -->
+      <div class="books__column--one-fourth">
+        <h3 class="books__sidebar-heading">Categories</h3>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="books__column--three-fourths">
+        <!-- Search bar component -->
+        <form class="books__search-bar search-bar" method="POST">
+          <label for="searchbox" hidden>Search for title or author</label>
+          <input type="text" name="searchTerm" class="search-bar__input" id="searchbox" placeholder="Search title or author ...">
+          <!-- Search button for large devices -->
+          <button type="submit" name="search" class="search-bar__button button--positive"><span class="fas fa-search"></span> Search</button>
+          <!-- Search button for phones -->
+          <button type="submit" name="search" class="search-bar__button--mobile button--primary"><span class="fas fa-search"></span></button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Dividing Line -->
+    <div class="books__container container">
+      <hr>
+    </div>
+
+
+    <!-- Sidebar & Book Grid -->
     <div class="books__container container">
 
-      
+      <!-- Categories Sidebar -->
+      <div class="books__column--one-fourth">
 
+      </div>
+
+      <!-- Book Grid -->
+      <div class="books__column--three-fourths">
+
+      </div>
     </div>
   </section>
 

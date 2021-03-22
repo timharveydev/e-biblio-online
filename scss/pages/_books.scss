@@ -4,4 +4,34 @@
 
 .books {
   width: 100%;
+  padding: 8rem 0;
+
+
+  &__container { @include display-flex; }
+
+
+  &__column {
+    @include display-flex;
+
+    &--one-fourth {
+      @include display-flex;
+      flex: 1;
+      height: 200px; // remove; used for visualizing only
+      background-color: $light-grey; // remove; used for visualizing only
+    }
+
+    &--three-fourths {
+      @include display-flex;
+      flex: 3;
+      height: 200px; // remove; used for visualizing only
+      background-color: $medium-grey; // remove; used for visualizing only
+    }
+  }
+
+
+  hr {
+    width: 100%;
+    border: 1px solid $medium-grey;
+    margin: 3rem 0;
+  }
 }
