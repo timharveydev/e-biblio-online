@@ -452,6 +452,9 @@ h6 {
     justify-content: center;
     width: initial;
   }
+  .footer__item {
+    padding: 1rem 0;
+  }
   .footer__link {
     padding: 0 2rem;
   }
