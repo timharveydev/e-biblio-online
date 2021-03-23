@@ -18,8 +18,12 @@
   @include display-flex($justify: space-around, $align: flex-start);
   flex-wrap: wrap;
   width: 100%;
+  text-align: center;
 
-  &__item { max-width: 24rem; margin: 0 1.2rem;}
+  &__item {
+    max-width: 24rem;
+    margin: 0 2rem;
+  }
 
   &__link {
     text-decoration: none;
@@ -42,4 +46,19 @@
   }
 
   &__price { color: $color-primary; }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1280px) {
+  .book-grid__item {
+    max-width: 20rem;
+    margin: 0 1.2rem;
+  }
+
+  .book-grid__img { height: 32rem; }
 }

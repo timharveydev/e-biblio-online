@@ -7,24 +7,23 @@
   padding: 8rem 0;
 
 
-  &__container { @include display-flex; }
+  &__container {
+    @include display-flex;
+    
+    &--align-top { @include display-flex($align: flex-start); }
+  }
 
 
   &__column {
     @include display-flex;
 
-    &--one-fourth {
-      @include display-flex;
-      flex: 1;
-      height: 200px; // remove; used for visualizing only
-      background-color: $light-grey; // remove; used for visualizing only
+    &--narrow {
+      @include display-flex($direction: column);
+      min-width: 28rem;
     }
-
-    &--three-fourths {
-      @include display-flex;
-      flex: 3;
-      height: 200px; // remove; used for visualizing only
-      background-color: $medium-grey; // remove; used for visualizing only
+    &--wide {
+      @include display-flex($direction: column);
+      flex: auto;
     }
   }
 
@@ -32,6 +31,43 @@
   hr {
     width: 100%;
     border: 1px solid $medium-grey;
-    margin: 3rem 0;
+    margin-top: 3rem;
   }
+
+
+  &__categories-list {
+    width: 100%;
+    padding-top: 6rem;
+  }
+
+
+  &__category-item {
+    @include display-flex($justify: space-between);
+    height: 5.2rem;
+    width: 100%;
+    padding: 0 1rem;
+    font-weight: 600;
+    border-bottom: 2px dotted $medium-grey;
+    cursor: pointer;
+
+    &:hover { color: $color-primary; }
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1750px) {
+  .books__column--narrow { min-width: 34rem; }
+}
+
+@media only screen and (max-width: 1500px) {
+  .books__column--narrow { min-width: 24rem; }
+}
+
+@media only screen and (max-width: 1200px) {
+  .books__column--narrow { min-width: 20rem; }
 }

@@ -110,14 +110,19 @@
 
 /* MEDIA QUERIES (FEATURED TITLES)
 --------------------------------------------*/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1280px) {
   // Reduces number of featured titles displayed on smaller screens
-  .featured__book-grid { max-height: 116rem; }
+  .featured__book-grid { max-height: 54rem; }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 706px) {
   // Reduces number of featured titles displayed on smaller screens
-  .featured__book-grid { max-height: 174rem; }
+  .featured__book-grid { max-height: 108rem; }
+}
+
+@media only screen and (max-width: 470px) {
+  // Reduces number of featured titles displayed on smaller screens
+  .featured__book-grid { max-height: 164rem; }
 }
 
 

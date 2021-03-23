@@ -93,25 +93,26 @@
   
   
   
+
   <!-- Page Content -->
   <section class="books">
-
     <div class="books__container container">
+
       <!-- Categories Heading -->
-      <div class="books__column--one-fourth">
+      <div class="books__column--narrow">
         <h3 class="books__sidebar-heading">Categories</h3>
       </div>
 
       <!-- Search Bar -->
-      <div class="books__column--three-fourths">
+      <div class="books__column--wide">
         <!-- Search bar component -->
         <form class="books__search-bar search-bar" method="POST">
           <label for="searchbox" hidden>Search for title or author</label>
           <input type="text" name="searchTerm" class="search-bar__input" id="searchbox" placeholder="Search title or author ...">
           <!-- Search button for large devices -->
-          <button type="submit" name="search" class="search-bar__button button--positive"><span class="fas fa-search"></span> Search</button>
+          <button type="submit" name="search" class="search-bar__button button--positive"><i class="fas fa-search"></i> Search</button>
           <!-- Search button for phones -->
-          <button type="submit" name="search" class="search-bar__button--mobile button--primary"><span class="fas fa-search"></span></button>
+          <button type="submit" name="search" class="search-bar__button--mobile button--primary"><i class="fas fa-search"></i></button>
         </form>
       </div>
     </div>
@@ -124,16 +125,104 @@
 
 
     <!-- Sidebar & Book Grid -->
-    <div class="books__container container">
+    <div class="books__container--align-top container">
 
       <!-- Categories Sidebar -->
-      <div class="books__column--one-fourth">
-
+      <div class="books__column--narrow">
+        <div class="books__categories-list">
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="books__category-name">Category</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="books__category-name">Category</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="books__category-name">Category</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="books__category-name">Category</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="books__category-name">Category</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+        </div>
       </div>
 
       <!-- Book Grid -->
-      <div class="books__column--three-fourths">
+      <div class="books__column--wide">
+        <div class="books__book-grid book-grid">
 
+          <!-- Book Grid Item -->
+          <div class="book-grid__item">
+            <a href="book_details.html" class="book-grid__link">
+              <img class="book-grid__img" src="/img/book_covers/placeholder.jpg" alt="placeholder">
+              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
+            </a>
+            <a href="books.html" class="book-grid__link">
+              <h5 class="book-grid__author">J K Rowling</h5>
+            </a>
+            <h5 class="book-grid__price">£7.99</h5>
+          </div>
+
+          <!-- Book Grid Item -->
+          <div class="book-grid__item">
+            <a href="book_details.html" class="book-grid__link">
+              <img class="book-grid__img" src="/img/book_covers/placeholder.jpg" alt="placeholder">
+              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
+            </a>
+            <a href="books.html" class="book-grid__link">
+              <h5 class="book-grid__author">J K Rowling</h5>
+            </a>
+            <h5 class="book-grid__price">£7.99</h5>
+          </div>
+
+          <!-- Book Grid Item -->
+          <div class="book-grid__item">
+            <a href="book_details.html" class="book-grid__link">
+              <img class="book-grid__img" src="/img/book_covers/placeholder.jpg" alt="placeholder">
+              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
+            </a>
+            <a href="books.html" class="book-grid__link">
+              <h5 class="book-grid__author">J K Rowling</h5>
+            </a>
+            <h5 class="book-grid__price">£7.99</h5>
+          </div>
+
+          <!-- Book Grid Item -->
+          <div class="book-grid__item">
+            <a href="book_details.html" class="book-grid__link">
+              <img class="book-grid__img" src="/img/book_covers/placeholder.jpg" alt="placeholder">
+              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
+            </a>
+            <a href="books.html" class="book-grid__link">
+              <h5 class="book-grid__author">J K Rowling</h5>
+            </a>
+            <h5 class="book-grid__price">£7.99</h5>
+          </div>
+
+          <!-- Book Grid Item -->
+          <div class="book-grid__item">
+            <a href="book_details.html" class="book-grid__link">
+              <img class="book-grid__img" src="/img/book_covers/placeholder.jpg" alt="placeholder">
+              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
+            </a>
+            <a href="books.html" class="book-grid__link">
+              <h5 class="book-grid__author">J K Rowling</h5>
+            </a>
+            <h5 class="book-grid__price">£7.99</h5>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
