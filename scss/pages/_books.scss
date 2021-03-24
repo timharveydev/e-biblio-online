@@ -37,7 +37,7 @@
 
   &__categories-list {
     width: 100%;
-    padding-top: 6rem;
+    padding: 6rem 2rem 0 2rem;
   }
 
 
@@ -45,12 +45,18 @@
     @include display-flex($justify: space-between);
     height: 5.2rem;
     width: 100%;
+    max-width: 70rem;
+    margin: 0 auto;
     padding: 0 1rem;
     font-weight: 600;
     border-bottom: 2px dotted $medium-grey;
     cursor: pointer;
+    @include transition;
 
-    &:hover { color: $color-primary; }
+    &:hover {
+      color: $color-primary;
+      padding: 0 0.8rem;
+    }
   }
 }
 
@@ -61,13 +67,28 @@
 /* MEDIA QUERIES
 --------------------------------------------*/
 @media only screen and (max-width: 1750px) {
+  // Keeps categories column similar proportion to book images
   .books__column--narrow { min-width: 34rem; }
 }
 
 @media only screen and (max-width: 1500px) {
+  // Keeps categories column similar proportion to book images
   .books__column--narrow { min-width: 24rem; }
 }
 
-@media only screen and (max-width: 1200px) {
-  .books__column--narrow { min-width: 20rem; }
+
+
+// Main structural break for small devices
+@media only screen and (max-width: 1050px) {
+  .books {
+    &__container {
+      flex-direction: column-reverse;
+      &--align-top { flex-direction: column; }
+    }
+  
+    &__column--narrow,
+    &__column--wide { width: 100%; }
+
+    &__sidebar-heading { margin-top: 3rem; } // same as hr margin-top
+  }
 }

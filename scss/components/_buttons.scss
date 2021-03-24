@@ -6,9 +6,9 @@
 // Mixin created to allow for use of '@include button' instead of '@extend .button'.
 @mixin button {
   display: inline-block;
-  padding: 0.6rem 3rem 0.5rem 3rem;
+  padding: 0.7rem 3rem 0.6rem 3rem;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
