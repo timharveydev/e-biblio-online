@@ -1040,8 +1040,8 @@ h6 {
 /* CONTACT
 --------------------------------------------*/
 .contact {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 /* HOMEPAGE
