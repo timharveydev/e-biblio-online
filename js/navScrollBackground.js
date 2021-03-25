@@ -9,7 +9,7 @@ const navTop = nav.offsetTop;
 window.onscroll = () => {
   
   if (window.innerWidth > 1024) {
-    if (window.pageYOffset >= navTop + 150) {
+    if (window.pageYOffset >= navTop + 50) {
   
       nav.style.backgroundColor = 'rgba(238, 238, 238, 0.9)'; // 238,238,238 = $light-grey
   
