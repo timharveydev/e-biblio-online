@@ -884,9 +884,8 @@ h6 {
 .about__portraits {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -901,6 +900,15 @@ h6 {
 .about__role {
   margin-top: 1rem;
   color: #008B8B;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .about__portraits {
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
 
 /* BASKET

@@ -18,8 +18,7 @@
 
 
   &__portraits {
-    @include display-flex($justify: space-around);
-    flex-wrap: wrap;
+    @include display-flex($justify: space-between);
     width: 100%;
   }
 
@@ -33,5 +32,18 @@
   &__role {
     margin-top: 1rem;
     color: $color-primary;
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .about__portraits {
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
