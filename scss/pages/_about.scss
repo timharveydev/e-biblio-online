@@ -3,6 +3,35 @@
 --------------------------------------------*/
 
 .about {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+  text-align: center;
+
+
+  &__container { @include display-flex($direction: column); }
+
+
+  &__heading { margin-bottom: 4rem; }
+
+
+  &__text { margin-bottom: 8rem; }
+
+
+  &__portraits {
+    @include display-flex($justify: space-around);
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+
+  &__member { margin: 2rem; }
+
+
+  &__img { max-height: 32rem; }
+
+
+  &__role {
+    margin-top: 1rem;
+    color: $color-primary;
+  }
 }

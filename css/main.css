@@ -861,8 +861,46 @@ h6 {
 /* ABOUT
 --------------------------------------------*/
 .about {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.about__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__heading {
+  margin-bottom: 4rem;
+}
+
+.about__text {
+  margin-bottom: 8rem;
+}
+
+.about__portraits {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.about__member {
+  margin: 2rem;
+}
+
+.about__img {
+  max-height: 32rem;
+}
+
+.about__role {
+  margin-top: 1rem;
+  color: #008B8B;
 }
 
 /* BASKET
