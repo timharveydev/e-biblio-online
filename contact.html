@@ -98,7 +98,57 @@
   <section class="contact">
     <div class="contact__container container">
 
-      
+      <!-- Contact Form -->
+      <div class="contact__column--wide">
+        <h3 class="contact__heading">Get In Touch</h3>
+        <p class="contact__text">If you would like to get in touch to request a new title or to submit a general inquiry, send us a message using the form below and we'll get back to you within 48 hours.</p>
+
+        <!-- Form Component -->
+        <form class="contact__form form" method="POST">
+
+          <label for="firstName" class="form__label">First Name</label>
+          <input name="firstName" id="firstName" type="text" class="form__text-input" maxlength="50" required>
+
+          <label for="lastName" class="form__label">Last Name</label>
+          <input name="lastName" id="lastName" type="text" class="form__text-input" maxlength="50" required>
+  
+          <label for="email" class="form__label">Email</label>
+          <input name="email" id="email" type="text" class="form__text-input" maxlength="50" required>
+  
+          <label for="message" class="form__label">Message</label>
+          <textarea name="message" id="message" cols="50" rows="5" class="form__text-area" placeholder="Type your message here ..." maxlength="1000" required></textarea>
+  
+          <input name="submit" type="submit" value="Submit" class="form__button button--positive">
+          <input name="reset" type="reset" value="Reset" id="reset" class="form__button button--negative">
+          <label for="reset" hidden>Reset</label>
+          
+        </form>
+      </div>
+
+
+      <!-- Contact Details -->
+      <div class="contact__column--narrow">
+        <h3 class="contact__heading">Contact Details</h3>
+        <p class="contact__text">We are based in Edinburgh, Scotland, but we do business all over the world. Our office is open 9am-4:30pm GMT Mon-Fri, excluding public holidays.</p>
+
+        <!-- Address -->
+        <div class="contact__icon-wrapper">
+          <i class="contact__icon fas fa-map-marker-alt"></i>
+          <div>
+            <h5 class="contact__icon-heading">Address</h5>
+            <p class="contact__icon-text">5 Side Street, Edinburgh, EH1 1EH, United Kingdom</p>
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="contact__icon-wrapper">
+          <i class="contact__icon fas fa-phone-alt"></i>
+          <div>
+            <h5 class="contact__icon-heading">Phone Number</h5>
+            <p class="contact__icon-text">(+44) 1234 567890</p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
