@@ -645,8 +645,25 @@ h6 {
   margin: 2rem 1rem 0 0;
 }
 
+.form__button--mobile {
+  display: none;
+  width: 100%;
+  margin-top: 2rem;
+}
+
 .form__file-upload-button {
   margin: 1.5rem 0;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .form__button {
+    display: none;
+  }
+  .form__button--mobile {
+    display: block;
+  }
 }
 
 /* SEARCH BAR
@@ -1098,6 +1115,35 @@ h6 {
 
 .contact__icon-text {
   padding-top: 0.4rem;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .contact__column--wide {
+    margin-right: 4rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .contact__container {
+    flex-direction: column;
+  }
+  .contact__column--wide {
+    margin-right: 0;
+  }
+  .contact__form {
+    margin-bottom: 8rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .contact__heading {
+    align-self: center;
+  }
+  .contact__text {
+    text-align: center;
+  }
 }
 
 /* HOMEPAGE

@@ -44,3 +44,31 @@
 
   &__icon-text { padding-top: 0.4rem; }
 }
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .contact__column--wide { margin-right: 4rem; }
+}
+
+@media only screen and (max-width: 900px) {
+  .contact {
+    &__container { flex-direction: column; }
+
+    &__column--wide { margin-right: 0; }
+
+    &__form { margin-bottom: 8rem; }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .contact {
+    &__heading { align-self: center; }
+
+    &__text { text-align: center; }
+  }
+}
