@@ -77,7 +77,25 @@
 
 
   &__button { margin: 2rem 1rem 0 0; }
+  &__button--mobile {
+    display: none;
+    width: 100%;
+    margin-top: 2rem;
+  }
 
 
   &__file-upload-button { margin: 1.5rem 0; }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 600px) {
+  .form {
+    &__button { display: none; }
+    &__button--mobile { display: block; }
+  }
 }
