@@ -3,6 +3,69 @@
 --------------------------------------------*/
 
 .book-details {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+
+
+  &__container { @include display-flex($align: flex-start); }
+
+
+  &__column {
+    &--narrow {
+      @include display-flex($direction: column, $justify: flex-start);
+      flex: 1;
+      background-color: $light-grey; //testing only
+    }
+    &--wide {
+      @include display-flex($direction: column, $justify: flex-start, $align: flex-start);
+      flex: 2;
+      height: 200px; //testing only
+      background-color: $medium-grey; //testing only
+    }
+  }
+
+
+  &__img {
+    width: 100%;
+    max-width: 30rem; // same as dividing-line and category-list
+  }
+
+
+  &__dividing-line {
+    width: 100%;
+    max-width: 30rem; // same as img and category-list
+    border: 1px solid $medium-grey;
+    margin: 3rem 0;
+  }
+
+
+  &__categories-list {
+    width: 100%;
+    max-width: 30rem; // same as img and dividing-line
+  }
+
+
+  &__category-item {
+    @include display-flex($justify: space-between);
+    height: 5.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    font-weight: 600;
+    border-bottom: 2px dotted $medium-grey;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+      padding: 0 0.8rem;
+    }
+  }
+
+
+  &__instructions {
+    height: 100px; // testing only
+    width: 100%;
+    background-color: rgb(189, 189, 189); // testing only
+  }
 }
