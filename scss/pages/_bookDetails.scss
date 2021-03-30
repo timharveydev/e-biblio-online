@@ -82,3 +82,55 @@
     & > h5 { margin-bottom: 1rem; }
   }
 }
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1440px) {
+  .book-details__column--narrow { min-width: 26rem; }
+}
+
+
+@media only screen and (max-width: 1280px) {
+  .book-details__column--narrow { min-width: 22rem; }
+  .book-details__column--wide { padding: 0 2rem; }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .book-details {
+    &__container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__column--narrow { min-width: 100%; }
+    &__column--wide { margin-bottom: 8rem; }
+
+
+    &__img {
+      max-width: 30rem;
+      margin-bottom: 6rem;
+    }
+
+
+    &__categories-list {
+      max-height: none;
+      overflow-y: none;
+    }
+
+
+    &__instructions { width: 100%; }
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .book-details {
+    &__button-wrapper,
+    &__button { width: 100%; }
+  }
+}

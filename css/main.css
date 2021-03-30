@@ -1035,6 +1035,53 @@ h6 {
   margin-bottom: 1rem;
 }
 
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1440px) {
+  .book-details__column--narrow {
+    min-width: 26rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .book-details__column--narrow {
+    min-width: 22rem;
+  }
+  .book-details__column--wide {
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .book-details__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .book-details__column--narrow {
+    min-width: 100%;
+  }
+  .book-details__column--wide {
+    margin-bottom: 8rem;
+  }
+  .book-details__img {
+    max-width: 30rem;
+    margin-bottom: 6rem;
+  }
+  .book-details__categories-list {
+    max-height: none;
+    overflow-y: none;
+  }
+  .book-details__instructions {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .book-details__button-wrapper, .book-details__button {
+    width: 100%;
+  }
+}
+
 /* BOOKS
 --------------------------------------------*/
 .books {
