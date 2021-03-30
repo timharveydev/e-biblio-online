@@ -7,22 +7,18 @@
   padding: 8rem 0;
 
 
-  &__container {
-    @include display-flex($align: flex-start);
-    position: relative; // Needed to position instructions text (see bottom)
-  }
+  &__container { @include display-flex($justify: flex-start, $align: flex-start); }
 
 
   &__column {
     &--narrow {
       @include display-flex($direction: column, $justify: flex-start);
-      flex-basis: 30rem;
+      min-width: 30rem;
     }
     &--wide {
       @include display-flex($direction: column, $justify: flex-start, $align: flex-start);
       flex: auto;
       padding: 0 4rem;
-      background-color: $light-grey; //testing only
     }
   }
 
@@ -45,7 +41,20 @@
   }
 
 
-  &__categories-list { width: 100%; }
+  &__additional-info {
+    margin-top: 3rem;
+    font-style: italic;
+  }
+
+
+  &__button { margin: 4rem 1rem 0 0; }
+
+
+  &__categories-list {
+    width: 100%;
+    max-height: 42rem;
+    overflow-y: scroll;
+  }
 
 
   &__category-item {
@@ -67,11 +76,9 @@
 
 
   &__instructions {
-    height: 100px; // testing only
-    width: 75%;
-    position: absolute;
-    top: -10rem;
-    left: 0;
-    background-color: $light-grey; // testing only
+    width: 76%;
+    margin-top: 8rem;
+
+    & > h5 { margin-bottom: 1rem; }
   }
 }
