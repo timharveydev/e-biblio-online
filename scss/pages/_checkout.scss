@@ -3,6 +3,9 @@
 --------------------------------------------*/
 
 .checkout {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+
+
+  &__container { @include display-flex; }
 }
