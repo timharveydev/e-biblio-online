@@ -68,6 +68,7 @@
     height: 8rem;
     background-color: $light-grey;
     margin-top: 1rem;
+    line-height: initial;
   }
 
 
@@ -91,7 +92,7 @@
 @media only screen and (max-width: 1000px) {
   .basket {
     &__mobile-scroll-wrapper { overflow-x: scroll }
-    
+
     &__headings { width: 900px; }
     &__item { width: 900px; }
     &__total { width: 50%; }
