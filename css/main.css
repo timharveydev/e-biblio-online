@@ -937,8 +937,106 @@ h6 {
 /* BASKET
 --------------------------------------------*/
 .basket {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+}
+
+.basket__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+
+.basket__headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 8rem;
+  text-align: center;
+  background-color: #EEE;
+  margin-bottom: 1rem;
+}
+
+.basket__headings--cover {
+  width: 20%;
+}
+
+.basket__headings--title {
+  width: 45%;
+}
+
+.basket__headings--price {
+  width: 20%;
+}
+
+.basket__headings--remove {
+  width: 15%;
+}
+
+.basket__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.basket__item--img-wrapper {
+  width: 20%;
+  height: 16rem;
+  padding: 1rem 0;
+}
+
+.basket__item--title {
+  width: 45%;
+}
+
+.basket__item--price {
+  width: 20%;
+}
+
+.basket__item--remove {
+  width: 15%;
+}
+
+.basket__item--remove-icon {
+  background-color: #FFF;
+  border: none;
+  font-size: 2rem;
+}
+
+.basket__item--remove-icon:hover, .basket__item--remove-icon.active {
+  cursor: pointer;
+  color: #008B8B;
+}
+
+.basket__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 8rem;
+  background-color: #EEE;
+  margin-top: 1rem;
+}
+
+.basket__total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  height: 8rem;
+  align-self: flex-end;
+  background-color: #EEE;
+  margin-top: 4rem;
+  padding: 0 4rem;
 }
 
 /* BOOK DETAILS

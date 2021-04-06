@@ -3,6 +3,78 @@
 --------------------------------------------*/
 
 .basket {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+
+
+  &__container {
+    @include display-flex($direction: column);
+    width: 1200px;
+  }
+
+
+  &__headings {
+    @include display-flex;
+    width: 100%;
+    height: 8rem;
+    text-align: center;
+    background-color: $light-grey;
+    margin-bottom: 1rem;
+
+    &--cover { width: 20%; }
+    &--title { width: 45%; }
+    &--price { width: 20%; }
+    &--remove { width: 15%; }
+  }
+
+
+  &__item {
+    @include display-flex;
+    width: 100%;
+    text-align: center;
+
+    &--img-wrapper {
+      width: 20%;
+      height: 16rem; // controls image height
+      padding: 1rem 0;
+    }
+
+    &--title { width: 45%; }
+    &--price { width: 20%; }
+
+    &--remove {
+      width: 15%;
+
+      &-icon {
+        background-color: $white;
+        border: none;
+        font-size: 2rem; // same as navigation icon font-size
+        &:hover,
+        &.active {
+          cursor: pointer;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+
+  &__buttons {
+    @include display-flex($justify: space-around);
+    width: 100%;
+    height: 8rem;
+    background-color: $light-grey;
+    margin-top: 1rem;
+  }
+
+
+  &__total {
+    @include display-flex($justify: space-between);
+    width: 40%;
+    height: 8rem;
+    align-self: flex-end;
+    background-color: $light-grey;
+    margin-top: 4rem;
+    padding: 0 4rem;
+  }
 }
