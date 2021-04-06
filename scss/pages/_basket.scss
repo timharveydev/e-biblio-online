@@ -9,8 +9,11 @@
 
   &__container {
     @include display-flex($direction: column);
-    width: 1200px;
+    max-width: 1200px;
   }
+
+
+  &__mobile-scroll-wrapper { width: 100%; }
 
 
   &__headings {
@@ -76,5 +79,39 @@
     background-color: $light-grey;
     margin-top: 4rem;
     padding: 0 4rem;
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1000px) {
+  .basket {
+    &__mobile-scroll-wrapper { overflow-x: scroll }
+    
+    &__headings { width: 900px; }
+    &__item { width: 900px; }
+    &__total { width: 50%; }
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .basket__total { width: 100%; }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .basket__buttons {
+    flex-direction: column;
+    background-color: $white;
+  }
+
+  .basket__button {
+    width: 100%;
+    margin-top: 2rem;
   }
 }

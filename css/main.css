@@ -946,7 +946,11 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1200px;
+  max-width: 1200px;
+}
+
+.basket__mobile-scroll-wrapper {
+  width: 100%;
 }
 
 .basket__headings {
@@ -1037,6 +1041,40 @@ h6 {
   background-color: #EEE;
   margin-top: 4rem;
   padding: 0 4rem;
+}
+
+/* MEDIA QUERIES
+--------------------------------------------*/
+@media only screen and (max-width: 1000px) {
+  .basket__mobile-scroll-wrapper {
+    overflow-x: scroll;
+  }
+  .basket__headings {
+    width: 900px;
+  }
+  .basket__item {
+    width: 900px;
+  }
+  .basket__total {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .basket__total {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .basket__buttons {
+    flex-direction: column;
+    background-color: #FFF;
+  }
+  .basket__button {
+    width: 100%;
+    margin-top: 2rem;
+  }
 }
 
 /* BOOK DETAILS
