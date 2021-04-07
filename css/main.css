@@ -1670,8 +1670,63 @@ h6 {
 /* LOGIN & REGISTER
 --------------------------------------------*/
 .login-register {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+}
+
+.login-register__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-register__column {
+  width: 45%;
+}
+
+.login-register__heading {
+  margin: 0 0 2rem 2.8rem;
+}
+
+.login-register__form-box {
+  padding: 2.8rem;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+}
+
+.login-register__form-box.focus {
+  border: 2px solid #008B8B;
+}
+
+@media only screen and (max-width: 1200px) {
+  .login-register__container {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .login-register__container {
+    flex-direction: column;
+  }
+  .login-register__column {
+    width: 80%;
+  }
+  .login-register__form-box {
+    margin-bottom: 4rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .login-register__column {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login-register__form-box {
+    padding: 1.6rem;
+  }
 }
 
 /* PAYMENT CONFIRMATION
