@@ -1732,8 +1732,55 @@ h6 {
 /* PAYMENT CONFIRMATION
 --------------------------------------------*/
 .payment-confirmation {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+}
+
+.payment-confirmation__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.payment-confirmation__heading {
+  margin-bottom: 6rem;
+}
+
+.payment-confirmation__info {
+  margin-bottom: 6rem;
+}
+
+.payment-confirmation__info.alert {
+  text-align: left;
+  background-color: #F3DFBF;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+
+.payment-confirmation__purchased-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #EEE;
+  width: 90%;
+  max-width: 80rem;
+  padding: 2rem;
+}
+
+.payment-confirmation__link {
+  color: #008B8B;
+  margin-left: 2rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .payment-confirmation__purchased-item {
+    padding: 2rem 0.5rem;
+  }
 }
 
 /* PURCHASE HISTORY

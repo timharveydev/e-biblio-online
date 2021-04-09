@@ -3,6 +3,52 @@
 --------------------------------------------*/
 
 .payment-confirmation {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
+
+
+  &__container {
+    @include display-flex($direction: column);
+    max-width: 1200px;
+    text-align: center;
+  }
+
+
+  &__heading { margin-bottom: 6rem; }
+
+
+  &__info {
+    margin-bottom: 6rem;
+
+    &.alert {
+      text-align: left;
+      background-color: $color-alert;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border-radius: $border-radius-default;
+    }
+  }
+
+
+  &__purchased-item {
+    @include display-flex($justify: space-between);
+    border-bottom: 1px solid $light-grey;
+    width: 90%;
+    max-width: 80rem;
+    padding: 2rem;
+  }
+
+
+  &__link {
+    color: $color-primary;
+    margin-left: 2rem;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+  .payment-confirmation__purchased-item { padding: 2rem 0.5rem; }
 }
