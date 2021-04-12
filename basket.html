@@ -98,6 +98,10 @@
   <section class="basket">
     <div class="basket__container container">
 
+      <!-- Alert Message -->
+      <p class="basket__alert"><strong>Please note - </strong>you are currently checking out as a guest. Upon completion of your order you will receive a one-time download link to download your e-book(s). If you would like to gain access to your download link again in the future, please <a href="login_register.html">register as a member</a> before checking out.</p>
+
+
       <!-- Allows basket contents to overflow with scroll on mobile devices -->
       <div class="basket__mobile-scroll-wrapper">
 
@@ -155,8 +159,50 @@
 
       <!-- Basket Buttons -->
       <div class="basket__buttons">
-        <a href="books.html" class="basket__button button--positive">Continue Shopping</a>
-        <a href="checkout.html" class="basket__button button--primary">Proceed to Checkout</a>
+
+        <!-- Continue Shopping Button -->
+        <div class="basket__button-wrapper">
+          <a href="books.html" class="basket__button button--positive button--large">Continue Shopping</a>
+        </div>
+
+        <!-- PayPal Checkout Button -->
+        <div id="paypal-button-container" class="basket__button-wrapper"></div>
+
+        <!-- PayPal JavaScript SDK -->
+        <script src="https://www.paypal.com/sdk/js?client-id=AXCZiHEvIy82yFT5Clo2kg9XV01kDE1hIvsdN2JCbbD_bJ1-0BswedXCkgkyvpRUIcWXjELIDfrPowc_&currency=GBP&disable-funding=credit,card,sofort"></script>
+
+        <script>
+          paypal.Buttons({
+
+            // Button Styling
+            style: {
+              height: 49,
+              label: 'checkout'
+            },
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '7.99' // The total value of the shopping cart contents
+                  }
+                }]
+              });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer then redirect to order confirmation
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                window.location.replace("payment_confirmation.html");
+              });
+            }
+
+          // Render the PayPal button into #paypal-button-container
+          }).render('#paypal-button-container');
+        </script>
       </div>
 
 

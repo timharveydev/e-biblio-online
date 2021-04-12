@@ -13,6 +13,15 @@
   }
 
 
+  &__alert {
+    background-color: $color-alert;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 8rem;
+    border-radius: $border-radius-default;
+  }
+
+
   &__mobile-scroll-wrapper { width: 100%; }
 
 
@@ -72,6 +81,16 @@
   }
 
 
+  &__button-wrapper {
+    width: 30%;
+
+    &#paypal-button-container { margin-top: 0.5rem; }
+  }
+
+
+  &__button { width: 100%; }
+
+
   &__total {
     @include display-flex($justify: space-between);
     width: 40%;
@@ -94,25 +113,41 @@
     &__mobile-scroll-wrapper { overflow-x: scroll }
 
     &__headings { width: 900px; }
+
     &__item { width: 900px; }
+
+    &__button-wrapper { width: 40%; }
+
     &__total { width: 50%; }
   }
 }
 
 
 @media only screen and (max-width: 800px) {
-  .basket__total { width: 100%; }
+  .basket {
+    &__button-wrapper { width: 45%; }
+
+    &__total { width: 100%; }
+  }
 }
 
 
-@media only screen and (max-width: 500px) {
-  .basket__buttons {
-    flex-direction: column;
-    background-color: $white;
-  }
+@media only screen and (max-width: 650px) {
+  .basket {
+    &__buttons {
+      flex-direction: column;
+      background-color: $white;
+    }
 
-  .basket__button {
-    width: 100%;
-    margin-top: 2rem;
+    &__button-wrapper {
+      width: 100%;
+      margin-top: 2rem;
+
+      &#paypal-button-container { margin-top: 2rem; }
+    }
+
+    &__button { margin-top: 6rem; }
+
+    &__total { margin-top: 8rem; }
   }
 }

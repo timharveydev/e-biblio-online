@@ -949,6 +949,14 @@ h6 {
   max-width: 1200px;
 }
 
+.basket__alert {
+  background-color: #F3DFBF;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  margin-bottom: 8rem;
+  border-radius: 4px;
+}
+
 .basket__mobile-scroll-wrapper {
   width: 100%;
 }
@@ -1031,6 +1039,18 @@ h6 {
   line-height: initial;
 }
 
+.basket__button-wrapper {
+  width: 30%;
+}
+
+.basket__button-wrapper#paypal-button-container {
+  margin-top: 0.5rem;
+}
+
+.basket__button {
+  width: 100%;
+}
+
 .basket__total {
   display: flex;
   flex-direction: row;
@@ -1056,25 +1076,40 @@ h6 {
   .basket__item {
     width: 900px;
   }
+  .basket__button-wrapper {
+    width: 40%;
+  }
   .basket__total {
     width: 50%;
   }
 }
 
 @media only screen and (max-width: 800px) {
+  .basket__button-wrapper {
+    width: 45%;
+  }
   .basket__total {
     width: 100%;
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 650px) {
   .basket__buttons {
     flex-direction: column;
     background-color: #FFF;
   }
-  .basket__button {
+  .basket__button-wrapper {
     width: 100%;
     margin-top: 2rem;
+  }
+  .basket__button-wrapper#paypal-button-container {
+    margin-top: 2rem;
+  }
+  .basket__button {
+    margin-top: 6rem;
+  }
+  .basket__total {
+    margin-top: 8rem;
   }
 }
 
