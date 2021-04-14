@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Payment Confirmation</title>
+  <title>E-Biblio | Purchase History</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -48,26 +48,26 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
+        <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.html" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -88,7 +88,7 @@
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Payment Confirmation</h1>
+    <h1 class="page-banner__title">Purchase History</h1>
   </div>
 
 
@@ -97,43 +97,62 @@
 
   <!-- Page Content
   ------------------------------------->
-  <section class="payment-confirmation">
-    <div class="payment-confirmation__container container">
+  <section class="purchase-history">
+    <div class="purchase-history__container container">
 
-      <!-- Heading -->
-      <h2 class="payment-confirmation__heading">Thank You for Your Purchase!</h2>
+      <!-- Allows purchase-history contents to overflow with scroll on mobile devices -->
+      <div class="purchase-history__mobile-scroll-wrapper">
 
-      <!-- Alert for Unregistered Customers -->
-      <p class="payment-confirmation__info alert"><strong>IMPORTANT</strong> - if you checked out as a guest, please make sure you download all your purchased titles before leaving this page. Once you have left this page you will not be able to return to it. If you require assistance, contact us and we can provide you with new download links.</p>
+        <!-- Table Headings -->
+        <div class="purchase-history__headings">
+          <h4 class="purchase-history__headings--cover">Cover</h4>
+          <h4 class="purchase-history__headings--title">Title</h4>
+          <h4 class="purchase-history__headings--date">Purchase Date</h4>
+          <h4 class="purchase-history__headings--download"></h4>
+        </div>
 
-      <!-- Download Info -->
-      <p class="payment-confirmation__info">You can find the download links to your purchased e-book titles below. Simply click the link and your EPUB file will begin downloading.<br>Thanks for using our service and we hope you enjoy your purchase!</p>
+
+        <!-- Purchase History Item -->
+        <div class="purchase-history__item">
+
+          <!-- Cover Image -->
+          <div class="purchase-history__item--img-wrapper">
+            <img class="purchase-history__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
+          </div>
+
+          <!-- Book Title -->
+          <p class="purchase-history__item--title">Harry Potter and the Philosopher's Stone</p>
+
+          <!-- Purchase Date -->
+          <p class="purchase-history__item--date">01/01/2001</p>
+
+          <!-- Download -->
+          <form class="purchase-history__item--download">
+            <button type="submit" class="purchase-history__item--download-button button--primary">Download</button>
+          </form>
+        </div>
 
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
+        <!-- Purchase History Item -->
+        <div class="purchase-history__item">
+
+          <!-- Cover Image -->
+          <div class="purchase-history__item--img-wrapper">
+            <img class="purchase-history__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
+          </div>
+
+          <!-- Book Title -->
+          <p class="purchase-history__item--title">Harry Potter and the Philosopher's Stone</p>
+
+          <!-- Purchase Date -->
+          <p class="purchase-history__item--date">01/01/2001</p>
+
+          <!-- Download -->
+          <form class="purchase-history__item--download">
+            <button type="submit" class="purchase-history__item--download-button button--primary">Download</button>
+          </form>
+        </div>
       </div>
-
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
-
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
-
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
-
     </div>
   </section>
 
@@ -163,11 +182,11 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
-        <li class="footer__item"><a href="books.html" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="contact.html" class="footer__link">Contact</a></li>
-        <li class="footer__item"><a href="basket.html" class="footer__link">Basket</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="books.php" class="footer__link">Books</a></li>
+        <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="contact.php" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
       </ul>
 
     </div>

@@ -48,10 +48,10 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
+        <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
@@ -61,13 +61,13 @@
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -101,7 +101,7 @@
     <div class="basket__container container">
 
       <!-- Alert Message -->
-      <p class="basket__alert"><strong>Please note - </strong>you are currently checking out as a guest. Upon completion of your order you will receive a one-time download link to download your e-book(s). If you would like to gain access to your download link again in the future, please <a href="login_register.html">register as a member</a> before checking out.</p>
+      <p class="basket__alert"><strong>Please note - </strong>you are currently checking out as a guest. Upon completion of your order you will receive a one-time download link to download your e-book(s). If you would like to gain access to your download link again in the future, please <a href="login_register.php">register as a member</a> before checking out.</p>
 
 
       <!-- Allows basket contents to overflow with scroll on mobile devices -->
@@ -164,7 +164,7 @@
 
         <!-- Continue Shopping Button -->
         <div class="basket__button-wrapper">
-          <a href="books.html" class="basket__button button--positive button--large">Continue Shopping</a>
+          <a href="books.php" class="basket__button button--positive button--large">Continue Shopping</a>
         </div>
 
         <!-- PayPal Checkout Button -->
@@ -198,7 +198,7 @@
               return actions.order.capture().then(function(details) {
                 // Show a success message to the buyer then redirect to order confirmation
                 alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                window.location.replace("payment_confirmation.html");
+                window.location.replace("payment_confirmation.php");
               });
             }
 
@@ -243,10 +243,10 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
-        <li class="footer__item"><a href="books.html" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="contact.html" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="books.php" class="footer__link">Books</a></li>
+        <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="contact.php" class="footer__link">Contact</a></li>
         <li class="footer__item"><a href="#top" class="footer__link">Basket</a></li>
       </ul>
 

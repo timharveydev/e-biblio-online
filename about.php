@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Contact</title>
+  <title>E-Biblio | About</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -48,26 +48,26 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="#top" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
+        <li class="nav__item"><a href="#top" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.html" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -88,7 +88,7 @@
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Contact</h1>
+    <h1 class="page-banner__title">About</h1>
   </div>
 
 
@@ -97,63 +97,35 @@
 
   <!-- Page Content
   ------------------------------------->
-  <section class="contact">
-    <div class="contact__container container">
+  <section class="about">
+    <div class="about__container container">
 
-      <!-- Contact Form -->
-      <div class="contact__column--wide">
-        <h3 class="contact__heading">Get In Touch</h3>
-        <p class="contact__text">If you would like to get in touch to request a new title or to submit a general inquiry, send us a message using the form below and we'll get back to you within 48 hours.</p>
+      <!-- Who We Are -->
+      <h2 class="about__heading">Who We Are</h2>
+      <p class="about__text">Founded in 2020, E-Biblio Online strives to provide all of the latest and greatest e-book titles at affordable prices. Whether you're interested in crime thrillers, science fiction, biographies or cookery, we are confident that we have something to suit everyone. On the rare occasion that we don't have what you're after, let us know! We are more than happy to add new titles on request (provided they have an official e-book release).</p>
 
-        <!-- Form Component -->
-        <form class="contact__form form" method="POST">
-
-          <label for="firstName" class="form__label">First Name</label>
-          <input name="firstName" id="firstName" type="text" class="form__text-input" maxlength="50" required>
-
-          <label for="lastName" class="form__label">Last Name</label>
-          <input name="lastName" id="lastName" type="text" class="form__text-input" maxlength="50" required>
-  
-          <label for="email" class="form__label">Email</label>
-          <input name="email" id="email" type="text" class="form__text-input" maxlength="50" required>
-  
-          <label for="message" class="form__label">Message</label>
-          <textarea name="message" id="message" cols="50" rows="5" class="form__text-area" placeholder="Type your message here ..." maxlength="1000" required></textarea>
-  
-          <!-- Regular Form Buttons -->
-          <input name="submit" type="submit" value="Submit" class="form__button button--positive">
-          <input name="reset" type="reset" value="Reset" id="reset" class="form__button button--negative">
-          <label for="reset" hidden>Reset</label>
-
-          <!-- Mobile Form Buttons -->
-          <input name="submit" type="submit" value="Submit" class="form__button--mobile button--primary button--large">
-          <input name="reset" type="reset" value="Reset" id="reset" class="form__button--mobile button--negative button--large">
-          
-        </form>
-      </div>
-
-
-      <!-- Contact Details -->
-      <div class="contact__column--narrow">
-        <h3 class="contact__heading">Contact Details</h3>
-        <p class="contact__text">We are based in Edinburgh, Scotland, but we do business all over the world. Our office is open 9am-4:30pm GMT Mon-Fri, excluding public holidays.</p>
-
-        <!-- Address -->
-        <div class="contact__icon-wrapper">
-          <i class="contact__icon fas fa-map-marker-alt"></i>
-          <div>
-            <h5 class="contact__icon-heading">Address</h5>
-            <p class="contact__icon-text">5 Side Street, Edinburgh, EH1 1EH, United Kingdom</p>
-          </div>
+      <!-- Our Team -->
+      <h2 class="about__heading">Our Team</h2>
+      <div class="about__portraits">
+        <!-- Team Member -->
+        <div class="about__member">
+          <img src="img/staff/claudia_thompson.jpg" alt="Claudia Thompson - site admin & customer relations" class="about__img">
+          <h4 class="about__name">Claudia Thompson</h4>
+          <h5 class="about__role">Site Admin</h5>
         </div>
 
-        <!-- Phone Number -->
-        <div class="contact__icon-wrapper">
-          <i class="contact__icon fas fa-phone-alt"></i>
-          <div>
-            <h5 class="contact__icon-heading">Phone Number</h5>
-            <p class="contact__icon-text">(+44) 1234 567890</p>
-          </div>
+        <!-- Team Member -->
+        <div class="about__member">
+          <img src="img/staff/elizabeth_taylor.jpg" alt="Elizabeth Taylor - founder & owner" class="about__img">
+          <h4 class="about__name">Elizabeth Taylor</h4>
+          <h5 class="about__role">Founder & Owner</h5>
+        </div>
+
+        <!-- Team Member -->
+        <div class="about__member">
+          <img src="img/staff/jonathan_dawson.jpg" alt="Jonathan Dawson - back office & customer relations" class="about__img">
+          <h4 class="about__name">Jonathan Dawson</h4>
+          <h5 class="about__role">Back Office</h5>
         </div>
       </div>
 
@@ -186,11 +158,11 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
-        <li class="footer__item"><a href="books.html" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="#top" class="footer__link">Contact</a></li>
-        <li class="footer__item"><a href="basket.html" class="footer__link">Basket</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="books.php" class="footer__link">Books</a></li>
+        <li class="footer__item"><a href="#top" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="contact.php" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
       </ul>
 
     </div>

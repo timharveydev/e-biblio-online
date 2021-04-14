@@ -36,6 +36,13 @@
 @import 'components/book-grid';
 
 // Includes page-specific styling.
+@import 'pages/adminHome';
+@import 'pages/adminNewUser';
+@import 'pages/adminNewAdmin';
+@import 'pages/adminNewBook';
+@import 'pages/adminChangeUsers';
+@import 'pages/adminChangeAdmins';
+@import 'pages/adminChangeBooks';
 @import 'pages/about';
 @import 'pages/basket';
 @import 'pages/bookDetails';
@@ -46,10 +53,3 @@
 @import 'pages/paymentConfirmation';
 @import 'pages/purchaseHistory';
 @import 'pages/wishlist';
-@import 'pages/adminHome';
-@import 'pages/adminNewUser';
-@import 'pages/adminNewAdmin';
-@import 'pages/adminNewTitle';
-@import 'pages/adminChangeUsers';
-@import 'pages/adminChangeAdmins';
-@import 'pages/adminChangeTitles';

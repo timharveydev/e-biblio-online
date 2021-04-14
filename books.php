@@ -48,26 +48,26 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
         <li class="nav__item"><a href="#top" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.html" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -201,11 +201,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -213,11 +213,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -225,11 +225,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -237,11 +237,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -249,11 +249,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -261,11 +261,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -273,11 +273,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -285,11 +285,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -297,11 +297,11 @@
 
           <!-- Book Grid Item -->
           <div class="book-grid__item">
-            <a href="book_details.html" class="book-grid__link">
+            <a href="book_details.php" class="book-grid__link">
               <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
               <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
             </a>
-            <a href="books.html" class="book-grid__link">
+            <a href="books.php" class="book-grid__link">
               <h5 class="book-grid__author">J K Rowling</h5>
             </a>
             <h5 class="book-grid__price">£7.99</h5>
@@ -338,11 +338,11 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
         <li class="footer__item"><a href="#top" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="contact.html" class="footer__link">Contact</a></li>
-        <li class="footer__item"><a href="basket.html" class="footer__link">Basket</a></li>
+        <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="contact.php" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
       </ul>
 
     </div>

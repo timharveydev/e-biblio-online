@@ -48,26 +48,27 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
+        <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="#top" class="nav__link">Admin Panel</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="#top" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -105,12 +106,12 @@
       <h3 class="admin-home__sub-heading">What would you like to do?</h3>
 
       <div class="admin-home__button-selectors">
-        <a href="admin-new-user.php" class="admin-home__button button--primary">Add New User</a>
-        <a href="admin-change-users.php" class="admin-home__button button--primary">Change / Remove Users</a>
-        <a href="admin-new-admin.php" class="admin-home__button button--primary">Add New Admin</a>
-        <a href="admin-change-admins.php" class="admin-home__button button--primary">Change / Remove Admins</a>
-        <a href="admin-new-film.php" class="admin-home__button button--primary">Add New Book</a>
-        <a href="admin-change-films.php" class="admin-home__button button--primary">Change / Remove Books</a>
+        <a href="admin_new_user.php" class="admin-home__button button--primary">Add New User</a>
+        <a href="admin_change_users.php" class="admin-home__button button--primary">Change / Remove Users</a>
+        <a href="admin_new_admin.php" class="admin-home__button button--primary">Add New Admin</a>
+        <a href="admin_change_admins.php" class="admin-home__button button--primary">Change / Remove Admins</a>
+        <a href="admin_new_book.php" class="admin-home__button button--primary">Add New Book</a>
+        <a href="admin_change_books.php" class="admin-home__button button--primary">Change / Remove Books</a>
       </div>
       
     </div>
@@ -142,11 +143,11 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
-        <li class="footer__item"><a href="books.html" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="contact.html" class="footer__link">Contact</a></li>
-        <li class="footer__item"><a href="#top" class="footer__link">Basket</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="books.php" class="footer__link">Books</a></li>
+        <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="contact.php" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
       </ul>
 
     </div>

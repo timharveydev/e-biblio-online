@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Register & Login</title>
+  <title>E-Biblio | Contact</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -48,26 +48,26 @@
 
       <!-- Nav Links -->
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="books.html" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="index.php" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
+        <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="#top" class="nav__link">Contact</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.html" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.html" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.html" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.html" class="nav__dropdown-link disabled">Purchase History</a></li>
+          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
+          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
           <hr>
-          <li class="nav__dropdown-item"><a href="logout.html" class="nav__dropdown-link warning">Logout</a></li>
+          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
         </ul>
       </ul>
 
@@ -88,7 +88,7 @@
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Login</h1>
+    <h1 class="page-banner__title">Contact</h1>
   </div>
 
 
@@ -97,57 +97,63 @@
 
   <!-- Page Content
   ------------------------------------->
-  <section class="login-register">
-    <div class="login-register__container container">
+  <section class="contact">
+    <div class="contact__container container">
 
-      <!-- Login Form -->
-      <div class="login-register__column">
-
-        <!-- Heading -->
-        <h3 class="login-register__heading">Login</h3>
+      <!-- Contact Form -->
+      <div class="contact__column--wide">
+        <h3 class="contact__heading">Get In Touch</h3>
+        <p class="contact__text">If you would like to get in touch to request a new title or to submit a general inquiry, send us a message using the form below and we'll get back to you within 48 hours.</p>
 
         <!-- Form Component -->
-        <div class="login-register__form-box focus"><!-- Use focus class to adjust color--primary border color -->
-          <form class="login-register-form form">
+        <form class="contact__form form" method="POST">
 
-            <!-- Username -->
-            <label for="login-username" class="form__label">Username</label>
-            <input name="username" id="login-username" type="text" class="form__text-input" maxlength="20" required>
-    
-            <!-- Password -->
-            <label for="login-password" class="form__label">Password</label>
-            <input name="password" id="login-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
-    
-            <!-- Submit Button -->
-            <input name="submit" type="submit" value="Login" class="form__button button--primary">
-            <input name="submit" type="submit" value="Login" class="form__button--mobile button--primary">
-          </form>
-        </div>
+          <label for="firstName" class="form__label">First Name</label>
+          <input name="firstName" id="firstName" type="text" class="form__text-input" maxlength="50" required>
+
+          <label for="lastName" class="form__label">Last Name</label>
+          <input name="lastName" id="lastName" type="text" class="form__text-input" maxlength="50" required>
+  
+          <label for="email" class="form__label">Email</label>
+          <input name="email" id="email" type="text" class="form__text-input" maxlength="50" required>
+  
+          <label for="message" class="form__label">Message</label>
+          <textarea name="message" id="message" cols="50" rows="5" class="form__text-area" placeholder="Type your message here ..." maxlength="1000" required></textarea>
+  
+          <!-- Regular Form Buttons -->
+          <input name="submit" type="submit" value="Submit" class="form__button button--positive">
+          <input name="reset" type="reset" value="Reset" id="reset" class="form__button button--negative">
+          <label for="reset" hidden>Reset</label>
+
+          <!-- Mobile Form Buttons -->
+          <input name="submit" type="submit" value="Submit" class="form__button--mobile button--primary button--large">
+          <input name="reset" type="reset" value="Reset" id="reset" class="form__button--mobile button--negative button--large">
+          
+        </form>
       </div>
 
 
-      <!-- Registration Form -->
-      <div class="login-register__column">
-        
-        <!-- Heading -->
-        <h3 class="login-register__heading">Register</h3>
+      <!-- Contact Details -->
+      <div class="contact__column--narrow">
+        <h3 class="contact__heading">Contact Details</h3>
+        <p class="contact__text">We are based in Edinburgh, Scotland, but we do business all over the world. Our office is open 9am-4:30pm GMT Mon-Fri, excluding public holidays.</p>
 
-        <!-- Form Component -->
-        <div class="login-register__form-box">
-          <form class="login-register-form form">
+        <!-- Address -->
+        <div class="contact__icon-wrapper">
+          <i class="contact__icon fas fa-map-marker-alt"></i>
+          <div>
+            <h5 class="contact__icon-heading">Address</h5>
+            <p class="contact__icon-text">5 Side Street, Edinburgh, EH1 1EH, United Kingdom</p>
+          </div>
+        </div>
 
-            <!-- Username -->
-            <label for="register-username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
-            <input name="username" id="register-username" type="text" class="form__text-input" maxlength="20" required>
-    
-            <!-- Password -->
-            <label for="register-password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
-            <input name="password" id="register-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
-    
-            <!-- Submit Button -->
-            <input name="submit" type="submit" value="Register" class="form__button button--positive">
-            <input name="submit" type="submit" value="Register" class="form__button--mobile button--positive">
-          </form>
+        <!-- Phone Number -->
+        <div class="contact__icon-wrapper">
+          <i class="contact__icon fas fa-phone-alt"></i>
+          <div>
+            <h5 class="contact__icon-heading">Phone Number</h5>
+            <p class="contact__icon-text">(+44) 1234 567890</p>
+          </div>
         </div>
       </div>
 
@@ -180,11 +186,11 @@
 
       <!-- Nav Links -->
       <ul class="footer__list">
-        <li class="footer__item"><a href="index.html" class="footer__link">Home</a></li>
-        <li class="footer__item"><a href="books.html" class="footer__link">Books</a></li>
-        <li class="footer__item"><a href="about.html" class="footer__link">About</a></li>
-        <li class="footer__item"><a href="contact.html" class="footer__link">Contact</a></li>
-        <li class="footer__item"><a href="basket.html" class="footer__link">Basket</a></li>
+        <li class="footer__item"><a href="index.php" class="footer__link">Home</a></li>
+        <li class="footer__item"><a href="books.php" class="footer__link">Books</a></li>
+        <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
+        <li class="footer__item"><a href="#top" class="footer__link">Contact</a></li>
+        <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
       </ul>
 
     </div>
