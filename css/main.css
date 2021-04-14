@@ -1943,26 +1943,22 @@ h6 {
 /* ADMIN HOME
 --------------------------------------------*/
 .admin-home {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 .admin-home__container {
   max-width: 1200px;
-  padding: 12rem 0;
 }
 
 .admin-home__heading {
   text-align: center;
+  margin-bottom: 3rem;
 }
 
-.admin-home__user {
-  text-align: right;
-  margin: 2rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.8rem;
-  letter-spacing: 0.2rem;
+.admin-home__sub-heading {
+  text-align: center;
+  margin-bottom: 6rem;
 }
 
 .admin-home__button-selectors {
@@ -1974,8 +1970,7 @@ h6 {
 }
 
 .admin-home__button {
-  height: 12rem;
-  line-height: 12rem;
+  line-height: 10rem;
   width: 40rem;
   max-width: 40rem;
   min-width: 40rem;
