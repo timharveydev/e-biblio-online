@@ -937,17 +937,16 @@ h6 {
 /* ADMIN NEW USER
 --------------------------------------------*/
 .admin-new-user {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 .admin-new-user__container {
   width: 30%;
   max-width: 1200px;
-  padding: 12rem 0;
 }
 
-.admin-new-user__heading {
+.admin-new-user__description {
   text-align: center;
   margin-bottom: 8rem;
 }
@@ -1913,7 +1912,7 @@ h6 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .login-register__column {

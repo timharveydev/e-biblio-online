@@ -1,21 +1,4 @@
-<?php
 
-session_start();
-
-
-// If user not admin send alert and redirect to index.php
-if ($_SESSION['admin'] != 'admin') {
-  echo '<script type="text/javascript">'; 
-  echo 'alert("You do not have permission to view this page");';
-  echo 'window.location.href = "index.php";';
-  echo '</script>';
-}
-
-
-// Stores current URL minus arguments
-$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +10,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Admin Panel</title>
+  <title>E-Biblio | Add New User</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -108,7 +91,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Admin Panel</h1>
+    <h1 class="page-banner__title">Add New User</h1>
   </div>
 
 
@@ -117,22 +100,49 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
   <!-- Page Content
   ------------------------------------->
-  <section class="admin-home">
-    <div class="admin-home__container container">
+  <section class="admin-new-user">
+    <div class="admin-new-user__container container">
 
-      <h2 class="admin-home__heading">Hello, <?php echo $_SESSION['currentUser']; ?>.</h2>
+      <h3 class="admin-new-user__description">Use this form to register a new user.</h3>
 
-      <h3 class="admin-home__sub-heading">What would you like to do?</h3>
 
-      <div class="admin-home__button-selectors">
-        <a href="admin_new_user.php" class="admin-home__button button--primary">Add New User</a>
-        <a href="admin_change_users.php" class="admin-home__button button--primary">Change / Remove Users</a>
-        <a href="admin_new_admin.php" class="admin-home__button button--primary">Add New Admin</a>
-        <a href="admin_change_admins.php" class="admin-home__button button--primary">Change / Remove Admins</a>
-        <a href="admin_new_book.php" class="admin-home__button button--primary">Add New Book</a>
-        <a href="admin_change_books.php" class="admin-home__button button--primary">Change / Remove Books</a>
-      </div>
+      <!-- PHP shows success confirmation when new user added -->
+      <?php
+
+      if ($_GET['success'] == 'success') {
+        echo '<span class="admin-new-user__success">User added successfully</span>';
+      }
+
+      ?>
       
+
+      <!-- Register form (this is the same form that appears on login_register.php) -->
+      <!-- PHP code between labels and inputs produces error spans -> error type is sent via URL GET from register_request.php -->
+      <!-- PHP within input value parameters populates form fields with previous user input when returning from register_request.php with errors (excludes password for security) -->
+      <form class="admin-new-user__form form" action="register_request.php" method="POST">
+
+        <!-- Username -->
+        <label for="username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
+        <?php if($_GET['error'] == 'usernameError') {echo '<span class="form__error">Sorry, this username already exists</span>';} ?>
+        <input name="username" id="username" type="text" class="form__text-input" maxlength="20" required>
+
+        <!-- Password -->
+        <label for="password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
+        <input name="password" id="password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+        <!-- Confirm Password -->
+        <label for="confirm-password" class="form__label">Confirm Password</label>
+        <?php if($_GET['error'] == 'passwordError') {echo '<span class="form__error">Password does not match</span>';} ?>
+        <input name="confirm-password" id="confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+        <!-- Set $_SESSION['admin'] = empty string -->
+        <input type="hidden" name="admin" value="">
+
+        <!-- Submit Button -->
+        <input name="submit" type="submit" value="Add User" class="form__button button--positive">
+        
+      </form>
+
     </div>
   </section>
 

@@ -100,7 +100,7 @@
   <section class="login-register">
     <div class="login-register__container container">
 
-      <!-- Login Form -->
+      <!-- LOGIN FORM -->
       <div class="login-register__column">
 
         <!-- Heading -->
@@ -126,7 +126,7 @@
       </div>
 
 
-      <!-- Registration Form -->
+      <!-- REGISTRATION FORM -->
       <div class="login-register__column">
         
         <!-- Heading -->
@@ -143,6 +143,10 @@
             <!-- Password -->
             <label for="register-password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
             <input name="password" id="register-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+            <!-- Confirm Password -->
+            <label for="register-confirm-password" class="form__label">Confirm Password</label>
+            <input name="confirmPassword" id="register-confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
     
             <!-- Submit Button -->
             <input name="submit" type="submit" value="Register" class="form__button button--positive">

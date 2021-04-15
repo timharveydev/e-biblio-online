@@ -6,7 +6,7 @@
   width: 100%;
   padding: 8rem 0;
 
-  &__container { @include display-flex($justify: space-around); }
+  &__container { @include display-flex($justify: space-around, $align: flex-start); }
 
 
   &__column { width: 45%; }
