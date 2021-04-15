@@ -4,12 +4,12 @@ session_start();
 
 
 // If user not admin send alert and redirect to index.php
-//if ($_SESSION['admin'] != 'admin') {
-  //echo '<script type="text/javascript">'; 
-  //echo 'alert("You do not have permission to view this page");';
-  //echo 'window.location.href = "index.php";';
- //echo '</script>';
-//}
+if ($_SESSION['admin'] != 'admin') {
+  echo '<script type="text/javascript">'; 
+  echo 'alert("You do not have permission to view this page");';
+  echo 'window.location.href = "index.php";';
+ echo '</script>';
+}
 
 
 // Stores current URL minus arguments
@@ -71,7 +71,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
         <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
         <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
-        <li class="nav__item"><a href="#top" class="nav__link">Admin Panel</a></li>
+        <li class="nav__item"><a href="admin_home.php" class="nav__link">Admin Panel</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
@@ -126,7 +126,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <!-- PHP shows success confirmation when new user added -->
       <?php
 
-      if ($_GET['success'] == 'success') {
+      if (isset($_GET['success']) && $_GET['success'] == 'success') {
         echo '<span class="admin-new-admin__success">User added successfully</span>';
       }
 
@@ -138,21 +138,21 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <!-- PHP within input value parameters populates form fields with previous user input when returning from register_request.php with errors (excludes password for security) -->
       <form class="admin-new-user__form form" action="register_request.php" method="POST">
 
-        <!-- Username -->
+        <!-- Username (PHP displays error message) -->
         <label for="username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
-        <?php if($_GET['error'] == 'usernameError') {echo '<span class="form__error">Sorry, this username already exists</span>';} ?>
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'usernameError') { echo '<span class="form__error">Sorry, this username already exists</span>'; } ?>
         <input name="username" id="username" type="text" class="form__text-input" maxlength="20" required>
 
         <!-- Password -->
         <label for="password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
         <input name="password" id="password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
 
-        <!-- Confirm Password -->
+        <!-- Confirm Password (PHP displays error message) -->
         <label for="confirm-password" class="form__label">Confirm Password</label>
-        <?php if($_GET['error'] == 'passwordError') {echo '<span class="form__error">Password does not match</span>';} ?>
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'passwordError') { echo '<span class="form__error">Password does not match</span>'; } ?>
         <input name="confirm-password" id="confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
 
-        <!-- Set $_SESSION['admin'] = 'admin' -->
+        <!-- Set $_SESSION['admin'] = empty string -->
         <input type="hidden" name="admin" value="admin">
 
         <!-- Submit Button -->

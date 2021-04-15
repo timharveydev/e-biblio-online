@@ -16,7 +16,13 @@ include 'connection.php';
 
 // Automatically login if $_SESSION['username'] is already set - i.e. if the user has just completed the registration form
 if (isset($_SESSION['username'])) {
+  // Set current user
   $_SESSION['currentUser'] = $_SESSION['username'];
+  // Set admin status
+  $query = mysqli_query($connection, "SELECT admin FROM users WHERE username='$_SESSION[username]'");
+  $result = mysqli_fetch_array($query);
+  $_SESSION['admin'] = $result['admin'];
+  
   header("Location: index.php");
   exit();
 }
@@ -63,7 +69,7 @@ else {
 
     // Redirect to index page (regular users) or admin panel (admin users)
     if ($_SESSION['admin'] == 'admin') {
-      header("Location: admin-home.php");
+      header("Location: admin_home.php");
     }
     else {
       header("Location: index.php");

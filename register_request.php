@@ -3,8 +3,8 @@
 session_start();
 
 
-// If previous URL not login_register.php, redirect to index.php
-if ($_SESSION['redirect'] != '/e-biblio-online/login_register.php') {
+// If previous URL not login_register.php or admin_new_user/admin.php, redirect to index.php
+if ($_SESSION['redirect'] != '/e-biblio-online/login_register.php' && $_SESSION['redirect'] != '/e-biblio-online/admin_new_user.php' && $_SESSION['redirect'] != '/e-biblio-online/admin_new_admin.php') {
   header("Location: index.php");
   exit();
 }
@@ -19,7 +19,6 @@ include 'connection.php';
 $_SESSION['username'] = str_replace("'", "&#39;", $_POST['username']);
 $_SESSION['password'] = str_replace("'", "&#39;", $_POST['password']);
 $_SESSION['confirm-password'] = str_replace("'", "&#39;", $_POST['confirm-password']);
-$_SESSION['admin'] = $_POST['admin'];
 
 
 // Check username is not already taken - if it is, return to previous page with error
@@ -39,7 +38,7 @@ elseif ($_SESSION['password'] != $_SESSION['confirm-password']) {
 
 
 // If above checks ok, insert data into DB
-mysqli_query($connection, "INSERT INTO users (username, password, admin) VALUES ('$_SESSION[username]', '$_SESSION[password]', '$_SESSION[admin]')");
+mysqli_query($connection, "INSERT INTO users (username, password, admin) VALUES ('$_SESSION[username]', '$_SESSION[password]', '$_POST[admin]')");
 
 
 // Set reg-success variable to true - used to provide success alert following successful login
