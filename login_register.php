@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+// Stores current URL minus arguments
+$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,8 +70,8 @@
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
           <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
           <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
@@ -87,8 +96,18 @@
     <!-- Page Banner BG Image Overlay -->
     <div class="page-banner__bg-overlay"></div>
 
-    <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Login</h1>
+    <!-- Page Banner Title (PHP determines text based on where user came from) -->
+    <?php
+      if (isset($_GET['section']) && $_GET['section'] == 'login') {
+        echo '<h1 class="page-banner__title">Login</h1>';
+      } 
+      elseif (isset($_GET['section']) && $_GET['section'] == 'register') {
+        echo '<h1 class="page-banner__title">Register</h1>';
+      }
+      else {
+        echo '<h1 class="page-banner__title">Welcome</h1>';
+      }
+    ?>
   </div>
 
 
@@ -106,12 +125,13 @@
         <!-- Heading -->
         <h3 class="login-register__heading">Login</h3>
 
-        <!-- Form Component -->
-        <div class="login-register__form-box focus"><!-- Use focus class to adjust color--primary border color -->
-          <form class="login-register-form form">
+        <!-- Form Component (PHP ads 'focus' class depending on where the user came from) -->
+        <div class="login-register__form-box <?php if (isset($_GET['section']) && $_GET['section'] == 'login') { echo 'focus'; } ?> ">
+          <form class="login-register-form form" action="login_request.php" method="POST">
 
-            <!-- Username -->
+            <!-- Username (PHP displays error if user details not found in DB) -->
             <label for="login-username" class="form__label">Username</label>
+            <?php if(isset($_GET['error']) && $_GET['error'] == 'user_details_not_found') { echo '<span class="form__error">Details not found - you need to register before you can login</span>';} ?>
             <input name="username" id="login-username" type="text" class="form__text-input" maxlength="20" required>
     
             <!-- Password -->
@@ -119,8 +139,8 @@
             <input name="password" id="login-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
     
             <!-- Submit Button -->
-            <input name="submit" type="submit" value="Login" class="form__button button--primary">
-            <input name="submit" type="submit" value="Login" class="form__button--mobile button--primary">
+            <input name="submit" type="submit" value="Login" class="form__button <?php if (isset($_GET['section']) && $_GET['section'] == 'login') { echo 'button--primary'; } else { echo 'button--positive'; } ?> ">
+            <input name="submit" type="submit" value="Login" class="form__button--mobile <?php if (isset($_GET['section']) && $_GET['section'] == 'login') { echo 'button--primary'; } else { echo 'button--positive'; } ?> ">
           </form>
         </div>
       </div>
@@ -132,25 +152,30 @@
         <!-- Heading -->
         <h3 class="login-register__heading">Register</h3>
 
-        <!-- Form Component -->
-        <div class="login-register__form-box">
-          <form class="login-register-form form">
+        <!-- Form Component (PHP ads 'focus' class depending on where the user came from) -->
+        <div class="login-register__form-box <?php if (isset($_GET['section']) && $_GET['section'] == 'register') { echo 'focus'; } ?> ">
+          <form class="login-register-form form" action="register_request.php" method="POST">
 
-            <!-- Username -->
+            <!-- Username (PHP displays error message) -->
             <label for="register-username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'usernameError') { echo '<span class="form__error">Sorry, this username already exists</span>'; } ?>
             <input name="username" id="register-username" type="text" class="form__text-input" maxlength="20" required>
     
             <!-- Password -->
             <label for="register-password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
             <input name="password" id="register-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
 
-            <!-- Confirm Password -->
+            <!-- Confirm Password (PHP displays error message) -->
             <label for="register-confirm-password" class="form__label">Confirm Password</label>
-            <input name="confirmPassword" id="register-confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'passwordError') { echo '<span class="form__error">Password does not match</span>'; } ?>
+            <input name="confirm-password" id="register-confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+            <!-- Set $_SESSION['admin'] = empty string -->
+            <input type="hidden" name="admin" value="">
     
             <!-- Submit Button -->
-            <input name="submit" type="submit" value="Register" class="form__button button--positive">
-            <input name="submit" type="submit" value="Register" class="form__button--mobile button--positive">
+            <input name="submit" type="submit" value="Register" class="form__button <?php if (isset($_GET['section']) && $_GET['section'] == 'register') { echo 'button--primary'; } else { echo 'button--positive'; } ?> ">
+            <input name="submit" type="submit" value="Register" class="form__button--mobile <?php if (isset($_GET['section']) && $_GET['section'] == 'register') { echo 'button--primary'; } else { echo 'button--positive'; } ?> ">
           </form>
         </div>
       </div>

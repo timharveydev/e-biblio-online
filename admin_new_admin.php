@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+
+// If user not admin send alert and redirect to index.php
+//if ($_SESSION['admin'] != 'admin') {
+  //echo '<script type="text/javascript">'; 
+  //echo 'alert("You do not have permission to view this page");';
+  //echo 'window.location.href = "index.php";';
+ //echo '</script>';
+//}
+
+
+// Stores current URL minus arguments
+$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Payment Confirmation</title>
+  <title>E-Biblio | Add New Admin</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -52,6 +71,7 @@
         <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
         <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
         <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
+        <li class="nav__item"><a href="#top" class="nav__link">Admin Panel</a></li>
       </ul>
 
       <!-- Basket & Account Icons -->
@@ -88,7 +108,7 @@
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Payment Confirmation</h1>
+    <h1 class="page-banner__title">Add New Admin</h1>
   </div>
 
 
@@ -97,42 +117,48 @@
 
   <!-- Page Content
   ------------------------------------->
-  <section class="payment-confirmation">
-    <div class="payment-confirmation__container container">
+  <section class="admin-new-user">
+    <div class="admin-new-user__container container">
 
-      <!-- Heading -->
-      <h2 class="payment-confirmation__heading">Thank You for Your Purchase!</h2>
-
-      <!-- Alert for Unregistered Customers -->
-      <p class="payment-confirmation__info alert"><strong>IMPORTANT</strong> - if you checked out as a guest, please make sure you download all your purchased titles before leaving this page. Once you have left this page you will not be able to return to it. If you require assistance, contact us and we can provide you with new download links.</p>
-
-      <!-- Download Info -->
-      <p class="payment-confirmation__info">You can find the download links to your purchased e-book titles below. Simply click the link and your EPUB file will begin downloading.<br>Thanks for using our service and we hope you enjoy your purchase!</p>
+      <h3 class="admin-new-user__description">Use this form to register a new admin user.</h3>
 
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      <!-- PHP shows success confirmation when new user added -->
+      <?php
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      if ($_GET['success'] == 'success') {
+        echo '<span class="admin-new-admin__success">User added successfully</span>';
+      }
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      ?>
+      
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      <!-- Register form (this is the same form that appears on login_register.php) -->
+      <!-- PHP code between labels and inputs produces error spans -> error type is sent via URL GET from register_request.php -->
+      <!-- PHP within input value parameters populates form fields with previous user input when returning from register_request.php with errors (excludes password for security) -->
+      <form class="admin-new-user__form form" action="register_request.php" method="POST">
+
+        <!-- Username -->
+        <label for="username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
+        <?php if($_GET['error'] == 'usernameError') {echo '<span class="form__error">Sorry, this username already exists</span>';} ?>
+        <input name="username" id="username" type="text" class="form__text-input" maxlength="20" required>
+
+        <!-- Password -->
+        <label for="password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
+        <input name="password" id="password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+        <!-- Confirm Password -->
+        <label for="confirm-password" class="form__label">Confirm Password</label>
+        <?php if($_GET['error'] == 'passwordError') {echo '<span class="form__error">Password does not match</span>';} ?>
+        <input name="confirm-password" id="confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+
+        <!-- Set $_SESSION['admin'] = 'admin' -->
+        <input type="hidden" name="admin" value="admin">
+
+        <!-- Submit Button -->
+        <input name="submit" type="submit" value="Add User" class="form__button button--positive">
+        
+      </form>
 
     </div>
   </section>

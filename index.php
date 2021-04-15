@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+// Connection
+include 'connection.php';
+
+
+// Stores current URL minus arguments
+$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,8 +74,8 @@
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
           <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
           <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
@@ -246,6 +259,20 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+  <!-- Success alert - shown on successful registration -->
+  <?php
+
+  if ($_SESSION['registrationSuccess'] == true) {
+    echo '<script>alert("Registration successful!\nYou are now logged in.");</script>';
+    unset($_SESSION['registrationSuccess']);
+  }
+
+  ?>
 
 
 

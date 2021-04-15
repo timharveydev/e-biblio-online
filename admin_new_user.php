@@ -1,4 +1,21 @@
+<?php
 
+session_start();
+
+
+// If user not admin send alert and redirect to index.php
+//if ($_SESSION['admin'] != 'admin') {
+  //echo '<script type="text/javascript">'; 
+  //echo 'alert("You do not have permission to view this page");';
+  //echo 'window.location.href = "index.php";';
+ //echo '</script>';
+//}
+
+
+// Stores current URL minus arguments
+$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,8 +81,8 @@
         <!-- Account Dropdown -->
         <ul class="nav__dropdown">
           <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php" class="nav__dropdown-link">Create an Account</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Sign In</a></li>
+          <li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>
           <hr>
           <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
           <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
@@ -109,7 +126,7 @@
       <!-- PHP shows success confirmation when new user added -->
       <?php
 
-      if ($_GET['success'] == 'success') {
+      if (isset($_GET['success']) && $_GET['success'] == 'success') {
         echo '<span class="admin-new-user__success">User added successfully</span>';
       }
 
@@ -121,19 +138,19 @@
       <!-- PHP within input value parameters populates form fields with previous user input when returning from register_request.php with errors (excludes password for security) -->
       <form class="admin-new-user__form form" action="register_request.php" method="POST">
 
-        <!-- Username -->
-        <label for="username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
-        <?php if($_GET['error'] == 'usernameError') {echo '<span class="form__error">Sorry, this username already exists</span>';} ?>
-        <input name="username" id="username" type="text" class="form__text-input" maxlength="20" required>
+        <!-- Username (PHP displays error message) -->
+        <label for="register-username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'usernameError') { echo '<span class="form__error">Sorry, this username already exists</span>'; } ?>
+        <input name="username" id="register-username" type="text" class="form__text-input" maxlength="20" required>
 
         <!-- Password -->
-        <label for="password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
-        <input name="password" id="password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+        <label for="register-password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
+        <input name="password" id="register-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
 
-        <!-- Confirm Password -->
-        <label for="confirm-password" class="form__label">Confirm Password</label>
-        <?php if($_GET['error'] == 'passwordError') {echo '<span class="form__error">Password does not match</span>';} ?>
-        <input name="confirm-password" id="confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+        <!-- Confirm Password (PHP displays error message) -->
+        <label for="register-confirm-password" class="form__label">Confirm Password</label>
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'passwordError') { echo '<span class="form__error">Password does not match</span>'; } ?>
+        <input name="confirm-password" id="register-confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
 
         <!-- Set $_SESSION['admin'] = empty string -->
         <input type="hidden" name="admin" value="">

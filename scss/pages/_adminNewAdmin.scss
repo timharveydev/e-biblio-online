@@ -3,13 +3,12 @@
 --------------------------------------------*/
 
 .admin-new-admin {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 
   &__container {
     width: 30%;
     max-width: 1200px;
-    padding: 12rem 0;
   }
 
   &__heading {
