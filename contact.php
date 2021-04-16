@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+// Stores current URL minus arguments
+$_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,22 +61,33 @@
         <li class="nav__item"><a href="books.php" class="nav__link">Books</a></li>
         <li class="nav__item"><a href="about.php" class="nav__link">About</a></li>
         <li class="nav__item"><a href="#top" class="nav__link">Contact</a></li>
+        <!-- Show link to admin panel when admin user logged in -->
+        <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'admin') { echo '<li class="nav__item"><a href="admin_home.php" class="nav__link">Admin Panel</a></li>'; } ?>
       </ul>
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
         <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
         <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
-        <!-- Account Dropdown -->
+        <!-- Account Dropdown (contents shown dynamically using PHP) -->
         <ul class="nav__dropdown">
-          <li class="nav__dropdown-item"><a class="nav__dropdown-link username"><strong>username</strong></a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Sign In</a></li>
-          <li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>
-          <hr>
-          <li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link disabled">Wishlist</a></li>
-          <li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link disabled">Purchase History</a></li>
-          <hr>
-          <li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>
+          <?php if (isset($_SESSION['currentUser'])) {
+            // If user logged in ...
+            echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
+            echo '<hr>';
+            echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
+            echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
+            echo '<hr>';
+            echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
+          }
+          else {
+            // If no user logged in ...
+            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
+            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
+            echo '<hr>';
+            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
+            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
+          } ?>
         </ul>
       </ul>
 
@@ -191,6 +211,8 @@
         <li class="footer__item"><a href="about.php" class="footer__link">About</a></li>
         <li class="footer__item"><a href="#top" class="footer__link">Contact</a></li>
         <li class="footer__item"><a href="basket.php" class="footer__link">Basket</a></li>
+        <!-- Show link to wishlist when user logged in -->
+        <?php if (isset($_SESSION['currentUser'])) { echo '<li class="footer__item"><a href="wishlist.php" class="footer__link">Wishlist</a></li>'; } ?>
       </ul>
 
     </div>
