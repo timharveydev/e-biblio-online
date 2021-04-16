@@ -27,7 +27,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Tim Harvey">
   <meta name="description" content="A dynamic e-commerce website specializing in e-books, created for my HND Web Development course.">
-  <title>E-Biblio | Add New Admin</title>
+  <title>E-Biblio | Add New Book</title>
 
   <!-- CSS
   --------------------------------------------------------->
@@ -117,7 +117,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">Add New Admin</h1>
+    <h1 class="page-banner__title">Add New Book</h1>
   </div>
 
 
@@ -126,45 +126,93 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
   <!-- Page Content
   ------------------------------------->
-  <section class="admin-new-user">
-    <div class="admin-new-user__container container">
+  <section class="admin-new-book">
+    <div class="admin-new-book__container container">
 
-      <h3 class="admin-new-user__description">Use this form to register a new admin user.</h3>
+      <h3 class="admin-new-book__description">Use this form to add a new book to the system.</h3>
 
 
-      <!-- PHP shows success confirmation when new user added -->
+      <!-- PHP shows success confirmation when new book added -->
       <?php
 
       if (isset($_GET['success']) && $_GET['success'] == 'success') {
-        echo '<span class="admin-new-admin__success">User added successfully</span>';
+        echo '<span class="admin-new-book__success">Book added successfully</span>';
       }
 
       ?>
       
 
-      <!-- Register form (this is the same form that appears on login_register.php) -->
-      <!-- PHP code between labels and inputs produces error spans -> error type is sent via URL GET from register_request.php -->
-      <form class="admin-new-user__form form" action="register_request.php" method="POST">
+      <!-- Book details form -->
+      <form class="admin-new-book__form form" action="new_book_request.php" method="POST" enctype="multipart/form-data">
 
-        <!-- Username (PHP displays error message) -->
-        <label for="username" class="form__label">Username <span class="subtle">(max. 20 characters)</span></label>
-        <?php if (isset($_GET['error']) && $_GET['error'] == 'usernameError') { echo '<span class="form__error">Sorry, this username already exists</span>'; } ?>
-        <input name="username" id="username" type="text" class="form__text-input" maxlength="20" required>
+        <!-- Title -->
+        <label for="title" class="form__label">Title</label>
+        <input name="title" id="title" type="text" class="form__text-input" maxlength="40" required>
 
-        <!-- Password -->
-        <label for="password" class="form__label">Password <span class="subtle">(8-20 characters)</span></label>
-        <input name="password" id="password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+        <!-- Author -->
+        <label for="author" class="form__label">Author</label>
+        <input name="author" id="author" type="text" class="form__text-input" maxlength="25" required>
 
-        <!-- Confirm Password (PHP displays error message) -->
-        <label for="confirm-password" class="form__label">Confirm Password</label>
-        <?php if (isset($_GET['error']) && $_GET['error'] == 'passwordError') { echo '<span class="form__error">Password does not match</span>'; } ?>
-        <input name="confirm-password" id="confirm-password" type="password" class="form__text-input" minlength="8" maxlength="20" required>
+        <!-- Category -->
+        <label for="category" class="form__label">Category</label>
+        <select name="category" class="form__select" id="category" >
+          <option value="">Select category ...</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Animals">Animals</option>
+          <option value="Art">Art</option>
+          <option value="Biographies">Biographies</option>
+          <option value="Business">Business</option>
+          <option value="Children's">Children's</option>
+          <option value="Classics">Classics</option>
+          <option value="Crime">Crime</option>
+          <option value="Computing">Computing</option>
+          <option value="Education">Education</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Food & Drink">Food & Drink</option>
+          <option value="History">History</option>
+          <option value="Horror">Horror</option>
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Philosohpy">Philosohpy</option>
+          <option value="Popular Science">Popular Science</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Space">Space</option>
+          <option value="Sports">Sports</option>
+          <option value="Travel">Travel</option>
+        </select>
 
-        <!-- Set $_SESSION['admin'] = empty string -->
-        <input type="hidden" name="admin" value="admin">
+        <!-- Price -->
+        <label for="price" class="form__label">Price <span class="subtle">(format xx.xx)</span></label>
+        <input name="price" id="price" type="text" class="form__text-input" maxlength="6" required>
 
-        <!-- Submit Button -->
-        <input name="submit" type="submit" value="Add User" class="form__button button--positive">
+        <!-- Summary -->
+        <label for="summary" class="form__label">Summary <span class="subtle">(limit 1000 characters)</span></label>
+        <textarea name="summary" id="summary" cols="50" rows="5" class="form__text-area" maxlength="1000" required></textarea>
+
+        <!-- Additional Info. -->
+        <label for="additional-info" class="form__label">Additional Info <span class="subtle">(limit 1000 characters)</span> - optional</label>
+        <textarea name="additional-info" id="additional-info" cols="50" rows="5" class="form__text-area" maxlength="1000"></textarea>
+
+        <!-- Cover Image -->
+        <!-- File name can't include apostrophies as they mess with SQL -->
+        <label for="image" class="form__label"><u>Upload Cover Image</u>
+        <br>
+        <span class="subtle">Files should be in .jpg, .jpeg or .png format and file names should only include characters a-z, A-Z and 0-9.</span></label>
+        <input name="image" id="image" type="file" class="form__file-upload-button" required>
+
+        <!-- Featured -->
+        <label for="featured" class="form__label">Featured?
+        <br>
+        <span class="subtle">(homepage can display max. 5 featured titles at once)</span></label>
+        <p class="form__checkbox-description">Should this title be featured on the homepage?</p>
+        <input name="featured" id="featured" type="checkbox" class="form__checkbox">
+
+        <br>
+
+        <!-- Submit / Reset -->
+        <input name="submit" type="submit" value="Add Book" class="form__button button--positive">
+        <input name="reset" type="reset" value="Reset" id="reset" class="form__button button--negative">
+        <label for="reset" hidden>Reset</label>
         
       </form>
 

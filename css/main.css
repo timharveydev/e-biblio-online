@@ -645,6 +645,16 @@ h6 {
   outline: none;
 }
 
+.form__checkbox {
+  margin: 0.5rem 0 2rem 1rem;
+  cursor: pointer;
+}
+
+.form__checkbox-description {
+  display: inline;
+  margin: 0.5rem 0 2rem 0;
+}
+
 .form__button {
   margin: 2rem 1rem 0 0;
 }
@@ -656,7 +666,7 @@ h6 {
 }
 
 .form__file-upload-button {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 2.5rem 0;
 }
 
 /* MEDIA QUERIES
@@ -1016,25 +1026,24 @@ h6 {
   }
 }
 
-/* ADMIN NEW FILM
+/* ADMIN NEW BOOK
 --------------------------------------------*/
-.admin-new-film {
-  min-height: 100%;
+.admin-new-book {
   width: 100%;
+  padding: 8rem 0;
 }
 
-.admin-new-film__container {
+.admin-new-book__container {
   width: 30%;
   max-width: 1200px;
-  padding: 12rem 0;
 }
 
-.admin-new-film__heading {
+.admin-new-book__description {
   text-align: center;
   margin-bottom: 8rem;
 }
 
-.admin-new-film__success {
+.admin-new-book__success {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1047,13 +1056,13 @@ h6 {
 /* MEDIA QUERIES
 --------------------------------------------*/
 @media only screen and (max-width: 1650px) {
-  .admin-new-film__container {
+  .admin-new-book__container {
     width: 45%;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .admin-new-film__container {
+  .admin-new-book__container {
     width: 55%;
   }
 }
@@ -1070,7 +1079,7 @@ h6 {
   padding: 12rem 0;
 }
 
-.admin-change-users__heading {
+.admin-change-users__description {
   text-align: center;
   margin-bottom: 8rem;
 }
@@ -1107,7 +1116,7 @@ h6 {
   padding: 12rem 0;
 }
 
-.admin-change-admins__heading {
+.admin-change-admins__description {
   text-align: center;
   margin-bottom: 8rem;
 }
@@ -1132,34 +1141,34 @@ h6 {
   font-size: 1.8rem;
 }
 
-/* ADMIN CHANGE Films
+/* ADMIN CHANGE BOOKS
 --------------------------------------------*/
-.admin-change-films {
+.admin-change-books {
   min-height: 100%;
   width: 100%;
 }
 
-.admin-change-films__container {
+.admin-change-books__container {
   max-width: 1200px;
   padding: 12rem 0;
 }
 
-.admin-change-films__heading {
+.admin-change-books__description {
   text-align: center;
   margin-bottom: 8rem;
 }
 
-.admin-change-films__search-bar {
+.admin-change-books__search-bar {
   margin-left: auto;
   margin-right: auto;
 }
 
-.admin-change-films__instruction {
+.admin-change-books__instruction {
   text-align: center;
   padding: 1rem 0;
 }
 
-.admin-change-films__success {
+.admin-change-books__success {
   display: flex;
   flex-direction: row;
   justify-content: center;

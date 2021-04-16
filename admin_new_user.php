@@ -144,7 +144,6 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
       <!-- Register form (this is the same form that appears on login_register.php) -->
       <!-- PHP code between labels and inputs produces error spans -> error type is sent via URL GET from register_request.php -->
-      <!-- PHP within input value parameters populates form fields with previous user input when returning from register_request.php with errors (excludes password for security) -->
       <form class="admin-new-user__form form" action="register_request.php" method="POST">
 
         <!-- Username (PHP displays error message) -->

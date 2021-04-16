@@ -78,6 +78,17 @@
   }
 
 
+  &__checkbox {
+    margin: 0.5rem 0 2rem 1rem;
+    cursor: pointer;
+
+    &-description {
+      display: inline;
+      margin: 0.5rem 0 2rem 0;
+    }
+  }
+
+
   &__button { margin: 2rem 1rem 0 0; }
   &__button--mobile {
     display: none;
@@ -86,7 +97,7 @@
   }
 
 
-  &__file-upload-button { margin: 1.5rem 0; }
+  &__file-upload-button { margin: 1.5rem 0 2.5rem 0; }
 }
 
 
