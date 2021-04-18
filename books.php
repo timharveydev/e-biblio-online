@@ -154,6 +154,11 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <div class="books__categories-list">
           <!-- Category Item -->
           <a class="books__category-item">
+            <p class="books__category-name">All Books</p>
+            <p class="books__category-number">(10)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
             <p class="books__category-name">Category</p>
             <p class="books__category-number">(10)</p>
           </a>
