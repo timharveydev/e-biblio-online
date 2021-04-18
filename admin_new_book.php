@@ -182,7 +182,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         </select>
 
         <!-- Price -->
-        <label for="price" class="form__label">Price <span class="subtle">(format xx.xx)</span></label>
+        <label for="price" class="form__label">Price <span class="subtle">(format x.xx)</span></label>
         <input name="price" id="price" type="text" class="form__text-input" maxlength="6" required>
 
         <!-- Summary -->
@@ -201,10 +201,8 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <input name="image" id="image" type="file" class="form__file-upload-button" required>
 
         <!-- Featured -->
-        <label for="featured" class="form__label">Featured?
-        <br>
-        <span class="subtle">(homepage can display max. 5 featured titles at once)</span></label>
-        <p class="form__checkbox-description">Should this title be featured on the homepage?</p>
+        <label for="featured" class="form__label">Featured? <span class="subtle">(homepage can display max. 5 featured titles at once)</span></label>
+        <p class="form__checkbox-description">Feature this title?</p>
         <input name="featured" id="featured" type="checkbox" class="form__checkbox">
 
         <br>
