@@ -169,63 +169,113 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Adventure</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Animals</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Art</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Biographies</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Business</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Children's</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Classics</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Crime</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Computing</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Education</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Fantasy</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
           <!-- Category Item -->
           <a class="books__category-item">
-            <p class="book-details__category-name">Category</p>
-            <p class="book-details__category-number">(10)</p>
+            <p class="book-details__category-name">Food & Drink</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">History</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Horror</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Lifestyle</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Philosophy</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Popular Science</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Romance</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Sci-Fi</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Space</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Sports</p>
+            <p class="book-details__category-number">(0)</p>
+          </a>
+          <!-- Category Item -->
+          <a class="books__category-item">
+            <p class="book-details__category-name">Travel</p>
+            <p class="book-details__category-number">(0)</p>
           </a>
         </div>
       </div>

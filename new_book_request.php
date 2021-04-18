@@ -18,7 +18,7 @@ include 'connection.php';
 // Apostrophes replaced in strings to avoid SQL errors
 $title = str_replace("'", "&#39;", $_POST['title']);
 $author = str_replace("'", "&#39;", $_POST['author']);
-$category = str_replace("'", "&#39;", $_POST['category']);
+$category = str_replace("'", "", $_POST['category']); // Remove apostrophies alltogether as categories are hard coded - when refering to categories in the database e.g. "Children's", instead use "Childrens"
 $price = str_replace("'", "&#39;", $_POST['price']);
 $summary = str_replace("'", "&#39;", $_POST['summary']);
 $additionalInfo = str_replace("'", "&#39;", $_POST['additional-info']);
