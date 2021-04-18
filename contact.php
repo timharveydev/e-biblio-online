@@ -125,18 +125,27 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <h3 class="contact__heading">Get In Touch</h3>
         <p class="contact__text">If you would like to get in touch to request a new title or to submit a general inquiry, send us a message using the form below and we'll get back to you within 48 hours.</p>
 
+        <!-- PHP shows success confirmation when new book added -->
+        <?php
+
+        if (isset($_GET['success']) && $_GET['success'] == 'success') {
+          echo '<span class="contact__success">Message sent successfully</span>';
+        }
+
+        ?>
+
         <!-- Form Component -->
         <form class="contact__form form" method="POST">
 
-          <label for="firstName" class="form__label">First Name</label>
-          <input name="firstName" id="firstName" type="text" class="form__text-input" maxlength="50" required>
-
-          <label for="lastName" class="form__label">Last Name</label>
-          <input name="lastName" id="lastName" type="text" class="form__text-input" maxlength="50" required>
+          <!-- Name -->
+          <label for="Name" class="form__label">Name</label>
+          <input name="Name" id="Name" type="text" class="form__text-input" maxlength="50" required>
   
+          <!-- Email -->
           <label for="email" class="form__label">Email</label>
           <input name="email" id="email" type="text" class="form__text-input" maxlength="50" required>
   
+          <!-- Message -->
           <label for="message" class="form__label">Message</label>
           <textarea name="message" id="message" cols="50" rows="5" class="form__text-area" placeholder="Type your message here ..." maxlength="1000" required></textarea>
   

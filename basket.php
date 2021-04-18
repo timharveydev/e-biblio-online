@@ -152,7 +152,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
           <!-- Remove -->
           <form class="basket__item--remove">
-            <button type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
+            <button name="delete" type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
 
@@ -173,7 +173,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
           <!-- Remove -->
           <form class="basket__item--remove">
-            <button type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
+            <button name="delete" type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
       </div>

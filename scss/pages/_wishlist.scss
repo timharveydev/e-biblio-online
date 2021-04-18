@@ -24,10 +24,11 @@
     background-color: $light-grey;
     margin-bottom: 1rem;
 
-    &--cover { width: 20%; }
-    &--title { width: 45%; }
+    &--cover { width: 15%; }
+    &--title { width: 40%; }
     &--price { width: 15%; }
-    &--add-to-cart { width: 20%; }
+    &--add-to-basket { width: 20%; }
+    &--remove { width: 10%; }
   }
 
 
@@ -37,16 +38,32 @@
     text-align: center;
 
     &--img-wrapper {
-      width: 20%;
+      width: 15%;
       height: 16rem; // controls image height
       padding: 1rem 0;
     }
 
-    &--title { width: 45%; }
+    &--title { width: 40%; }
     &--price { width: 15%; }
-    &--add-to-cart {
+    
+    &--add-to-basket {
       width: 20%;
       &-button { font-family: Poppins; }
+    }
+
+    &--remove {
+      width: 10%;
+
+      &-icon {
+        background-color: $white;
+        border: none;
+        font-size: 2rem; // same as navigation icon font-size
+        &:hover,
+        &.active {
+          cursor: pointer;
+          color: $color-primary;
+        }
+      }
     }
   }
 

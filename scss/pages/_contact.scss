@@ -29,6 +29,15 @@
   &__text { margin-bottom: 5rem; }
 
 
+  &__success {
+    @include display-flex;
+    align-self: center;
+    color: $color-primary;
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+  }
+
+
   &__icon-wrapper {
     @include display-flex;
     margin-bottom: 3rem;

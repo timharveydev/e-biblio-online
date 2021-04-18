@@ -128,7 +128,8 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           <h4 class="wishlist__headings--cover">Cover</h4>
           <h4 class="wishlist__headings--title">Title</h4>
           <h4 class="wishlist__headings--price">Price</h4>
-          <h4 class="wishlist__headings--add-to-cart"></h4>
+          <h4 class="wishlist__headings--add-to-basket"></h4>
+          <h4 class="wishlist__headings--remove"></h4>
         </div>
 
 
@@ -147,8 +148,13 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           <p class="wishlist__item--price">£7.99</p>
 
           <!-- Add to Cart -->
-          <form class="wishlist__item--add-to-cart">
-            <button type="submit" class="wishlist__item--add-to-cart-button button--primary">Add to Basket</button>
+          <form class="wishlist__item--add-to-basket">
+            <button name="add-to-basket" type="submit" class="wishlist__item--add-to-basket-button button--primary">Add to Basket</button>
+          </form>
+
+          <!-- Remove -->
+          <form class="wishlist__item--remove">
+            <button name="delete" type="submit" class="wishlist__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
 
@@ -168,15 +174,20 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           <p class="wishlist__item--price">£7.99</p>
 
           <!-- Add to Cart -->
-          <form class="wishlist__item--add-to-cart">
-            <button type="submit" class="wishlist__item--add-to-cart-button button--primary">Add to Basket</button>
+          <form class="wishlist__item--add-to-basket">
+            <button name="add-to-basket" type="submit" class="wishlist__item--add-to-basket-button button--primary">Add to Basket</button>
+          </form>
+
+          <!-- Remove -->
+          <form class="wishlist__item--remove">
+            <button name="delete" type="submit" class="wishlist__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
       </div>
 
       <!-- Continue Shopping -->
       <div class="wishlist__continue-shopping">
-        <a href="books.php" class="wishlist__button button--positive button--large">Continue Shopping</a>
+        <a href="books.php" class="wishlist__button button--positive button--large">Continue Browsing</a>
       </div>
 
     </div>
