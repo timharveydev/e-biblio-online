@@ -195,9 +195,8 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
         <!-- Cover Image -->
         <!-- File name can't include apostrophies as they mess with SQL -->
-        <label for="image" class="form__label"><u>Upload Cover Image</u>
-        <br>
-        <span class="subtle">Files should be in .jpg, .jpeg or .png format and file names should only include characters a-z, A-Z and 0-9.</span></label>
+        <label for="image" class="form__label">Upload Cover Image</label>
+        <p class="form__subtle">Images must be sized to 300x480 pixels, with a fill colour of pure white (#FFFFFF).<br>Use this <a class="form__external-link" href="https://imageresizer.com/" target="_blank">Image Resizer Tool</a> to set these attributes before uploading an image.</p>
         <input name="image" id="image" type="file" class="form__file-upload-button" required>
 
         <!-- Featured -->

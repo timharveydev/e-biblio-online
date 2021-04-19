@@ -595,6 +595,15 @@ h6 {
   font-weight: 400;
 }
 
+.form__subtle {
+  font-weight: 400;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.form__external-link:hover {
+  color: #008B8B;
+}
+
 .form__error {
   font-weight: 600;
   font-size: 1.2rem;
@@ -666,6 +675,7 @@ h6 {
 }
 
 .form__file-upload-button {
+  display: block;
   margin: 1.5rem 0 2.5rem 0;
 }
 

@@ -121,7 +121,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
     <div class="basket__container container">
 
       <!-- Alert Message -->
-      <p class="basket__alert"><strong>Please note - </strong>you are currently checking out as a guest. Upon completion of your order you will receive a one-time download link to download your e-book(s). If you would like to gain access to your download link again in the future, please <a href="login_register.php?section=register">register as a member</a> before checking out.</p>
+      <p class="basket__alert"><strong>Please note - </strong>you are currently checking out as a guest. Upon completion of your order you will receive a one-time download link to download your e-book(s). If you would like to have the option to download your selected titles again in the future, please <a href="login_register.php?section=register">register as a member</a> before checking out.</p>
 
 
       <!-- Allows basket contents to overflow with scroll on mobile devices -->

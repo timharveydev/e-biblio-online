@@ -18,23 +18,25 @@ include 'connection.php';
 // Apostrophes replaced in strings to avoid SQL errors
 $title = str_replace("'", "&#39;", $_POST['title']);
 $author = str_replace("'", "&#39;", $_POST['author']);
-$category = str_replace("'", "", $_POST['category']); // Remove apostrophies alltogether as categories are hard coded - when refering to categories in the database e.g. "Children's", instead use "Childrens"
+$category = str_replace("'", "", $_POST['category']); // Apostrophies removed alltogether as categories are hard coded - when refering to categories in the database use "Childrens" instead of "Children's"
 $price = str_replace("'", "&#39;", $_POST['price']);
 $summary = str_replace("'", "&#39;", $_POST['summary']);
 $additionalInfo = str_replace("'", "&#39;", $_POST['additional-info']);
-$image = $_FILES['image']['name'];
+
+$imageName = str_replace("'", "", $_POST['title']); // Images are named using the book title with apostrophies removed
+$imageExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
 
 // Move uploaded image file to 'img/book_covers' directory
-move_uploaded_file($_FILES['image']['tmp_name'], "img/book_covers/$image");
+move_uploaded_file($_FILES['image']['tmp_name'], "img/book_covers/$imageName" . "." . "$imageExtension");
 
 
 // Insert data into DB (only adding featured attribute if checkbox selected)
 if (empty($_POST['featured'])) {
-  mysqli_query($connection, "INSERT INTO books (title, author, category, price, summary, additional_info, cover_image) VALUES ('$title', '$author', '$category', '$price', '$summary', '$additionalInfo', '$image')");
+  mysqli_query($connection, "INSERT INTO books (title, author, category, price, summary, additional_info, cover_image) VALUES ('$title', '$author', '$category', '$price', '$summary', '$additionalInfo', '$imageName.$imageExtension')");
 }
 else {
-  mysqli_query($connection, "INSERT INTO books (title, author, category, price, summary, additional_info, cover_image, featured) VALUES ('$title', '$author', '$category', '$price', '$summary', '$additionalInfo', '$image', 'featured')");
+  mysqli_query($connection, "INSERT INTO books (title, author, category, price, summary, additional_info, cover_image, featured) VALUES ('$title', '$author', '$category', '$price', '$summary', '$additionalInfo', '$imageName.$imageExtension', 'featured')");
 }
 
 
