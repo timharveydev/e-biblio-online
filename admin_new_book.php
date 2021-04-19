@@ -147,7 +147,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
         <!-- Title -->
         <label for="title" class="form__label">Title</label>
-        <input name="title" id="title" type="text" class="form__text-input" maxlength="40" required>
+        <input name="title" id="title" type="text" class="form__text-input" maxlength="60" required>
 
         <!-- Author -->
         <label for="author" class="form__label">Author</label>
