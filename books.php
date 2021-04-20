@@ -2,8 +2,37 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+
+// Declare search term and category variables
+$searchTerm = '';
+$category = '';
+
+
+// Store search term from search bar, if set
+if (isset($_POST['search'])) {
+  // Replace apostrophe in string to avoid SQL errors
+  $searchTerm = str_replace("'", "&#39;", $_POST['searchTerm']);
+}
+
+
+// Store author's name, if set (will overwrite searchTerm above)
+if (isset($_GET['author'])) {
+  $searchTerm = $_GET['author'];
+}
+
+
+// Store selected category, if set
+if (isset($_GET['category'])) {
+  $category = $_GET['category'];
+}
 
 ?>
 
@@ -108,7 +137,19 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
     <div class="page-banner__bg-overlay"></div>
 
     <!-- Page Banner Title -->
-    <h1 class="page-banner__title">All Books</h1>
+    <!-- Title changes dynamically based on category selected by user -->
+    <?php
+
+      // If category is set, set heading equal to category
+      if ($category != '') {
+        echo "<h1 class='page-banner__title'>$category</h1>";
+      }
+      // If category is not set, set heading equal to 'All Books'
+      elseif ($category == '') {
+        echo "<h1 class='page-banner__title'>All Books</h1>";
+      }
+
+    ?>
   </div>
   
   
@@ -125,14 +166,19 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <h3 class="books__sidebar-heading">Categories</h3>
       </div>
 
+
       <!-- Search Bar -->
       <div class="books__column--wide">
+
         <!-- Search bar component -->
-        <form class="books__search-bar search-bar" method="POST">
+        <form class="books__search-bar search-bar" action="books.php" method="POST">
+
           <label for="searchbox" hidden>Search for title or author</label>
           <input type="text" name="searchTerm" class="search-bar__input" id="searchbox" placeholder="Search title or author ...">
+
           <!-- Search button for large devices -->
           <button type="submit" name="search" class="search-bar__button button--positive"><i class="fas fa-search"></i> Search</button>
+
           <!-- Search button for phones -->
           <button type="submit" name="search" class="search-bar__button--mobile button--primary"><i class="fas fa-search"></i></button>
         </form>
@@ -153,234 +199,197 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <div class="books__column--narrow">
         <div class="books__categories-list">
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php" class="books__category-item"> 
             <p class="books__category-name">All Books</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Adventure" class="books__category-item">
             <p class="books__category-name">Adventure</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Adventure'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Animals" class="books__category-item">
             <p class="books__category-name">Animals</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Animals'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Art" class="books__category-item">
             <p class="books__category-name">Art</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Art'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Biographies" class="books__category-item">
             <p class="books__category-name">Biographies</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Biographies'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Business" class="books__category-item">
             <p class="books__category-name">Business</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Business'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <!-- Categories with apostrophies should have the apostrophies removed before being used to search the DB, hence '?category=Childrens' in href -->
+          <a href="books.php?category=Childrens" class="books__category-item">
             <p class="books__category-name">Children's</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Childrens'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Classics" class="books__category-item">
             <p class="books__category-name">Classics</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Classics'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Crime" class="books__category-item">
             <p class="books__category-name">Crime</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Crime'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Computing" class="books__category-item">
             <p class="books__category-name">Computing</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Computing'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Education" class="books__category-item">
             <p class="books__category-name">Education</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Education'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Fantasy" class="books__category-item">
             <p class="books__category-name">Fantasy</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Fantasy'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Food & Drink" class="books__category-item">
             <p class="books__category-name">Food & Drink</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Food & Drink'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=History" class="books__category-item">
             <p class="books__category-name">History</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='History'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Horror" class="books__category-item">
             <p class="books__category-name">Horror</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Horror'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Lifestyle" class="books__category-item">
             <p class="books__category-name">Lifestyle</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Lifestyle'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Philosophy" class="books__category-item">
             <p class="books__category-name">Philosophy</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Philosophy'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Popular Science" class="books__category-item">
             <p class="books__category-name">Popular Science</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Popular Science'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Romance" class="books__category-item">
             <p class="books__category-name">Romance</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Romance'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Sci-Fi" class="books__category-item">
             <p class="books__category-name">Sci-Fi</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Sci-Fi'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Space" class="books__category-item">
             <p class="books__category-name">Space</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Space'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Sports" class="books__category-item">
             <p class="books__category-name">Sports</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Sports'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a class="books__category-item">
+          <a href="books.php?category=Travel" class="books__category-item">
             <p class="books__category-name">Travel</p>
-            <p class="books__category-number">(0)</p>
+            <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Travel'")); ?>
+            <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
         </div>
       </div>
+
 
       <!-- Book Grid -->
       <div class="books__column--wide">
         <div class="books__book-grid book-grid">
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+        <!-- Individual book tiles created dynamically by PHP -->
+        <?php
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+        // If search term is not set, fetch all books
+        if ($searchTerm == '') {
+          $query = mysqli_query($connection, "SELECT * FROM books ORDER BY author");
+        }
+        // If search term is set, fetch only relevant books
+        elseif ($searchTerm != '') {
+          $query = mysqli_query($connection, "SELECT * FROM books WHERE title LIKE '%$searchTerm%' OR author LIKE '%$searchTerm%' ORDER BY author");
+        }
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+        // If category is set, fetch only books from that category
+        if ($category != '') {
+          $query = mysqli_query($connection, "SELECT * FROM books WHERE category='$category' ORDER BY author");
+        }
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+        // Echo apology if no books found
+        if (mysqli_num_rows($query) == 0) {
+          echo "<p class='book-grid__no-results'>No books found - please check back again soon.</p>";
+        }
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+        // Create book tiles for each title found
+        while ($row = mysqli_fetch_array($query)) {
+          extract($row);
 
-          <!-- Book Grid Item -->
-          <div class="book-grid__item">
-            <a href="book_details.php" class="book-grid__link">
-              <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-              <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-            </a>
-            <a href="books.php" class="book-grid__link">
-              <h5 class="book-grid__author">J K Rowling</h5>
-            </a>
-            <h5 class="book-grid__price">£7.99</h5>
-          </div>
+          echo "<!-- Book Grid Item -->";
+          echo "<div class='book-grid__item'>";
+          echo "  <a href='book_details.php?id=$ID' class='book-grid__link'>";
+          echo "    <img class='book-grid__img' src='img/book_covers/$cover_image' alt='$title'>";
+          echo "    <h4 class='book-grid__title'>$title</h4>";
+          echo "  </a>";
+          echo "  <div class='book-grid__flex-wrapper'>";
+          echo "    <a href='books.php?author=$author' class='book-grid__link'>";
+          echo "      <h5 class='book-grid__author'>$author</h5>";
+          echo "    </a>";
+          echo "    <h5 class='book-grid__price'>£$price</h5>";
+          echo "  </div>";
+          echo "</div>";
+        }
+
+        ?>
 
         </div>
       </div>

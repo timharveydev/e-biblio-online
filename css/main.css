@@ -861,9 +861,18 @@ h6 {
   text-align: center;
 }
 
+.book-grid__no-results {
+  margin-top: 6rem;
+}
+
 .book-grid__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   max-width: 24rem;
   margin: 0 2rem;
+  min-height: 58rem;
 }
 
 .book-grid__link {
@@ -899,6 +908,7 @@ h6 {
   .book-grid__item {
     max-width: 20rem;
     margin: 0 1.2rem;
+    min-height: 54rem;
   }
   .book-grid__img {
     height: 32rem;
@@ -1628,6 +1638,7 @@ h6 {
   padding: 0 1rem;
   font-weight: 600;
   border-bottom: 2px dotted #DDD;
+  text-decoration: none;
   cursor: pointer;
   transition: all 150ms ease-in-out 0s;
 }

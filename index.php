@@ -2,6 +2,11 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
@@ -137,65 +142,33 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <!-- Book Grid -->
       <div class="featured__book-grid book-grid">
 
-        <!-- Book Grid Item -->
-        <div class="book-grid__item">
-          <a href="book_details.php" class="book-grid__link">
-            <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-            <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-          </a>
-          <a href="books.php" class="book-grid__link">
-            <h5 class="book-grid__author">J K Rowling</h5>
-          </a>
-          <h5 class="book-grid__price">£7.99</h5>
-        </div>
 
-        <!-- Book Grid Item -->
-        <div class="book-grid__item">
-          <a href="book_details.php" class="book-grid__link">
-            <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-            <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-          </a>
-          <a href="books.php" class="book-grid__link">
-            <h5 class="book-grid__author">J K Rowling</h5>
-          </a>
-          <h5 class="book-grid__price">£7.99</h5>
-        </div>
+        <!-- Individual book tiles created dynamically by PHP -->
+        <?php
 
-        <!-- Book Grid Item -->
-        <div class="book-grid__item">
-          <a href="book_details.php" class="book-grid__link">
-            <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-            <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-          </a>
-          <a href="books.php" class="book-grid__link">
-            <h5 class="book-grid__author">J K Rowling</h5>
-          </a>
-          <h5 class="book-grid__price">£7.99</h5>
-        </div>
+          // Get featured books from DB
+          $query = mysqli_query($connection, "SELECT * FROM books WHERE featured='featured' ORDER BY author");
 
-        <!-- Book Grid Item -->
-        <div class="book-grid__item">
-          <a href="book_details.php" class="book-grid__link">
-            <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-            <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-          </a>
-          <a href="books.php" class="book-grid__link">
-            <h5 class="book-grid__author">J K Rowling</h5>
-          </a>
-          <h5 class="book-grid__price">£7.99</h5>
-        </div>
+          // Create book tiles for each title found
+          while ($row = mysqli_fetch_array($query)) {
+            extract($row);
 
-        <!-- Book Grid Item -->
-        <div class="book-grid__item">
-          <a href="book_details.php" class="book-grid__link">
-            <img class="book-grid__img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-            <h4 class="book-grid__title">Harry Potter and the Philosopher's Stone</h4>
-          </a>
-          <a href="books.php" class="book-grid__link">
-            <h5 class="book-grid__author">J K Rowling</h5>
-          </a>
-          <h5 class="book-grid__price">£7.99</h5>
-        </div>
+            echo "<!-- Book Grid Item -->";
+            echo "<div class='book-grid__item'>";
+            echo "  <a href='book_details.php?id=$ID' class='book-grid__link'>";
+            echo "    <img class='book-grid__img' src='img/book_covers/$cover_image' alt='$title'>";
+            echo "    <h4 class='book-grid__title'>$title</h4>";
+            echo "  </a>";
+            echo "  <div class='book-grid__flex-wrapper'>";
+            echo "    <a href='books.php?author=$author' class='book-grid__link'>";
+            echo "      <h5 class='book-grid__author'>$author</h5>";
+            echo "    </a>";
+            echo "    <h5 class='book-grid__price'>£$price</h5>";
+            echo "  </div>";
+            echo "</div>";
+          }
+
+        ?>
 
       </div>
 

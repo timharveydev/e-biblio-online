@@ -20,9 +20,13 @@
   width: 100%;
   text-align: center;
 
+  &__no-results { margin-top: 6rem; }
+
   &__item {
+    @include display-flex($direction: column, $justify: space-between);
     max-width: 24rem;
     margin: 0 2rem;
+    min-height: 58rem; // Ensures book title, author and price are horizontally aligned across books with both single and double line titles.
   }
 
   &__link {
@@ -58,6 +62,7 @@
   .book-grid__item {
     max-width: 20rem;
     margin: 0 1.2rem;
+    min-height: 54rem; // Ensures book title, author and price are horizontally aligned across books with both single and double line titles.
   }
 
   .book-grid__img { height: 32rem; }
