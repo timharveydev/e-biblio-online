@@ -135,7 +135,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         ?>
 
         <!-- Form Component -->
-        <form class="contact__form form" method="POST">
+        <form class="contact__form form" action="contact.php?success=success" method="POST">
 
           <!-- Name -->
           <label for="Name" class="form__label">Name</label>
