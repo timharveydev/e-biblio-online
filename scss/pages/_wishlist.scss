@@ -43,7 +43,12 @@
       padding: 1rem 0;
     }
 
-    &--title { width: 40%; }
+    &--title {
+      width: 40%;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+
     &--price { width: 15%; }
     
     &--add-to-basket {

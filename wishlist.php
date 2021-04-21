@@ -137,12 +137,12 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <div class="wishlist__item">
 
           <!-- Cover Image -->
-          <div class="wishlist__item--img-wrapper">
+          <a href="book_details.php" class="wishlist__item--img-wrapper">
             <img class="wishlist__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+          </a>
 
           <!-- Book Title -->
-          <p class="wishlist__item--title">Harry Potter and the Philosopher's Stone</p>
+          <a href="book_details.php" class="wishlist__item--title">Harry Potter and the Philosopher's Stone</a>
 
           <!-- Price -->
           <p class="wishlist__item--price">£7.99</p>
@@ -163,12 +163,12 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <div class="wishlist__item">
 
           <!-- Cover Image -->
-          <div class="wishlist__item--img-wrapper">
+          <a href="book_details.php" class="wishlist__item--img-wrapper">
             <img class="wishlist__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+          </a>
 
           <!-- Book Title -->
-          <p class="wishlist__item--title">Harry Potter and the Philosopher's Stone</p>
+          <a href="book_details.php" class="wishlist__item--title">Harry Potter and the Philosopher's Stone</a>
 
           <!-- Price -->
           <p class="wishlist__item--price">£7.99</p>

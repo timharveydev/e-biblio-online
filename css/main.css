@@ -1323,6 +1323,11 @@ h6 {
 
 .basket__item--title {
   width: 45%;
+  text-decoration: none;
+}
+
+.basket__item--title:hover {
+  text-decoration: underline;
 }
 
 .basket__item--price {
@@ -2217,6 +2222,11 @@ h6 {
 
 .wishlist__item--title {
   width: 40%;
+  text-decoration: none;
+}
+
+.wishlist__item--title:hover {
+  text-decoration: underline;
 }
 
 .wishlist__item--price {

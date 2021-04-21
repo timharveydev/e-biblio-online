@@ -145,13 +145,13 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <!-- Basket Item -->
         <div class="basket__item">
 
-          <!-- Cover Image -->
-          <div class="basket__item--img-wrapper">
+          <!-- Cover Image --> <!-- HREF NEEDS TO BE FILLED IN WITH ID ARGUMENT FOR IMG AND TITLE -->
+          <a href="book_details.php" class="basket__item--img-wrapper">
             <img class="basket__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+          </a>
 
           <!-- Book Title -->
-          <p class="basket__item--title">Harry Potter and the Philosopher's Stone</p>
+          <a href="book_details.php" class="basket__item--title">Harry Potter and the Philosopher's Stone</a>
 
           <!-- Price -->
           <p class="basket__item--price">£7.99</p>
@@ -167,12 +167,12 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <div class="basket__item">
 
           <!-- Cover Image -->
-          <div class="basket__item--img-wrapper">
+          <a href="book_details.php" class="basket__item--img-wrapper">
             <img class="basket__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+          </a>
 
           <!-- Book Title -->
-          <p class="basket__item--title">Harry Potter and the Philosopher's Stone</p>
+          <a href="book_details.php" class="basket__item--title">Harry Potter and the Philosopher's Stone</a>
 
           <!-- Price -->
           <p class="basket__item--price">£7.99</p>
