@@ -157,31 +157,11 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           <p class="basket__item--price">£7.99</p>
 
           <!-- Remove -->
-          <form class="basket__item--remove">
+          <form class="basket__item--remove" action="basket.php" method="POST">
             <button name="delete" type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
           </form>
         </div>
 
-
-        <!-- Basket Item -->
-        <div class="basket__item">
-
-          <!-- Cover Image -->
-          <a href="book_details.php" class="basket__item--img-wrapper">
-            <img class="basket__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </a>
-
-          <!-- Book Title -->
-          <a href="book_details.php" class="basket__item--title">Harry Potter and the Philosopher's Stone</a>
-
-          <!-- Price -->
-          <p class="basket__item--price">£7.99</p>
-
-          <!-- Remove -->
-          <form class="basket__item--remove">
-            <button name="delete" type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
-          </form>
-        </div>
       </div>
 
 

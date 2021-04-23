@@ -6,6 +6,9 @@ session_start();
 // Connection
 include 'connection.php';
 
+// Fetch basket contents
+include 'fetch_basket.php';
+
 
 // If user tries to access page without book ID in URL, redirect to index.php
 if (!isset($_GET['id'])) {
@@ -18,6 +21,19 @@ if (!isset($_GET['id'])) {
 
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+
+// ADD TO BASKET
+// Append current book ID to basketContents array when 'Add to Basket' button clicked
+if (isset($_POST['addToBasket'])) {
+  $_SESSION['basketContents'][] = $_GET['id'];
+
+  // If user logged in, serialize basketContents array and store in DB
+  if (isset($_SESSION['currentUser'])) {
+    $contents = serialize($_SESSION['basketContents']);
+    mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+  }
+}
 
 ?>
 
@@ -161,10 +177,13 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
       <!-- Text Content -->
       <div class="book-details__column--wide">
+
         <!-- Book Title -->
         <h3 class="book-details__heading"><?php echo $title; ?></h3>
+
         <!-- Author -->
         <h5 class="book-details__author"><?php echo $author; ?></h5>
+
         <!-- Price -->
         <h4 class="book-details__price">£<?php echo $price; ?></h4>
 
@@ -177,11 +196,36 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <!-- Additional Info -->
         <p class="book-details__additional-info"><?php echo $additional_info; ?></p>
 
-        <!-- Buttons -->
-        <div class="book-details__button-wrapper">
-          <a href="basket.php" class="book-details__button button--primary">Add to Basket</a>
-          <a href="wishlist.php" class="book-details__button button--positive">Add to Wishlist</a>
-        </div>
+
+        <!-- Buttons (created by PHP) -->
+        <form class="book-details__button-wrapper" action='book_details.php?id=<?php echo "$_GET[id]"; ?>' method="POST">
+
+          <?php
+
+          // ADD TO BASKET
+          // If book ID is already in basketContents array, inform user that item is already in basket and disable 'Add to Basket' button
+          if (isset($_SESSION['basketContents']) && in_array($_GET['id'], $_SESSION['basketContents'])) {
+            echo 'item already in basket';
+          }
+          // If book ID is NOT in basketContents array, display 'Add to Basket' button
+          else {
+            echo '<button name="addToBasket" type="submit" class="book-details__button button--primary button--large">Add to Basket</button>';
+          }
+
+
+          // ADD TO WISHLIST
+          // If book ID is already in wishlistContents array, inform user that item is already in wishlist and disable 'Add to Wishlist' button
+          if (isset($_SESSION['wishlistContents']) && in_array($_GET['id'], $_SESSION['wishlistContents'])) {
+            echo 'item already in wishlist';
+          }
+          // If book ID is NOT in wishlistContents array, display 'Add to Wishlist' button
+          else {
+            echo '<button name="addToWishlist" type="submit" class="book-details__button button--positive button--large">Add to Wishlist</button>';
+          }
+
+          ?>
+          
+        </form>
       </div>
 
 
