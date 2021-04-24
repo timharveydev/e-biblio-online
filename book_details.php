@@ -9,6 +9,9 @@ include 'connection.php';
 // Fetch basket contents
 include 'fetch_basket.php';
 
+// Fetch wishlist contents
+include 'fetch_wishlist.php';
+
 
 // If user tries to access page without book ID in URL, redirect to index.php
 if (!isset($_GET['id'])) {
@@ -33,6 +36,19 @@ if (isset($_POST['addToBasket'])) {
     $contents = serialize($_SESSION['basketContents']);
     mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
   }
+}
+
+
+// ADD TO WISHLIST
+// Append current book ID to wishlistContents array when 'Add to Wishlist' button clicked
+// Note - 'Add to Wishlist' button only clickable by logged-in users
+if (isset($_POST['addToWishlist'])) {
+  $_SESSION['wishlistContents'][] = $_GET['id'];
+
+  // Serialize wishlistContents array and store in DB
+  $contents = serialize($_SESSION['wishlistContents']);
+  mysqli_query($connection, "UPDATE users SET wishlist='$contents' WHERE username='$_SESSION[currentUser]'");
+
 }
 
 ?>
@@ -203,9 +219,9 @@ if (isset($_POST['addToBasket'])) {
           <?php
 
           // ADD TO BASKET
-          // If book ID is already in basketContents array, inform user that item is already in basket and disable 'Add to Basket' button
+          // If book ID is already in basketContents array, display 'Added to basket' text and disable 'Add to Basket' button
           if (isset($_SESSION['basketContents']) && in_array($_GET['id'], $_SESSION['basketContents'])) {
-            echo 'item already in basket';
+            echo '<p class="book-details__button button--success-text button--large">Added to basket</p>';
           }
           // If book ID is NOT in basketContents array, display 'Add to Basket' button
           else {
@@ -213,13 +229,13 @@ if (isset($_POST['addToBasket'])) {
           }
 
 
-          // ADD TO WISHLIST
-          // If book ID is already in wishlistContents array, inform user that item is already in wishlist and disable 'Add to Wishlist' button
+          // ADD TO WISHLIST - feature only available to logged-in users
+          // If book ID is already in wishlistContents array, display 'Added to wishlist' text and disable 'Add to Wishlist' button
           if (isset($_SESSION['wishlistContents']) && in_array($_GET['id'], $_SESSION['wishlistContents'])) {
-            echo 'item already in wishlist';
+            echo '<p class="book-details__button button--success-text button--large">Added to wishlist</p>';
           }
-          // If book ID is NOT in wishlistContents array, display 'Add to Wishlist' button
-          else {
+          // If book ID is NOT in wishlistContents array but user is logged in, display 'Add to Wishlist' button
+          elseif (isset($_SESSION['currentUser'])) {
             echo '<button name="addToWishlist" type="submit" class="book-details__button button--positive button--large">Add to Wishlist</button>';
           }
 

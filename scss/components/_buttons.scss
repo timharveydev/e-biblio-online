@@ -59,6 +59,21 @@
 }
 
 
+// Replaces button with text in primary color
+.button--success-text {
+  display: inline-block;
+  padding: 0.7rem 3rem 0.6rem 3rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  color: $black;
+}
+
+
 // To be added in addition to one of the other button classes
 .button--large {
   font-size: 1.4rem;

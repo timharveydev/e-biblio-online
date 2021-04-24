@@ -2,8 +2,36 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+// Fetch wishlist contents
+include 'fetch_wishlist.php';
+
+
+// If user tries to access page without logging in
+if (!isset($_SESSION['currentUser'])) {
+  echo '<script type="text/javascript">'; 
+  echo 'alert("You must be logged in to view this page.");';
+  echo 'window.location.href = "index.php";';
+ echo '</script>';
+}
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+
+// ADD TO BASKET
+// Append book ID to basketContents array when 'Add to Basket' button clicked
+if (isset($_POST['addToBasket'])) {
+  $_SESSION['basketContents'][] = $_GET['id'];
+
+  // Serialize basketContents array and store in DB
+  $contents = serialize($_SESSION['basketContents']);
+  mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+}
 
 ?>
 
@@ -133,56 +161,62 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         </div>
 
 
-        <!-- Wishlist Item -->
-        <div class="wishlist__item">
+        <!-- Wishlist Items (displayed by PHP) -->
+        <?php
 
-          <!-- Cover Image -->
-          <a href="book_details.php" class="wishlist__item--img-wrapper">
-            <img class="wishlist__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </a>
+        // If wishlistContents array not set - i.e. nothing has been added to wishlist - display 'Wishlist empty' message
+        if (!isset($_SESSION['wishlistContents'])) {
+          echo '<p class="wishlist__empty-alert">Wishlist is empty</p>';
+        }
+        // If wishlistContents array contains items, create and populate 'Wishlist Item' div for each
+        else {
+          // Get IDs from wishlistContents array and extract results
+          foreach ($_SESSION['wishlistContents'] as $id) {
+            $query = mysqli_query($connection, "SELECT * FROM books WHERE ID=$id");
+            $result = mysqli_fetch_array($query);
+            extract($result);
 
-          <!-- Book Title -->
-          <a href="book_details.php" class="wishlist__item--title">Harry Potter and the Philosopher's Stone</a>
+            // Echo wishlist Item div
+            echo "<!-- Wishlist Item -->";
+            echo "<div class='wishlist__item'>";
 
-          <!-- Price -->
-          <p class="wishlist__item--price">£7.99</p>
+            echo "  <!-- Cover Image -->";
+            echo "  <a href='book_details.php?id=$id' class='wishlist__item--img-wrapper'>";
+            echo "    <img class='wishlist__item--img' src='img/book_covers/$cover_image' alt='$title'>";
+            echo "  </a>";
 
-          <!-- Add to Cart -->
-          <form class="wishlist__item--add-to-basket">
-            <button name="add-to-basket" type="submit" class="wishlist__item--add-to-basket-button button--primary">Add to Basket</button>
-          </form>
+            echo "  <!-- Book Title -->";
+            echo "  <a href='book_details.php?id=$id' class='wishlist__item--title'>$title</a>";
 
-          <!-- Remove -->
-          <form class="wishlist__item--remove">
-            <button name="delete" type="submit" class="wishlist__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
-          </form>
-        </div>
+            echo "  <!-- Price -->";
+            echo "  <p class='wishlist__item--price'>£$price</p>";
 
 
-        <!-- Wishlist Item -->
-        <div class="wishlist__item">
+            // ADD TO BASKET BUTTON
+            // If book ID is already in basketContents array, display 'Added to basket' text and disable 'Add to Basket' button
+            if (isset($_SESSION['basketContents']) && in_array($id, $_SESSION['basketContents'])) {
+              echo '<p class="wishlist__item--add-to-basket button--success-text">Added to basket</p>';
+            }
+            // If book ID is NOT in basketContents array, display 'Add to Basket' button
+            else {
+              echo "  <!-- Add to Basket -->";
+              echo "  <form class='wishlist__item--add-to-basket' action='wishlist.php?id=$id' method='POST'>";
+              echo "    <button name='addToBasket' type='submit' class='wishlist__item--add-to-basket-button button--primary'>Add to Basket</button>";
+              echo "  </form>";
+            }
 
-          <!-- Cover Image -->
-          <a href="book_details.php" class="wishlist__item--img-wrapper">
-            <img class="wishlist__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </a>
 
-          <!-- Book Title -->
-          <a href="book_details.php" class="wishlist__item--title">Harry Potter and the Philosopher's Stone</a>
+            echo "  <!-- Remove Icon -->";
+            echo "  <form class='wishlist__item--remove' action='wishlist.php' method='POST'>";
+            echo "    <button name='delete' type='submit' class='wishlist__item--remove-icon'><i class='fas fa-trash-alt'></i></button>";
+            echo "  </form>";
 
-          <!-- Price -->
-          <p class="wishlist__item--price">£7.99</p>
+            echo "</div>";
+          }
+        }
 
-          <!-- Add to Cart -->
-          <form class="wishlist__item--add-to-basket">
-            <button name="add-to-basket" type="submit" class="wishlist__item--add-to-basket-button button--primary">Add to Basket</button>
-          </form>
+        ?>
 
-          <!-- Remove -->
-          <form class="wishlist__item--remove">
-            <button name="delete" type="submit" class="wishlist__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
-          </form>
-        </div>
       </div>
 
       <!-- Continue Shopping -->

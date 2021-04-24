@@ -16,12 +16,20 @@ include 'connection.php';
 
 // Automatically login if $_SESSION['username'] is already set - i.e. if the user has just completed the registration form
 if (isset($_SESSION['username'])) {
+
   // Set current user
   $_SESSION['currentUser'] = $_SESSION['username'];
+
   // Set admin status
   $query = mysqli_query($connection, "SELECT admin FROM users WHERE username='$_SESSION[username]'");
   $result = mysqli_fetch_array($query);
   $_SESSION['admin'] = $result['admin'];
+
+  // Add current basket contents to DB so they are not lost after logging in
+  if (isset($_SESSION['basketContents'])) {
+    $contents = serialize($_SESSION['basketContents']);
+    mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+  }
   
   header("Location: index.php");
   exit();
@@ -63,8 +71,13 @@ else {
     // Set admin status
     $query = mysqli_query($connection, "SELECT admin FROM users WHERE username='$_SESSION[username]'");
     $result = mysqli_fetch_array($query);
-
     $_SESSION['admin'] = $result['admin'];
+
+    // Add current basket contents to DB so they are not lost after logging in
+    if (isset($_SESSION['basketContents'])) {
+      $contents = serialize($_SESSION['basketContents']);
+      mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+    }
 
 
     // Redirect to index page (regular users) or admin panel (admin users)

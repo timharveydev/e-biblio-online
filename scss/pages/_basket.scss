@@ -40,6 +40,12 @@
   }
 
 
+  &__empty-alert {
+    text-align: center;
+    padding: 8rem 0;
+  }
+
+
   &__item {
     @include display-flex;
     width: 100%;
@@ -69,7 +75,7 @@
         &:hover,
         &.active {
           cursor: pointer;
-          color: $color-primary;
+          color: $color-warning;
         }
       }
     }

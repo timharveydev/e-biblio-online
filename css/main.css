@@ -566,6 +566,19 @@ h6 {
   outline: 0;
 }
 
+.button--success-text {
+  display: inline-block;
+  padding: 0.7rem 3rem 0.6rem 3rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  color: #3C3C3C;
+}
+
 .button--large {
   font-size: 1.4rem;
   padding: 1.2rem 4.4rem 1.1rem 4.4rem;
@@ -1306,6 +1319,11 @@ h6 {
   width: 15%;
 }
 
+.basket__empty-alert {
+  text-align: center;
+  padding: 8rem 0;
+}
+
 .basket__item {
   display: flex;
   flex-direction: row;
@@ -1346,7 +1364,7 @@ h6 {
 
 .basket__item--remove-icon:hover, .basket__item--remove-icon.active {
   cursor: pointer;
-  color: #008B8B;
+  color: #F97068;
 }
 
 .basket__buttons {
@@ -2205,6 +2223,11 @@ h6 {
   width: 10%;
 }
 
+.wishlist__empty-alert {
+  text-align: center;
+  padding: 8rem 0;
+}
+
 .wishlist__item {
   display: flex;
   flex-direction: row;
@@ -2253,7 +2276,7 @@ h6 {
 
 .wishlist__item--remove-icon:hover, .wishlist__item--remove-icon.active {
   cursor: pointer;
-  color: #008B8B;
+  color: #F97068;
 }
 
 .wishlist__continue-shopping {

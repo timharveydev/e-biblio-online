@@ -2,6 +2,14 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+// Fetch basket contents
+include 'fetch_basket.php';
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
@@ -141,26 +149,46 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           <h4 class="basket__headings--remove">Remove</h4>
         </div>
 
+        <!-- Basket Items (displayed by PHP) -->
+        <?php
 
-        <!-- Basket Item -->
-        <div class="basket__item">
+        // If basketContents array not set - i.e. nothing has been added to basket - display 'Basket empty' message
+        if (!isset($_SESSION['basketContents'])) {
+          echo '<p class="basket__empty-alert">Basket is empty</p>';
+        }
+        // If basketContents array contains items, create and populate 'Basket Item' div for each
+        else {
+          // Get IDs from basketContents array and extract results
+          foreach ($_SESSION['basketContents'] as $id) {
+            $query = mysqli_query($connection, "SELECT * FROM books WHERE ID=$id");
+            $result = mysqli_fetch_array($query);
+            extract($result);
 
-          <!-- Cover Image --> <!-- HREF NEEDS TO BE FILLED IN WITH ID ARGUMENT FOR IMG AND TITLE -->
-          <a href="book_details.php" class="basket__item--img-wrapper">
-            <img class="basket__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </a>
+            // Echo basket Item div
+            echo "<!-- Basket Item -->";
+            echo "<div class='basket__item'>";
 
-          <!-- Book Title -->
-          <a href="book_details.php" class="basket__item--title">Harry Potter and the Philosopher's Stone</a>
+            echo "  <!-- Cover Image -->";
+            echo "  <a href='book_details.php?id=$id' class='basket__item--img-wrapper'>";
+            echo "    <img class='basket__item--img' src='img/book_covers/$cover_image' alt='$title'>";
+            echo "  </a>";
 
-          <!-- Price -->
-          <p class="basket__item--price">£7.99</p>
+            echo "  <!-- Book Title -->";
+            echo "  <a href='book_details.php?id=$id' class='basket__item--title'>$title</a>";
 
-          <!-- Remove -->
-          <form class="basket__item--remove" action="basket.php" method="POST">
-            <button name="delete" type="submit" class="basket__item--remove-icon"><i class="fas fa-trash-alt"></i></button>
-          </form>
-        </div>
+            echo "  <!-- Price -->";
+            echo "  <p class='basket__item--price'>£$price</p>";
+
+            echo "  <!-- Remove Icon -->";
+            echo "  <form class='basket__item--remove' action='basket.php' method='POST'>";
+            echo "    <button name='delete' type='submit' class='basket__item--remove-icon'><i class='fas fa-trash-alt'></i></button>";
+            echo "  </form>";
+
+            echo "</div>";
+          }
+        }
+
+        ?>
 
       </div>
 
