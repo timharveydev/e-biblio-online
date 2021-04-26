@@ -10,7 +10,7 @@ include 'connection.php';
 include 'fetch_wishlist.php';
 
 
-// If user tries to access page without logging in
+// If user tries to access page without logging in, redirect to index.php
 if (!isset($_SESSION['currentUser'])) {
   echo '<script type="text/javascript">'; 
   echo 'alert("You must be logged in to view this page.");';
@@ -31,6 +31,22 @@ if (isset($_POST['addToBasket'])) {
   // Serialize basketContents array and store in DB
   $contents = serialize($_SESSION['basketContents']);
   mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+}
+
+
+// DELETE FROM WISHLIST
+// Remove book ID from wishlistContents array when 'Delete' icon clicked
+if (isset($_POST['delete'])) {
+  // Search wishlistContents array for book id - if found, unset that key
+  if (($key = array_search($_GET['removeID'], $_SESSION['wishlistContents'])) !== false) {
+    unset($_SESSION['wishlistContents'][$key]);
+  }
+
+  // If user logged in, serialize wishlistContents array and store in DB
+  if (isset($_SESSION['currentUser'])) {
+    $contents = serialize($_SESSION['wishlistContents']);
+    mysqli_query($connection, "UPDATE users SET wishlist='$contents' WHERE username='$_SESSION[currentUser]'");
+  }
 }
 
 ?>
@@ -164,8 +180,8 @@ if (isset($_POST['addToBasket'])) {
         <!-- Wishlist Items (displayed by PHP) -->
         <?php
 
-        // If wishlistContents array not set - i.e. nothing has been added to wishlist - display 'Wishlist empty' message
-        if (!isset($_SESSION['wishlistContents'])) {
+        // If wishlistContents array not set or is empty, display 'Wishlist empty' message
+        if (!isset($_SESSION['wishlistContents']) || empty($_SESSION['wishlistContents'])) {
           echo '<p class="wishlist__empty-alert">Wishlist is empty</p>';
         }
         // If wishlistContents array contains items, create and populate 'Wishlist Item' div for each
@@ -207,7 +223,7 @@ if (isset($_POST['addToBasket'])) {
 
 
             echo "  <!-- Remove Icon -->";
-            echo "  <form class='wishlist__item--remove' action='wishlist.php' method='POST'>";
+            echo "  <form class='wishlist__item--remove' action='wishlist.php?removeID=$id' method='POST'>";
             echo "    <button name='delete' type='submit' class='wishlist__item--remove-icon'><i class='fas fa-trash-alt'></i></button>";
             echo "  </form>";
 

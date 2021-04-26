@@ -2,6 +2,18 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+
+// If previous URL not set_purchase_history.php, redirect to index.php
+if ($_SESSION['redirect'] != '/e-biblio-online/set_purchase_history.php') {
+  header("Location: index.php");
+  exit();
+}
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
@@ -130,29 +142,24 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <p class="payment-confirmation__info">You can find the download links to your purchased e-book titles below. Simply click the link and your EPUB file will begin downloading.<br>Thanks for using our service and we hope you enjoy your purchase!</p>
 
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      <!-- Purchased Items (displayed by PHP) -->
+      <?php
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      // Get IDs from currentPurchases array and extract results (currentPurchases array declared in set_purchase_history.php)
+      foreach ($_SESSION['currentPurchases'] as $id) {
+        $query = mysqli_query($connection, "SELECT * FROM books WHERE ID=$id");
+        $result = mysqli_fetch_array($query);
+        extract($result);
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+        // Echo Purchased Item div
+        echo "<!-- Purchased Item -->";
+        echo "<div class='payment-confirmation__purchased-item'>";
+        echo "  <p class='payment-confirmation__title'>$title</p>";
+        echo "  <a href='' class='payment-confirmation__link'>Download</a>";
+        echo "</div>";
+      }
 
-      <!-- Download Item -->
-      <div class="payment-confirmation__purchased-item">
-        <p class="payment-confirmation__title">Harry Potter and the Philosopher's Stone</p>
-        <a href="#" class="payment-confirmation__link">Download</a>
-      </div>
+      ?>
 
     </div>
   </section>

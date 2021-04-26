@@ -13,6 +13,22 @@ include 'fetch_basket.php';
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
+
+// DELETE FROM BASKET
+// Remove book ID from basketContents array when 'Delete' icon clicked
+if (isset($_POST['delete'])) {
+  // Search basketContents array for book id - if found, unset that key
+  if (($key = array_search($_GET['removeID'], $_SESSION['basketContents'])) !== false) {
+    unset($_SESSION['basketContents'][$key]);
+  }
+
+  // If user logged in, serialize basketContents array and store in DB
+  if (isset($_SESSION['currentUser'])) {
+    $contents = serialize($_SESSION['basketContents']);
+    mysqli_query($connection, "UPDATE users SET basket='$contents' WHERE username='$_SESSION[currentUser]'");
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -152,8 +168,8 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <!-- Basket Items (displayed by PHP) -->
         <?php
 
-        // If basketContents array not set - i.e. nothing has been added to basket - display 'Basket empty' message
-        if (!isset($_SESSION['basketContents'])) {
+        // If basketContents array not set or is empty, display 'Basket empty' message
+        if (!isset($_SESSION['basketContents']) || empty($_SESSION['basketContents'])) {
           echo '<p class="basket__empty-alert">Basket is empty</p>';
         }
         // If basketContents array contains items, create and populate 'Basket Item' div for each
@@ -180,7 +196,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
             echo "  <p class='basket__item--price'>£$price</p>";
 
             echo "  <!-- Remove Icon -->";
-            echo "  <form class='basket__item--remove' action='basket.php' method='POST'>";
+            echo "  <form class='basket__item--remove' action='basket.php?removeID=$id' method='POST'>";
             echo "    <button name='delete' type='submit' class='basket__item--remove-icon'><i class='fas fa-trash-alt'></i></button>";
             echo "  </form>";
 
@@ -204,48 +220,34 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <!-- PayPal Checkout Button -->
         <div id="paypal-button-container" class="basket__button-wrapper"></div>
 
-        <!-- PayPal JavaScript SDK -->
-        <script src="https://www.paypal.com/sdk/js?client-id=AXCZiHEvIy82yFT5Clo2kg9XV01kDE1hIvsdN2JCbbD_bJ1-0BswedXCkgkyvpRUIcWXjELIDfrPowc_&currency=GBP&disable-funding=credit,card,sofort"></script>
-
-        <script>
-          paypal.Buttons({
-
-            // Button Styling
-            style: {
-              height: 49,
-              label: 'checkout'
-            },
-
-            // Set up the transaction
-            createOrder: function(data, actions) {
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: '7.99' // The total value of the shopping cart contents
-                  }
-                }]
-              });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-              return actions.order.capture().then(function(details) {
-                // Show a success message to the buyer then redirect to order confirmation
-                alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                window.location.replace("payment_confirmation.php");
-              });
-            }
-
-          // Render the PayPal button into #paypal-button-container
-          }).render('#paypal-button-container');
-        </script>
       </div>
 
 
-      <!-- Basket Total -->
+      <!-- Basket Total (calculated by PHP) -->
       <div class="basket__total">
-        <h3>Total</h3>
-        <h3>£7.99</h3>
+
+        <?php
+
+        // Declare totalPrice variable
+        $totalPrice = 0;
+
+        // Iterate through basketContents array, using book IDs to fetch prices from DB
+        if (isset($_SESSION['basketContents'])) {
+          foreach ($_SESSION['basketContents'] as $id) {
+            $query = mysqli_query($connection, "SELECT price FROM books WHERE ID=$id");
+            $result = mysqli_fetch_array($query);
+  
+            // Add price to totalPrice variable
+            $totalPrice += $result['price'];
+          }
+        }
+
+        // Echo total amount to pay
+        echo "<h3>Total</h3>";
+        echo "<h3>£$totalPrice</h3>";
+
+        ?>
+
       </div>
 
     </div>
@@ -308,6 +310,43 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
   <script type='text/javascript' src="js/navDropdown.js"></script>
   <script type='text/javascript' src="js/navScrollBackground.js"></script>
   <script type='text/javascript' src="js/burgerMenu.js"></script>
+
+  <!-- PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXCZiHEvIy82yFT5Clo2kg9XV01kDE1hIvsdN2JCbbD_bJ1-0BswedXCkgkyvpRUIcWXjELIDfrPowc_&currency=GBP&disable-funding=credit,card,sofort"></script>
+
+  <!-- PayPal Button Script -->
+  <script>
+    paypal.Buttons({
+
+      // Button Styling
+      style: {
+        height: 49,
+        label: 'checkout'
+      },
+
+      // Set up the transaction
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '<?php echo $totalPrice; ?>' // The total value of the shopping cart contents
+            }
+          }]
+        });
+      },
+
+      // Finalize the transaction
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          // Show a success message to the buyer then redirect to order confirmation
+          alert('Transaction completed by ' + details.payer.name.given_name + '!');
+          window.location.replace("set_purchase_history.php");
+        });
+      }
+
+    // Render the PayPal button into #paypal-button-container
+    }).render('#paypal-button-container');
+  </script>
 
 
   <!-- END DOCUMENT

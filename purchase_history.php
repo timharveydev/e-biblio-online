@@ -2,8 +2,34 @@
 
 session_start();
 
+
+// Connection
+include 'connection.php';
+
+
+// If user tries to access page without logging in, redirect to index.php
+if (!isset($_SESSION['currentUser'])) {
+  echo '<script type="text/javascript">'; 
+  echo 'alert("You must be logged in to view this page.");';
+  echo 'window.location.href = "index.php";';
+ echo '</script>';
+}
+
+
 // Stores current URL minus arguments
 $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
+
+
+// Fetch user's purchase history from DB, if logged in
+if (isset($_SESSION['currentUser'])) {
+  $query = mysqli_query($connection, "SELECT purchase_history FROM users WHERE username='$_SESSION[currentUser]'");
+  $result = mysqli_fetch_array($query);
+
+  // If purchase history not empty, unserialize contents and add to purchaseHistory array, which stores book IDs
+  if (!empty($result['purchase_history'])) {
+    $_SESSION['purchaseHistory'] = unserialize($result['purchase_history']);
+  }
+}
 
 ?>
 
@@ -127,51 +153,48 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
         <div class="purchase-history__headings">
           <h4 class="purchase-history__headings--cover">Cover</h4>
           <h4 class="purchase-history__headings--title">Title</h4>
-          <h4 class="purchase-history__headings--date">Purchase Date</h4>
           <h4 class="purchase-history__headings--download"></h4>
         </div>
 
 
-        <!-- Purchase History Item -->
-        <div class="purchase-history__item">
+        <!-- Purchase History Items (displayed by PHP) -->
+        <?php
 
-          <!-- Cover Image -->
-          <div class="purchase-history__item--img-wrapper">
-            <img class="purchase-history__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+        // If purchaseHistory array not set or is empty display 'You haven't purchased anything yet' message
+        if (!isset($_SESSION['purchaseHistory']) || empty($_SESSION['purchaseHistory'])) {
+          echo '<p class="purchase-history__empty-alert">You haven\'t purchased anything yet</p>';
+        }
+        // If purchaseHistory array contains items, create and populate 'Purchased Item' div for each
+        else {
+          // Get IDs from purchaseHistory array and extract results
+          foreach ($_SESSION['purchaseHistory'] as $id) {
+            $query = mysqli_query($connection, "SELECT * FROM books WHERE ID=$id");
+            $result = mysqli_fetch_array($query);
+            extract($result);
 
-          <!-- Book Title -->
-          <p class="purchase-history__item--title">Harry Potter and the Philosopher's Stone</p>
+            // Echo Purchased Item div
+            echo "<!-- Purchased Item -->";
+            echo "<div class='purchase-history__item'>";
 
-          <!-- Purchase Date -->
-          <p class="purchase-history__item--date">01/01/2001</p>
+            echo "  <!-- Cover Image -->";
+            echo "  <a href='book_details.php?id=$id' class='purchase-history__item--img-wrapper'>";
+            echo "    <img class='purchase-history__item--img' src='img/book_covers/$cover_image' alt='$title'>";
+            echo "  </a>";
 
-          <!-- Download -->
-          <form class="purchase-history__item--download">
-            <button type="submit" class="purchase-history__item--download-button button--primary">Download</button>
-          </form>
-        </div>
+            echo "  <!-- Book Title -->";
+            echo "  <a href='book_details.php?id=$id' class='purchase-history__item--title'>$title</a>";
 
+            echo "  <!-- Download Button -->";
+            echo "  <form class='purchase-history__item--download'>";
+            echo "    <button class='purchase-history__item--download-button button--primary'>Download</button>";
+            echo "  </form>";
 
-        <!-- Purchase History Item -->
-        <div class="purchase-history__item">
+            echo "</div>";
+          }
+        }
 
-          <!-- Cover Image -->
-          <div class="purchase-history__item--img-wrapper">
-            <img class="purchase-history__item--img" src="img/book_covers/placeholder.jpg" alt="placeholder">
-          </div>
+        ?>
 
-          <!-- Book Title -->
-          <p class="purchase-history__item--title">Harry Potter and the Philosopher's Stone</p>
-
-          <!-- Purchase Date -->
-          <p class="purchase-history__item--date">01/01/2001</p>
-
-          <!-- Download -->
-          <form class="purchase-history__item--download">
-            <button type="submit" class="purchase-history__item--download-button button--primary">Download</button>
-          </form>
-        </div>
       </div>
     </div>
   </section>
