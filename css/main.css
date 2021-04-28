@@ -770,8 +770,9 @@ h6 {
 */
 .data-table {
   width: 100%;
-  margin: 6rem 0;
+  margin-top: 8rem;
   text-align: center;
+  overflow-x: auto;
 }
 
 .data-table__form {
@@ -784,14 +785,15 @@ h6 {
 
 .data-table__heading {
   flex: 1;
+  min-width: 20rem;
   text-align: center;
   height: 3.8rem;
-  margin-right: 1px;
+  margin: 0 1px;
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 3.8rem;
   background-color: transparent;
-  color: #FFF;
+  color: #3C3C3C;
   border: none;
   outline: none;
   cursor: default;
@@ -799,56 +801,67 @@ h6 {
 
 .data-table__input {
   flex: 1;
+  min-width: 20rem;
   text-align: center;
   height: 5rem;
   padding: 0 1.5rem;
-  margin-right: 1px;
+  margin: 0 1px;
   font-size: 1.6rem;
   line-height: 5rem;
   background-color: transparent;
-  color: #FFF;
+  color: #3C3C3C;
   border: none;
 }
 
 .data-table__input:hover, .data-table__input:focus, .data-table__input:active {
-  outline: 1px solid #EEE;
+  outline: 1px solid #DDD;
 }
 
 .data-table__textarea {
   flex: 1;
+  min-width: 20rem;
   min-width: 26rem;
   height: 14rem;
   padding: 1rem;
-  margin: 0.8rem 1px 0.8rem 0;
+  margin: 0.8rem 1px;
   line-height: 2rem;
   background-color: transparent;
-  color: #FFF;
+  color: #3C3C3C;
   border: none;
 }
 
 .data-table__textarea:hover, .data-table__textarea:focus, .data-table__textarea:active {
-  outline: 1px solid #EEE;
+  outline: 1px solid #DDD;
+}
+
+.data-table__button {
+  margin: 0 1rem;
 }
 
 .data-table__button--hidden {
   visibility: hidden;
+  margin: 0 1rem;
+}
+
+.data-table__remove-icon {
+  min-width: 8rem;
+  background-color: #FFF;
+  border: none;
+  font-size: 2rem;
+}
+
+.data-table__remove-icon:hover, .data-table__remove-icon.active {
+  cursor: pointer;
+  color: #F97068;
 }
 
 .data-table hr {
   margin-bottom: 2rem;
+  min-width: 64rem;
 }
 
 .data-table .left-align {
   text-align: left;
-}
-
-/* MEDIA QUERIES
---------------------------------------------*/
-@media only screen and (max-width: 1400px) {
-  .data-table {
-    overflow-x: scroll;
-    outline: 2px solid #DDD;
-  }
 }
 
 /* BOOK GRID
@@ -1103,13 +1116,12 @@ h6 {
 /* ADMIN CHANGE USERS
 --------------------------------------------*/
 .admin-change-users {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 .admin-change-users__container {
   max-width: 1200px;
-  padding: 12rem 0;
 }
 
 .admin-change-users__description {
@@ -1124,7 +1136,7 @@ h6 {
 
 .admin-change-users__instruction {
   text-align: center;
-  padding: 1rem 0;
+  padding: 3rem 0 1rem 0;
 }
 
 .admin-change-users__success {
@@ -1140,13 +1152,12 @@ h6 {
 /* ADMIN CHANGE ADMINS
 --------------------------------------------*/
 .admin-change-admins {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 .admin-change-admins__container {
   max-width: 1200px;
-  padding: 12rem 0;
 }
 
 .admin-change-admins__description {
@@ -1161,7 +1172,7 @@ h6 {
 
 .admin-change-admins__instruction {
   text-align: center;
-  padding: 1rem 0;
+  padding: 3rem 0 1rem 0;
 }
 
 .admin-change-admins__success {
