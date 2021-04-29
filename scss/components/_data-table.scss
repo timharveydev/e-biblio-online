@@ -15,10 +15,12 @@
   text-align: center;
   overflow-x: auto;
 
+
   &__form {
     margin-bottom: 0.5rem;
     @include display-flex($justify: space-between);
   }
+
 
   &__heading {
     flex: 1;
@@ -34,7 +36,10 @@
     border: none;
     outline: none;
     cursor: default;
+
+    &.narrow { min-width: 15rem; }
   }
+
 
   &__input {
     flex: 1;
@@ -52,12 +57,36 @@
     &:hover,
     &:focus,
     &:active { outline: 1px solid $medium-grey; }
+
+    &.narrow { min-width: 15rem; }
   }
+
+
+  &__select {
+    flex: 1;
+    min-width: 20rem;
+    text-align: center;
+    height: 5rem; // Same as line height
+    padding: 0 1.5rem;
+    margin: 0 1px;
+    font-size: 1.6rem;
+    line-height: 5rem; // Same as height
+    background-color: transparent;
+    color: $black;
+    border: none;
+    outline: 1px solid $light-grey;
+
+    &:hover,
+    &:focus,
+    &:active { outline: 1px solid $medium-grey; }
+
+    &.narrow { min-width: 15rem; }
+  }
+
 
   &__textarea {
     flex: 1;
     min-width: 20rem;
-    min-width: 26rem;
     height: 14rem;
     padding: 1rem;
     margin: 0.8rem 1px;
@@ -65,11 +94,45 @@
     background-color: transparent;
     color: $black;
     border: none;
+    outline: 1px solid $light-grey;
 
     &:hover,
     &:focus,
     &:active { outline: 1px solid $medium-grey; }
   }
+
+
+  &__checkbox {
+    flex: 1;
+    min-width: 20rem;
+    padding: 0 6rem;
+    margin: 0 1px;
+
+    &.narrow {
+      min-width: 15rem;
+      padding: 0 3rem;
+    }
+  }
+
+
+  &__img {
+    flex: 1;
+    min-width: 20rem;
+    padding: 0 6rem;
+
+    &.narrow {
+      min-width: 15rem;
+      padding: 0 3rem;
+    }
+
+    &-anchor {
+      font-size: 1rem;
+      margin: 1.5rem 0;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+
 
   &__button { margin: 0 1rem; }
 
@@ -77,6 +140,7 @@
     visibility: hidden;
     margin: 0 1rem;
   }
+
 
   &__remove-icon {
     min-width: 8rem;
@@ -90,11 +154,6 @@
     }
   }
 
-  & hr {
-    margin-bottom: 2rem;
-    min-width: 64rem;
-  }
-
-  // To be given as a class to form inputs
-  & .left-align { text-align: left; }
+  
+  &__hr { margin-bottom: 2rem; }
 }

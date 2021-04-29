@@ -209,7 +209,7 @@ if (isset($_POST['delete'])) {
           <button type="submit" class="data-table__button--hidden data-table__remove-icon" value="Delete"><i class='fas fa-trash-alt'></i></button>
         </form>
 
-        <hr>
+        <hr class="data-table__hr admin-change-users__hr">
 
         <!-- Table content -> PHP creates separate form for each user, taking info from DB -->
         <?php
@@ -227,14 +227,18 @@ if (isset($_POST['delete'])) {
           extract($row);
           echo "<form class='data-table__form' action='admin_change_users.php' method='POST'>";
 
+          // Username
           echo "<label for='$username' hidden>username</label>";
           echo "<input name='username' type='text' id='$username' class='data-table__input' value='$username' maxlength='20' required>";
 
+          // Password ($ID$password makes passwords unique, in case multiple users have chosen the same password)
           echo "<label for='$ID$password' hidden>password</label>";
           echo "<input name='password' type='password' id='$ID$password' class='data-table__input' value='$password' minlength='8' maxlength='20' required>";
 
+          // ID (hidden)
           echo "<input name='id' type='hidden' class='data-table__input' value='$ID'>";
 
+          // Update & Delete buttons
           echo "<input name='update' type='submit' class='data-table__button button--primary' value='Update'>";
           echo "<button name='delete' type='submit' class='data-table__button data-table__remove-icon' value='Delete'><i class='fas fa-trash-alt'></i></button>";
           echo "</form>";

@@ -799,6 +799,10 @@ h6 {
   cursor: default;
 }
 
+.data-table__heading.narrow {
+  min-width: 15rem;
+}
+
 .data-table__input {
   flex: 1;
   min-width: 20rem;
@@ -817,10 +821,36 @@ h6 {
   outline: 1px solid #DDD;
 }
 
+.data-table__input.narrow {
+  min-width: 15rem;
+}
+
+.data-table__select {
+  flex: 1;
+  min-width: 20rem;
+  text-align: center;
+  height: 5rem;
+  padding: 0 1.5rem;
+  margin: 0 1px;
+  font-size: 1.6rem;
+  line-height: 5rem;
+  background-color: transparent;
+  color: #3C3C3C;
+  border: none;
+  outline: 1px solid #EEE;
+}
+
+.data-table__select:hover, .data-table__select:focus, .data-table__select:active {
+  outline: 1px solid #DDD;
+}
+
+.data-table__select.narrow {
+  min-width: 15rem;
+}
+
 .data-table__textarea {
   flex: 1;
   min-width: 20rem;
-  min-width: 26rem;
   height: 14rem;
   padding: 1rem;
   margin: 0.8rem 1px;
@@ -828,10 +858,44 @@ h6 {
   background-color: transparent;
   color: #3C3C3C;
   border: none;
+  outline: 1px solid #EEE;
 }
 
 .data-table__textarea:hover, .data-table__textarea:focus, .data-table__textarea:active {
   outline: 1px solid #DDD;
+}
+
+.data-table__checkbox {
+  flex: 1;
+  min-width: 20rem;
+  padding: 0 6rem;
+  margin: 0 1px;
+}
+
+.data-table__checkbox.narrow {
+  min-width: 15rem;
+  padding: 0 3rem;
+}
+
+.data-table__img {
+  flex: 1;
+  min-width: 20rem;
+  padding: 0 6rem;
+}
+
+.data-table__img.narrow {
+  min-width: 15rem;
+  padding: 0 3rem;
+}
+
+.data-table__img-anchor {
+  font-size: 1rem;
+  margin: 1.5rem 0;
+  text-decoration: none;
+}
+
+.data-table__img-anchor:hover {
+  text-decoration: underline;
 }
 
 .data-table__button {
@@ -855,13 +919,8 @@ h6 {
   color: #F97068;
 }
 
-.data-table hr {
+.data-table__hr {
   margin-bottom: 2rem;
-  min-width: 64rem;
-}
-
-.data-table .left-align {
-  text-align: left;
 }
 
 /* BOOK GRID
@@ -1149,6 +1208,10 @@ h6 {
   font-size: 1.8rem;
 }
 
+.admin-change-users__hr {
+  min-width: 64rem;
+}
+
 /* ADMIN CHANGE ADMINS
 --------------------------------------------*/
 .admin-change-admins {
@@ -1185,16 +1248,19 @@ h6 {
   font-size: 1.8rem;
 }
 
+.admin-change-admins__hr {
+  min-width: 64rem;
+}
+
 /* ADMIN CHANGE BOOKS
 --------------------------------------------*/
 .admin-change-books {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 }
 
 .admin-change-books__container {
-  max-width: 1200px;
-  padding: 12rem 0;
+  max-width: 1650px;
 }
 
 .admin-change-books__description {
@@ -1209,7 +1275,7 @@ h6 {
 
 .admin-change-books__instruction {
   text-align: center;
-  padding: 1rem 0;
+  padding: 3rem 0 1rem 0;
 }
 
 .admin-change-books__success {
@@ -1220,6 +1286,10 @@ h6 {
   color: #008B8B;
   margin-top: 3rem;
   font-size: 1.8rem;
+}
+
+.admin-change-books__hr {
+  min-width: 164rem;
 }
 
 /* ABOUT

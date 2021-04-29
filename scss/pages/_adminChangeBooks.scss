@@ -3,13 +3,10 @@
 --------------------------------------------*/
 
 .admin-change-books {
-  min-height: 100%;
   width: 100%;
+  padding: 8rem 0;
 
-  &__container {
-    max-width: 1200px;
-    padding: 12rem 0;
-  }
+  &__container { max-width: 1650px; }
 
   &__description {
     text-align: center;
@@ -23,7 +20,7 @@
 
   &__instruction {
     text-align: center;
-    padding: 1rem 0;
+    padding: 3rem 0 1rem 0;
   }
 
   &__success {
@@ -32,4 +29,6 @@
     margin-top: 3rem;
     font-size: 1.8rem;
   }
+
+  &__hr { min-width: 164rem; }
 }
