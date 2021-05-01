@@ -1,0 +1,31 @@
+
+/* ADMIN CHANGE COVER IMAGE
+--------------------------------------------*/
+
+.admin-change-cover-image {
+  width: 100%;
+  padding: 8rem 0;
+
+  &__container {
+    width: 30%;
+    max-width: 1200px;
+  }
+
+  &__description {
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  &__form { @include display-flex($direction: column); }
+
+  &__current-cover { margin-bottom: 3rem; }
+
+  &__finished {
+    margin-top: 2rem;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $color-primary;
+    }
+  }
+}

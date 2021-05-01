@@ -40,7 +40,13 @@ if (isset($_POST['update'])) {
   $summary = str_replace("'", "&#39;", $_POST['summary']);
   $additionalInfo = str_replace("'", "&#39;", $_POST['additional-info']);
 
-  mysqli_query($connection, "UPDATE books SET title='$title', author='$author', category='$category', price='$price', summary='$summary', additional_info='$additionalInfo' WHERE ID='$_POST[id]'");
+  // Set DB query based on whether Featured checkbox is set
+  if (isset($_POST['featured'])) {
+    mysqli_query($connection, "UPDATE books SET title='$title', author='$author', category='$category', price='$price', summary='$summary', additional_info='$additionalInfo', featured='featured' WHERE ID='$_POST[id]'");
+  }
+  else {
+    mysqli_query($connection, "UPDATE books SET title='$title', author='$author', category='$category', price='$price', summary='$summary', additional_info='$additionalInfo', featured=NULL WHERE ID='$_POST[id]'");
+  }
 
   // Reload page with success alert
   header("Location: " . $_SESSION['redirect'] . "?success=success");
@@ -50,6 +56,13 @@ if (isset($_POST['update'])) {
 // Delete from database when Delete button is pressed
 if (isset($_POST['delete'])) {
   mysqli_query($connection, "DELETE FROM books WHERE ID='$_POST[id]'");
+
+  // Remove image file from folder
+  $file = 'img/book_covers/' . $_POST['imageName'];
+  if (file_exists($file)) {
+    chmod($file, 0777);
+    unlink($file);
+  }
 
   // Reload page with success alert
   header("Location: " . $_SESSION['redirect'] . "?success=success");
@@ -251,7 +264,7 @@ if (isset($_POST['delete'])) {
           echo "<form class='data-table__form' action='admin_change_books.php' method='POST'>";
 
           // Cover Image
-          echo "<a href='admin_change_cover_image.php' class='data-table__img-anchor'><img class='data-table__img narrow' src='img/book_covers/$cover_image' alt='$title'>Change Image</a>";
+          echo "<a href='admin_change_cover_image.php?id=$ID' class='data-table__img-anchor'><img class='data-table__img narrow' src='img/book_covers/$cover_image' alt='$title'>Change Image</a>";
 
           // Title
           echo "<label for='$title' hidden>title</label>";
@@ -304,14 +317,17 @@ if (isset($_POST['delete'])) {
           // Featured -> if statement adds 'checked' attribute if book is a featured title
           echo "<label for='$featured' hidden>featured</label>";
           if ($featured == 'featured') {
-            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='$featured' checked>";
+            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='featured' checked>";
           }
           else {
-            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='$featured'>";
+            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='featured'>";
           }
 
-          // ID (hidden)
+          // ID (hidden -> used to locate DB row to remove when Delete clicked)
           echo "<input name='id' type='hidden' class='data-table__input' value='$ID'>";
+
+          // Cover Image Name (hidden -> used to remove image from folder when Delete clicked)
+          echo "<input name='imageName' type='hidden' class='data-table__input' value='$cover_image'>";
 
           // Update & Delete buttons
           echo "<input name='update' type='submit' class='data-table__button button--primary' value='Update'>";

@@ -1292,6 +1292,44 @@ h6 {
   min-width: 164rem;
 }
 
+/* ADMIN CHANGE COVER IMAGE
+--------------------------------------------*/
+.admin-change-cover-image {
+  width: 100%;
+  padding: 8rem 0;
+}
+
+.admin-change-cover-image__container {
+  width: 30%;
+  max-width: 1200px;
+}
+
+.admin-change-cover-image__description {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.admin-change-cover-image__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-change-cover-image__current-cover {
+  margin-bottom: 3rem;
+}
+
+.admin-change-cover-image__finished {
+  margin-top: 2rem;
+  text-decoration: none;
+}
+
+.admin-change-cover-image__finished:hover {
+  text-decoration: underline;
+  color: #008B8B;
+}
+
 /* ABOUT
 --------------------------------------------*/
 .about {
