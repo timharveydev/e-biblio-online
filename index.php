@@ -198,6 +198,14 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
 
 
+  <!-- Back to Top Button
+  ------------------------------------->
+  <a href="#top" class="back-to-top-button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
+
+
+
+
+
   <!-- Footer
   ------------------------------------->
   <section class="footer">

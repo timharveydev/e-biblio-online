@@ -198,6 +198,14 @@ if (isset($_SESSION['currentUser'])) {
       </div>
     </div>
   </section>
+  
+
+
+
+
+  <!-- Back to Top Button
+  ------------------------------------->
+  <a href="#top" class="back-to-top-button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
 
 
 
