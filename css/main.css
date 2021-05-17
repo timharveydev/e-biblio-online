@@ -279,8 +279,8 @@ h6 {
   color: #F97068;
 }
 
-.nav__dropdown hr {
-  border: 1px solid #DDD;
+.nav__dropdown > .hr {
+  border-top: 1px solid #DDD;
   margin: 0.5rem 1rem;
 }
 
@@ -1726,7 +1726,7 @@ h6 {
   }
   .book-details__categories-list {
     max-height: none;
-    overflow-y: none;
+    overflow-y: hidden;
   }
   .book-details__instructions {
     width: 100%;

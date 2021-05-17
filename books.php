@@ -23,15 +23,18 @@ if (isset($_POST['search'])) {
 }
 
 
-// Store author's name, if set (will overwrite searchTerm above)
+// Store author's name, if set (will overwrite searchTerm above) -> convert underscores to spaces
 if (isset($_GET['author'])) {
-  $searchTerm = $_GET['author'];
+  $searchTerm = str_replace("_", " ", $_GET['author']);
 }
 
 
-// Store selected category, if set
+// Store selected category, if set -> convert underscores to spaces
 if (isset($_GET['category'])) {
-  $category = $_GET['category'];
+  $category = str_replace("_", " ", $_GET['category']);
+
+  // Special case for 'Food & Drink' -> add ampersand back into string
+  if ($category === 'Food Drink') { $category = 'Food & Drink'; }
 }
 
 ?>
@@ -96,28 +99,30 @@ if (isset($_GET['category'])) {
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
-        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon" aria-label="Shopping basket"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()" aria-label="User icon"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown (contents shown dynamically using PHP) -->
-        <ul class="nav__dropdown">
-          <?php if (isset($_SESSION['currentUser'])) {
-            // If user logged in ...
-            echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
-          }
-          else {
-            // If no user logged in ...
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
-          } ?>
-        </ul>
+        <li>
+          <ul class="nav__dropdown">
+            <?php if (isset($_SESSION['currentUser'])) {
+              // If user logged in ...
+              echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
+            }
+            else {
+              // If no user logged in ...
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
+            } ?>
+          </ul>
+        </li>
       </ul>
 
       <!-- Burger Menu (mobile only) -->
@@ -173,8 +178,7 @@ if (isset($_GET['category'])) {
         <!-- Search bar component -->
         <form class="books__search-bar search-bar" action="books.php" method="POST">
 
-          <label for="searchbox" hidden>Search for title or author</label>
-          <input type="text" name="searchTerm" class="search-bar__input" id="searchbox" placeholder="Search title or author ...">
+          <label aria-label="Search title or author ..."><input type="text" name="searchTerm" class="search-bar__input" id="searchbox" placeholder="Search title or author ..."></label>
 
           <!-- Search button for large devices -->
           <button type="submit" name="search" class="search-bar__button button--positive"><i class="fas fa-search"></i> Search</button>
@@ -272,7 +276,7 @@ if (isset($_GET['category'])) {
             <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a href="books.php?category=Food & Drink" class="books__category-item">
+          <a href="books.php?category=Food_Drink" class="books__category-item"> <!-- Ampersand added back to category URL string on Books page (see 'Store selected category ...' at top of Books page) -->
             <p class="books__category-name">Food & Drink</p>
             <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Food & Drink'")); ?>
             <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
@@ -302,7 +306,7 @@ if (isset($_GET['category'])) {
             <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
           </a>
           <!-- Category Item -->
-          <a href="books.php?category=Popular Science" class="books__category-item">
+          <a href="books.php?category=Popular_Science" class="books__category-item">
             <p class="books__category-name">Popular Science</p>
             <?php $numberOfBooks = mysqli_num_rows(mysqli_query($connection, "SELECT * FROM books WHERE category='Popular Science'")); ?>
             <p class="books__category-number">(<?php echo "$numberOfBooks"; ?>)</p>
@@ -374,6 +378,9 @@ if (isset($_GET['category'])) {
         while ($row = mysqli_fetch_array($query)) {
           extract($row);
 
+          // Replace space in author name with underscore for use in URL
+          $authorURL = str_replace(" ", "_", $author);
+
           echo "<!-- Book Grid Item -->";
           echo "<div class='book-grid__item'>";
           echo "  <a href='book_details.php?id=$ID' class='book-grid__link'>";
@@ -381,7 +388,7 @@ if (isset($_GET['category'])) {
           echo "    <h4 class='book-grid__title'>$title</h4>";
           echo "  </a>";
           echo "  <div class='book-grid__flex-wrapper'>";
-          echo "    <a href='books.php?author=$author' class='book-grid__link'>";
+          echo "    <a href='books.php?author=$authorURL' class='book-grid__link'>";
           echo "      <h5 class='book-grid__author'>$author</h5>";
           echo "    </a>";
           echo "    <h5 class='book-grid__price'>£$price</h5>";
@@ -402,7 +409,7 @@ if (isset($_GET['category'])) {
 
   <!-- Back to Top Button
   ------------------------------------->
-  <a href="#top" class="back-to-top-button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
+  <a href="#top" class="back-to-top-button" aria-label="Back to top button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
 
 
 
@@ -425,7 +432,7 @@ if (isset($_GET['category'])) {
       <div class="footer__social">
         <a class="footer__icon facebook"><i class="fab fa-facebook-f"></i></a>
         <a class="footer__icon twitter"><i class="fab fa-twitter"></i></a>
-        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></i></a>
+        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></a>
       </div>
 
       <!-- Nav Links -->
@@ -447,7 +454,7 @@ if (isset($_GET['category'])) {
       <div class="footer__payment-info">
         <div class="footer__icon mastercard"><i class="fab fa-cc-mastercard"></i></div>
         <div class="footer__icon visa"><i class="fab fa-cc-visa"></i></div>
-        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></i></div>
+        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></div>
       </div>
     </div>
   </section>

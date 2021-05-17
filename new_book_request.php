@@ -4,7 +4,7 @@ session_start();
 
 
 // If previous URL not admin_new_book.php, redirect to index.php
-if ($_SESSION['redirect'] != '/e-biblio-online/admin_new_book.php') {
+if ($_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/admin_new_book.php') {
   header("Location: index.php");
   exit();
 }
@@ -23,7 +23,9 @@ $price = str_replace("'", "&#39;", $_POST['price']);
 $summary = str_replace("'", "&#39;", $_POST['summary']);
 $additionalInfo = str_replace("'", "&#39;", $_POST['additional-info']);
 
-$imageName = str_replace("'", "", $_POST['title']); // Images are named using the book title with apostrophies removed
+// Image variables - images are named using the book title with apostrophies removed and spaces replaced with underscores
+$titleMinusApostrophes = str_replace("'", "", $_POST['title']);
+$imageName = str_replace(" ", "_", $titleMinusApostrophes);
 $imageExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
 

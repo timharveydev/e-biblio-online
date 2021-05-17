@@ -129,28 +129,30 @@ if (isset($_POST['delete'])) {
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
-        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon" aria-label="Shopping basket"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()" aria-label="User icon"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown (contents shown dynamically using PHP) -->
-        <ul class="nav__dropdown">
-          <?php if (isset($_SESSION['currentUser'])) {
-            // If user logged in ...
-            echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
-          }
-          else {
-            // If no user logged in ...
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
-          } ?>
-        </ul>
+        <li>
+          <ul class="nav__dropdown">
+            <?php if (isset($_SESSION['currentUser'])) {
+              // If user logged in ...
+              echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
+            }
+            else {
+              // If no user logged in ...
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
+            } ?>
+          </ul>
+        </li>
       </ul>
 
       <!-- Burger Menu (mobile only) -->
@@ -267,23 +269,24 @@ if (isset($_POST['delete'])) {
           echo "<a href='admin_change_cover_image.php?id=$ID' class='data-table__img-anchor'><img class='data-table__img narrow' src='img/book_covers/$cover_image' alt='$title'>Change Image</a>";
 
           // Title
-          echo "<label for='$title' hidden>title</label>";
-          echo "<input name='title' type='text' id='$title' class='data-table__input' value='$title' maxlength='60' required>";
+          echo "<label for='title$ID' hidden>title</label>";
+          echo "<input name='title' type='text' id='title$ID' class='data-table__input' value='$title' maxlength='60' required>";
 
           // Author
-          echo "<label for='$author' hidden>author</label>";
-          echo "<input name='author' type='text' id='$author' class='data-table__input' value='$author' maxlength='25' required>";
+          echo "<label for='author$ID' hidden>author</label>";
+          echo "<input name='author' type='text' id='author$ID' class='data-table__input' value='$author' maxlength='25' required>";
 
           // Category
-          echo "<label for='$category' hidden>category</label>";
-          echo "<select name='category' id='$category' class='data-table__select narrow' required>";
-          echo "  <option value='$category'>$category</option>";
+          echo "<label for='category$ID' hidden>category</label>";
+          echo "<select name='category' id='category$ID' class='data-table__select narrow' required>";
+          echo "  <option value='' disabled>Select a category ...</option>";
+          echo "  <option value='$category' selected>$category</option>";
           echo "  <option value='Adventure'>Adventure</option>";
           echo "  <option value='Animals'>Animals</option>";
           echo "  <option value='Art'>Art</option>";
           echo "  <option value='Biographies'>Biographies</option>";
           echo "  <option value='Business'>Business</option>";
-          echo "  <option value='Children's'>Children's</option>";
+          echo "  <option value=\"Children's\">Children's</option>";
           echo "  <option value='Classics'>Classics</option>";
           echo "  <option value='Crime'>Crime</option>";
           echo "  <option value='Computing'>Computing</option>";
@@ -303,24 +306,24 @@ if (isset($_POST['delete'])) {
           echo "</select>";
 
           // Price
-          echo "<label for='$price' hidden>price</label>";
-          echo "<input name='price' type='text' id='$price' class='data-table__input narrow' value='$price' required>";
+          echo "<label for='price$ID' hidden>price</label>";
+          echo "<input name='price' type='text' id='price$ID' class='data-table__input narrow' value='$price' required>";
 
           // Summary
-          echo "<label for='$summary' hidden>summary</label>";
-          echo "<textarea name='summary' id='$summary' class='data-table__textarea' maxlength='1000' required>$summary</textarea>";
+          echo "<label for='summary$ID' hidden>summary</label>";
+          echo "<textarea name='summary' id='summary$ID' class='data-table__textarea' maxlength='1000' required>$summary</textarea>";
 
           // Additional Info
-          echo "<label for='$additional_info' hidden>additional-info</label>";
-          echo "<textarea name='additional-info' id='$additional_info' class='data-table__textarea' maxlength='1000'>$additional_info</textarea>";
+          echo "<label for='additional_info$ID' hidden>additional-info</label>";
+          echo "<textarea name='additional-info' id='additional_info$ID' class='data-table__textarea' maxlength='1000'>$additional_info</textarea>";
 
           // Featured -> if statement adds 'checked' attribute if book is a featured title
-          echo "<label for='$featured' hidden>featured</label>";
+          echo "<label for='featured$ID' hidden>featured</label>";
           if ($featured == 'featured') {
-            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='featured' checked>";
+            echo "<input name='featured' type='checkbox' id='featured$ID' class='data-table__checkbox narrow' value='featured' checked>";
           }
           else {
-            echo "<input name='featured' type='checkbox' id='$featured' class='data-table__checkbox narrow' value='featured'>";
+            echo "<input name='featured' type='checkbox' id='featured$ID' class='data-table__checkbox narrow' value='featured'>";
           }
 
           // ID (hidden -> used to locate DB row to remove when Delete clicked)
@@ -348,7 +351,7 @@ if (isset($_POST['delete'])) {
 
   <!-- Back to Top Button
   ------------------------------------->
-  <a href="#top" class="back-to-top-button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
+  <a href="#top" class="back-to-top-button" aria-label="Back to top button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
 
 
 
@@ -371,7 +374,7 @@ if (isset($_POST['delete'])) {
       <div class="footer__social">
         <a class="footer__icon facebook"><i class="fab fa-facebook-f"></i></a>
         <a class="footer__icon twitter"><i class="fab fa-twitter"></i></a>
-        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></i></a>
+        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></a>
       </div>
 
       <!-- Nav Links -->
@@ -393,7 +396,7 @@ if (isset($_POST['delete'])) {
       <div class="footer__payment-info">
         <div class="footer__icon mastercard"><i class="fab fa-cc-mastercard"></i></div>
         <div class="footer__icon visa"><i class="fab fa-cc-visa"></i></div>
-        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></i></div>
+        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></div>
       </div>
     </div>
   </section>

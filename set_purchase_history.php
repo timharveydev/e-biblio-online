@@ -8,7 +8,7 @@ include 'connection.php';
 
 
 // If previous URL not basket.php, redirect to index.php
-if ($_SESSION['redirect'] != '/e-biblio-online/basket.php') {
+if ($_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/basket.php') {
   header("Location: index.php");
   exit();
 }

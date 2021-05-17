@@ -149,8 +149,8 @@
       &.warning:hover { color: $color-warning; }
     }
 
-    & hr {
-      border: 1px solid $medium-grey;
+    & > .hr {
+      border-top: 1px solid $medium-grey;
       margin: 0.5rem 1rem;
     }
   }

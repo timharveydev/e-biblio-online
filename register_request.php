@@ -4,7 +4,7 @@ session_start();
 
 
 // If previous URL not login_register.php or admin_new_user/admin.php, redirect to index.php
-if ($_SESSION['redirect'] != '/e-biblio-online/login_register.php' && $_SESSION['redirect'] != '/e-biblio-online/admin_new_user.php' && $_SESSION['redirect'] != '/e-biblio-online/admin_new_admin.php') {
+if ($_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/login_register.php' && $_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/admin_new_user.php' && $_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/admin_new_admin.php') {
   header("Location: index.php");
   exit();
 }

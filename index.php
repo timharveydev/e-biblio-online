@@ -72,28 +72,30 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
       <!-- Basket & Account Icons -->
       <ul class="nav__icons">
-        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon"><i class="fas fa-shopping-basket"></i></a></li>
-        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()"><i class="fas fa-user-circle"></i></a></li>
+        <li class="nav__item"><a href="basket.php" class="nav__icon basketIcon" aria-label="Shopping basket"><i class="fas fa-shopping-basket"></i></a></li>
+        <li class="nav__item"><a class="nav__icon userIcon" onclick="toggleDropdownMenu()" aria-label="User icon"><i class="fas fa-user-circle"></i></a></li>
         <!-- Account Dropdown (contents shown dynamically using PHP) -->
-        <ul class="nav__dropdown">
-          <?php if (isset($_SESSION['currentUser'])) {
-            // If user logged in ...
-            echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
-          }
-          else {
-            // If no user logged in ...
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
-            echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
-            echo '<hr>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
-            echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
-          } ?>
-        </ul>
+        <li>
+          <ul class="nav__dropdown">
+            <?php if (isset($_SESSION['currentUser'])) {
+              // If user logged in ...
+              echo "<li class='nav__dropdown-item'><a class='nav__dropdown-link username'><strong>$_SESSION[currentUser]</strong></a></li>";
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="wishlist.php" class="nav__dropdown-link">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="purchase_history.php" class="nav__dropdown-link">Purchase History</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a href="logout.php" class="nav__dropdown-link warning">Logout</a></li>';
+            }
+            else {
+              // If no user logged in ...
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=login" class="nav__dropdown-link">Login</a></li>';
+              echo '<li class="nav__dropdown-item"><a href="login_register.php?section=register" class="nav__dropdown-link">Create an Account</a></li>';
+              echo '<li class="hr"></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Wishlist</a></li>';
+              echo '<li class="nav__dropdown-item"><a class="nav__dropdown-link disabled">Purchase History</a></li>';
+            } ?>
+          </ul>
+        </li>
       </ul>
 
       <!-- Burger Menu (mobile only) -->
@@ -117,7 +119,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <!-- Hero Titles -->
       <div class="hero__titles">
         <h1 class="hero__h1">Welcome to<br><span>E-Biblio </span>Online</h1>
-        <a class="hero__link" href="books.php">Shop now</i></a>
+        <a class="hero__link" href="books.php">Shop now</a>
       </div>
 
     </div>
@@ -153,6 +155,9 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
           while ($row = mysqli_fetch_array($query)) {
             extract($row);
 
+            // Replace space in author name with underscore for use in URL
+            $authorURL = str_replace(" ", "_", $author);
+
             echo "<!-- Book Grid Item -->";
             echo "<div class='book-grid__item'>";
             echo "  <a href='book_details.php?id=$ID' class='book-grid__link'>";
@@ -160,7 +165,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
             echo "    <h4 class='book-grid__title'>$title</h4>";
             echo "  </a>";
             echo "  <div class='book-grid__flex-wrapper'>";
-            echo "    <a href='books.php?author=$author' class='book-grid__link'>";
+            echo "    <a href='books.php?author=$authorURL' class='book-grid__link'>";
             echo "      <h5 class='book-grid__author'>$author</h5>";
             echo "    </a>";
             echo "    <h5 class='book-grid__price'>£$price</h5>";
@@ -200,7 +205,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
 
   <!-- Back to Top Button
   ------------------------------------->
-  <a href="#top" class="back-to-top-button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
+  <a href="#top" class="back-to-top-button" aria-label="Back to top button"><i class="fas fa-chevron-up back-to-top-button__arrow"></i></a>
 
 
 
@@ -223,7 +228,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <div class="footer__social">
         <a class="footer__icon facebook"><i class="fab fa-facebook-f"></i></a>
         <a class="footer__icon twitter"><i class="fab fa-twitter"></i></a>
-        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></i></a>
+        <a class="footer__icon youtube"><i class="fab fa-youtube"></i></a>
       </div>
 
       <!-- Nav Links -->
@@ -245,7 +250,7 @@ $_SESSION['redirect'] = strtok($_SERVER['REQUEST_URI'], '?');
       <div class="footer__payment-info">
         <div class="footer__icon mastercard"><i class="fab fa-cc-mastercard"></i></div>
         <div class="footer__icon visa"><i class="fab fa-cc-visa"></i></div>
-        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></i></div>
+        <div class="footer__icon paypal"><i class="fab fa-cc-paypal"></i></div>
       </div>
     </div>
   </section>

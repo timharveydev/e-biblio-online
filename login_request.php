@@ -4,7 +4,7 @@ session_start();
 
 
 // If previous URL not login_register.php, redirect to index.php
-if ($_SESSION['redirect'] != '/e-biblio-online/login_register.php') {
+if ($_SESSION['redirect'] != '/~HNCWEBMR4/e-biblio-online/login_register.php') {
   header("Location: index.php");
   exit();
 }
